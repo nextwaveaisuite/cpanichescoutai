@@ -1,0 +1,1 @@
+export default function ResultsBlock(){return null;}
