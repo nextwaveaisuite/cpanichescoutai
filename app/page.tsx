@@ -141,7 +141,9 @@ export default function Home() {
         <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '60px 20px' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>Find Profitable CPA Niches</h1>
-            <p style={{ fontSize: '1.2rem', color: '#a8adb8', marginBottom: '40px' }}>AI-powered keyword analysis, CPA offers, domain finder, and website blueprints</p>
+            <p style={{ fontSize: '1.2rem', color: '#a8adb8', marginBottom: '40px' }}>
+              AI-powered keyword analysis, CPA offers, domain finder, and website blueprints
+            </p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '60px' }}>
