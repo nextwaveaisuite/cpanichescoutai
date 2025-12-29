@@ -7,10 +7,12 @@ export default function Pricing() {
       {/* HEADER */}
       <header style={{ background: 'linear-gradient(135deg, #1a2847 0%, #2b3a6a 100%)', padding: '20px', borderBottom: '2px solid #4f7cff' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link href="/" style={{ fontSize: '1.8rem', background: 'linear-gradient(135deg, #4f7cff, #00d4ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none' }}>🚀 CPA Niche Scout AI</Link>
+          <Link href="/app" style={{ fontSize: '1.8rem', background: 'linear-gradient(135deg, #4f7cff, #00d4ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none' }}>🚀 CPA Niche Scout AI</Link>
           <nav style={{ display: 'flex', gap: '20px' }}>
-            <Link href="/" style={{ color: '#a8adb8', textDecoration: 'none' }}>Home</Link>
-            <Link href="/dashboard" style={{ color: '#a8adb8', textDecoration: 'none' }}>Dashboard</Link>
+            <Link href="/app" style={{ color: '#a8adb8', textDecoration: 'none' }}>Home</Link>
+            <Link href="/app/dashboard" style={{ color: '#a8adb8', textDecoration: 'none' }}>Dashboard</Link>
+            <Link href="/app/about" style={{ color: '#a8adb8', textDecoration: 'none' }}>About</Link>
+            <Link href="/app/contact" style={{ color: '#a8adb8', textDecoration: 'none' }}>Contact</Link>
           </nav>
         </div>
       </header>
@@ -22,7 +24,7 @@ export default function Pricing() {
           {[
             { name: 'Starter', price: 9.99, credits: 20, features: ['20 Analyses', 'Basic Tools', 'Email Support', 'Keyword Research', 'Domain Finder'], popular: false },
             { name: 'Professional', price: 19.00, credits: 50, features: ['50 Analyses', 'All Tools', 'Priority Support', 'Website Blueprints', 'Video Scripts'], popular: true },
-            { name: 'Enterprise', price: 29.00, credits: 100, features: ['100 Analyses', 'All Tools', '24/7 Support', 'API Access', 'Bulk Export'] }
+            { name: 'Enterprise', price: 29.00, credits: 100, features: ['100 Analyses', 'All Tools', '24/7 Support', 'API Access', 'Bulk Export'], popular: false }
           ].map((plan) => (
             <div key={plan.name} style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: plan.popular ? '2px solid #4f7cff' : '1px solid #2b3a6a', transform: plan.popular ? 'scale(1.05)' : 'scale(1)' }}>
               {plan.popular && <div style={{ background: '#4f7cff', color: 'white', padding: '8px 16px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold', marginBottom: '15px', display: 'inline-block' }}>⭐ Most Popular</div>}
@@ -42,13 +44,35 @@ export default function Pricing() {
 
       {/* FOOTER */}
       <footer style={{ background: '#1a2847', borderTop: '2px solid #2b3a6a', padding: '40px 20px', marginTop: '80px' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center', color: '#a8adb8', fontSize: '0.85rem' }}>
-          <div style={{ marginBottom: '20px', display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/privacy" style={{ color: '#a8adb8', textDecoration: 'none' }}>Privacy</Link>
-            <Link href="/terms" style={{ color: '#a8adb8', textDecoration: 'none' }}>Terms</Link>
-            <Link href="/compliance" style={{ color: '#a8adb8', textDecoration: 'none' }}>Compliance</Link>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginBottom: '40px' }}>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Software</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/app" style={{ color: '#a8adb8', textDecoration: 'none' }}>Home</Link></li>
+                <li><Link href="/app/dashboard" style={{ color: '#a8adb8', textDecoration: 'none' }}>Dashboard</Link></li>
+                <li><Link href="/app/pricing" style={{ color: '#a8adb8', textDecoration: 'none' }}>Pricing</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Company</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/app/about" style={{ color: '#a8adb8', textDecoration: 'none' }}>About</Link></li>
+                <li><Link href="/app/contact" style={{ color: '#a8adb8', textDecoration: 'none' }}>Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Legal</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/app/privacy" style={{ color: '#a8adb8', textDecoration: 'none' }}>Privacy</Link></li>
+                <li><Link href="/app/terms" style={{ color: '#a8adb8', textDecoration: 'none' }}>Terms</Link></li>
+                <li><Link href="/app/compliance" style={{ color: '#a8adb8', textDecoration: 'none' }}>Compliance</Link></li>
+              </ul>
+            </div>
           </div>
-          <p>© 2025 CPA Niche Scout AI. All rights reserved.</p>
+          <div style={{ borderTop: '1px solid #2b3a6a', paddingTop: '20px', textAlign: 'center', color: '#a8adb8', fontSize: '0.85rem' }}>
+            <p>© 2025 CPA Niche Scout AI. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
