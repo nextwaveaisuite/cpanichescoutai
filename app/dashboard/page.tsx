@@ -67,7 +67,7 @@ interface SearchResult {
   level: 'main' | 'sub' | 'micro' | 'micro-micro';
   key: string;
   name: string;
-  marketSize: string;
+  marketSize?: string;
   parent?: string;
   traffic?: number;
   competition?: number;
