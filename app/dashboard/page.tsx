@@ -92,16 +92,16 @@ const getAllSubNiches = (mainNiche: string) => {
   
   const flattened: any[] = [];
   
-  Object.entries(niche.subNiches).forEach(([subKey, subNiche]) => {
+  Object.entries(niche.subNiches).forEach(([subKey, subNiche]: [string, any]) => {
     flattened.push({ key: subKey, name: subNiche.name, level: 'sub' });
     
     if (subNiche.microNiches) {
-      Object.entries(subNiche.microNiches).forEach(([microKey, microNiche]) => {
-        flattened.push({ key: microKey, name: microNiche.name, level: 'micro', parent: subKey });
+      Object.entries(subNiche.microNiches).forEach(([microKey, microNiche]: [string, any]) => {
+        flattened.push({ key: microKey, name: (microNiche as any).name, level: 'micro', parent: subKey });
         
-        if (microNiche.microMicroNiches) {
-          Object.entries(microNiche.microMicroNiches).forEach(([microMicroKey, microMicroNiche]) => {
-            flattened.push({ key: microMicroKey, name: microMicroNiche.name, level: 'micro-micro', parent: microKey });
+        if ((microNiche as any).microMicroNiches) {
+          Object.entries((microNiche as any).microMicroNiches).forEach(([microMicroKey, microMicroNiche]: [string, any]) => {
+            flattened.push({ key: microMicroKey, name: (microMicroNiche as any).name, level: 'micro-micro', parent: microKey });
           });
         }
       });
