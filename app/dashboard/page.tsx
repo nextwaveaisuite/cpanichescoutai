@@ -568,17 +568,3 @@ export default function Dashboard() {
     </div>
   );
 }
-```
-
----
-
-**How to update in GitHub:**
-1. Go to your GitHub repo
-2. Click on `app/dashboard/page.tsx`
-3. Click the **pencil icon** (Edit)
-4. Select all (Ctrl+A)
-5. Delete
-6. Paste the COMPLETE code above
-7. Click **"Commit changes"**
-
-**Vercel will auto-redeploy!** ✅
