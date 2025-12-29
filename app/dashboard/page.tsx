@@ -12,48 +12,8 @@ const NICHE_DATA = {
     blueprint: { pages: [{ name: 'Homepage', description: 'Hero section with value proposition, benefits, testimonials, and CTA to email list' }, { name: 'Weight Loss Tips', description: 'Pillar content with 20+ actionable tips, backed by research, monetized with CPA offers' }, { name: 'Best Supplements', description: 'Product comparison guide, affiliate/CPA links, pros/cons, pricing' }, { name: 'Success Stories', description: 'Before/after testimonials, case studies, builds trust and social proof' }, { name: 'Meal Plans', description: 'Free meal plan templates, downloadable PDFs, email capture, premium upsell' }, { name: 'Exercise Guide', description: 'Video tutorials, workout routines, fitness equipment recommendations' }, { name: 'FAQ', description: 'Common questions answered, addresses objections, improves SEO' }, { name: 'Contact', description: 'Email capture, support form, builds relationship with audience' }], strategy: 'Create pillar content on weight loss, cluster around supplements, meal plans, and exercises. Build email list for repeat commissions. Monetize with ClickBank weight loss products and CPA supplement offers.', monetization: 'Primary: ClickBank weight loss products (50% commission). Secondary: CPA supplement offers ($30-45 per conversion). Tertiary: Email list (nurture sequences for repeat sales). Estimated: $500-2000/month per 1000 visitors.', timeline: 'Months 1-2: Build 8 pillar pages, optimize for SEO. Months 3-4: Drive traffic via content marketing, social media. Months 5-6: Scale with paid ads, email marketing. Months 6+: Passive income from email list and organic traffic.' },
     scripts: [{ title: 'Weight Loss Supplement Review', duration: '60 sec', script: 'HOOK: "I lost 30 pounds without dieting and here\'s how..." [0-3 sec] PROBLEM: "Most weight loss pills don\'t work because they don\'t address the real issue - your metabolism..." [3-15 sec] SOLUTION: "This supplement changed my life. It\'s scientifically formulated to boost metabolism, suppress appetite, and give you energy. I started seeing results in just 2 weeks..." [15-45 sec] PROOF: "Look at these results from real users..." [45-50 sec] CTA: "Click the link in bio to get yours today. Limited time offer - 50% off for the first 100 customers!" [50-60 sec]' }, { title: 'Best Diet Plans Comparison', duration: '60 sec', script: 'HOOK: "I tried 5 different diets and only ONE actually worked..." [0-3 sec] PROBLEM: "There are so many diet options out there - keto, intermittent fasting, calorie counting - which one actually works? Most people waste months trying the wrong diet..." [3-15 sec] SOLUTION: "I created a comparison guide that breaks down the top 5 diets, shows pros and cons, and tells you which one is best for YOUR body type and lifestyle..." [15-45 sec] RESULTS: "My clients lost an average of 20 pounds in 8 weeks using this guide..." [45-50 sec] CTA: "Get your free guide now - link in bio. This is exactly what my personal training clients pay $200 for!" [50-60 sec]' }],
     subNiches: {
-      'keto diet': {
-        name: 'Keto Diet',
-        microNiches: {
-          'keto beginners': {
-            name: 'Keto for Beginners',
-            microMicroNiches: {
-              'keto women beginners': { name: 'Keto for Women Beginners', traffic: 2320, competition: 28, difficulty: 34, cpaRange: '$35-45' },
-              'keto men beginners': { name: 'Keto for Men Beginners', traffic: 2100, competition: 26, difficulty: 32, cpaRange: '$35-45' },
-              'keto over 40': { name: 'Keto for People Over 40', traffic: 1900, competition: 24, difficulty: 30, cpaRange: '$38-48' },
-            }
-          },
-          'keto advanced': {
-            name: 'Advanced Keto',
-            microMicroNiches: {
-              'keto muscle gain': { name: 'Keto for Muscle Gain', traffic: 1800, competition: 24, difficulty: 30, cpaRange: '$42-52' },
-              'keto athletes': { name: 'Keto for Athletes', traffic: 1600, competition: 22, difficulty: 28, cpaRange: '$40-50' },
-              'keto endurance': { name: 'Keto for Endurance', traffic: 1400, competition: 20, difficulty: 26, cpaRange: '$38-48' },
-            }
-          },
-        }
-      },
-      'intermittent fasting': {
-        name: 'Intermittent Fasting',
-        microNiches: {
-          '16:8 fasting': {
-            name: '16:8 Intermittent Fasting',
-            microMicroNiches: {
-              '16:8 women': { name: '16:8 IF for Women', traffic: 1900, competition: 26, difficulty: 32, cpaRange: '$38-48' },
-              '16:8 men': { name: '16:8 IF for Men', traffic: 1700, competition: 24, difficulty: 30, cpaRange: '$36-46' },
-              '16:8 weight loss': { name: '16:8 IF for Weight Loss', traffic: 2000, competition: 28, difficulty: 34, cpaRange: '$40-50' },
-            }
-          },
-          '5:2 fasting': {
-            name: '5:2 Intermittent Fasting',
-            microMicroNiches: {
-              '5:2 beginners': { name: '5:2 IF for Beginners', traffic: 1400, competition: 20, difficulty: 26, cpaRange: '$32-42' },
-              '5:2 women': { name: '5:2 IF for Women', traffic: 1300, competition: 18, difficulty: 24, cpaRange: '$30-40' },
-              '5:2 weight loss': { name: '5:2 IF for Weight Loss', traffic: 1500, competition: 22, difficulty: 28, cpaRange: '$34-44' },
-            }
-          },
-        }
-      },
+      'keto diet': { name: 'Keto Diet', microNiches: { 'keto beginners': { name: 'Keto for Beginners', microMicroNiches: { 'keto women beginners': { name: 'Keto for Women Beginners', traffic: 2320, competition: 28, difficulty: 34, cpaRange: '$35-45' }, 'keto men beginners': { name: 'Keto for Men Beginners', traffic: 2100, competition: 26, difficulty: 32, cpaRange: '$35-45' }, 'keto over 40': { name: 'Keto for People Over 40', traffic: 1900, competition: 24, difficulty: 30, cpaRange: '$38-48' } } }, 'keto advanced': { name: 'Advanced Keto', microMicroNiches: { 'keto muscle gain': { name: 'Keto for Muscle Gain', traffic: 1800, competition: 24, difficulty: 30, cpaRange: '$42-52' }, 'keto athletes': { name: 'Keto for Athletes', traffic: 1600, competition: 22, difficulty: 28, cpaRange: '$40-50' }, 'keto endurance': { name: 'Keto for Endurance', traffic: 1400, competition: 20, difficulty: 26, cpaRange: '$38-48' } } } } },
+      'intermittent fasting': { name: 'Intermittent Fasting', microNiches: { '16:8 fasting': { name: '16:8 Intermittent Fasting', microMicroNiches: { '16:8 women': { name: '16:8 IF for Women', traffic: 1900, competition: 26, difficulty: 32, cpaRange: '$38-48' }, '16:8 men': { name: '16:8 IF for Men', traffic: 1700, competition: 24, difficulty: 30, cpaRange: '$36-46' }, '16:8 weight loss': { name: '16:8 IF for Weight Loss', traffic: 2000, competition: 28, difficulty: 34, cpaRange: '$40-50' } } }, '5:2 fasting': { name: '5:2 Intermittent Fasting', microMicroNiches: { '5:2 beginners': { name: '5:2 IF for Beginners', traffic: 1400, competition: 20, difficulty: 26, cpaRange: '$32-42' }, '5:2 women': { name: '5:2 IF for Women', traffic: 1300, competition: 18, difficulty: 24, cpaRange: '$30-40' }, '5:2 weight loss': { name: '5:2 IF for Weight Loss', traffic: 1500, competition: 22, difficulty: 28, cpaRange: '$34-44' } } } } }
     }
   },
   'insurance': {
@@ -64,32 +24,8 @@ const NICHE_DATA = {
     blueprint: { pages: [{ name: 'Homepage', description: 'Insurance comparison focus, testimonials, quote tool CTA' }, { name: 'Insurance Guides', description: 'Comprehensive guides for each insurance type' }, { name: 'Quote Comparison', description: 'Interactive tool comparing quotes from multiple providers' }, { name: 'State-Specific Guides', description: 'Guides for insurance requirements by state' }, { name: 'FAQ', description: 'Common insurance questions answered' }, { name: 'Blog', description: 'Insurance tips, updates, and industry news' }, { name: 'Calculator Tools', description: 'Coverage calculators for different insurance types' }, { name: 'Contact', description: 'Lead capture form for insurance quotes' }], strategy: 'Create state-specific insurance guides targeting high-intent buyers. Build quote comparison tools. Monetize with CPA leads and affiliate commissions.', monetization: 'Primary: Insurance leads ($40-60 CPA). Secondary: Affiliate commissions. Tertiary: Ads. Estimated: $1000-5000/month per 1000 visitors.', timeline: 'Months 1-2: Build 8 core pages. Months 3-4: Create state guides. Months 5-6: Drive traffic via SEO. Months 6+: Scale with paid ads.' },
     scripts: [{ title: 'Save on Car Insurance', duration: '60 sec', script: 'HOOK: "I saved $500/year on car insurance..." [0-3 sec] PROBLEM: "Most people overpay for insurance..." [3-15 sec] SOLUTION: "Here\'s how to get the best rates..." [15-45 sec] PROOF: "See real savings..." [45-50 sec] CTA: "Get free quotes - link in bio!" [50-60 sec]' }, { title: 'Life Insurance Explained', duration: '60 sec', script: 'HOOK: "Life insurance doesn\'t have to be complicated..." [0-3 sec] PROBLEM: "People don\'t understand life insurance..." [3-15 sec] SOLUTION: "Here\'s a simple explanation..." [15-45 sec] PROOF: "See real examples..." [45-50 sec] CTA: "Learn more - link in bio!" [50-60 sec]' }],
     subNiches: {
-      'car insurance': {
-        name: 'Car Insurance',
-        microNiches: {
-          'young drivers': {
-            name: 'Car Insurance for Young Drivers',
-            microMicroNiches: {
-              'teen insurance': { name: 'Teen Car Insurance', traffic: 2100, competition: 32, difficulty: 38, cpaRange: '$38-48' },
-              'college student insurance': { name: 'College Student Car Insurance', traffic: 1800, competition: 28, difficulty: 34, cpaRange: '$36-46' },
-              'first time driver': { name: 'First Time Driver Insurance', traffic: 1600, competition: 26, difficulty: 32, cpaRange: '$34-44' },
-            }
-          },
-        }
-      },
-      'life insurance': {
-        name: 'Life Insurance',
-        microNiches: {
-          'term life': {
-            name: 'Term Life Insurance',
-            microMicroNiches: {
-              'term women': { name: 'Term Life Insurance for Women', traffic: 1350, competition: 24, difficulty: 30, cpaRange: '$48-58' },
-              'term men': { name: 'Term Life Insurance for Men', traffic: 1200, competition: 22, difficulty: 28, cpaRange: '$46-56' },
-              'term seniors': { name: 'Term Life Insurance for Seniors', traffic: 1100, competition: 20, difficulty: 26, cpaRange: '$50-60' },
-            }
-          },
-        }
-      },
+      'car insurance': { name: 'Car Insurance', microNiches: { 'young drivers': { name: 'Car Insurance for Young Drivers', microMicroNiches: { 'teen insurance': { name: 'Teen Car Insurance', traffic: 2100, competition: 32, difficulty: 38, cpaRange: '$38-48' }, 'college student insurance': { name: 'College Student Car Insurance', traffic: 1800, competition: 28, difficulty: 34, cpaRange: '$36-46' }, 'first time driver': { name: 'First Time Driver Insurance', traffic: 1600, competition: 26, difficulty: 32, cpaRange: '$34-44' } } } } },
+      'life insurance': { name: 'Life Insurance', microNiches: { 'term life': { name: 'Term Life Insurance', microMicroNiches: { 'term women': { name: 'Term Life Insurance for Women', traffic: 1350, competition: 24, difficulty: 30, cpaRange: '$48-58' }, 'term men': { name: 'Term Life Insurance for Men', traffic: 1200, competition: 22, difficulty: 28, cpaRange: '$46-56' }, 'term seniors': { name: 'Term Life Insurance for Seniors', traffic: 1100, competition: 20, difficulty: 26, cpaRange: '$50-60' } } } } }
     }
   },
   'cryptocurrency': {
@@ -100,42 +36,18 @@ const NICHE_DATA = {
     blueprint: { pages: [{ name: 'Homepage', description: 'Crypto education focus, beginner-friendly' }, { name: 'Crypto Guide', description: 'Complete guide to cryptocurrency' }, { name: 'Exchanges', description: 'Best crypto exchanges reviewed' }, { name: 'Trading', description: 'Trading strategies and tutorials' }, { name: 'Security', description: 'Wallet security and best practices' }, { name: 'News', description: 'Crypto market news and updates' }, { name: 'FAQ', description: 'Common crypto questions' }, { name: 'Contact', description: 'Newsletter signup' }], strategy: 'Create beginner-friendly crypto content. Build trust through education. Monetize with exchange affiliates and courses.', monetization: 'Primary: Exchange affiliates ($40-80 CPA). Secondary: Crypto courses. Tertiary: Ads. Estimated: $800-3000/month per 1000 visitors.', timeline: 'Months 1-2: Build core pages. Months 3-4: Drive traffic via SEO. Months 5-6: Scale with content. Months 6+: Passive income.' },
     scripts: [{ title: 'How to Buy Bitcoin Safely', duration: '60 sec', script: 'HOOK: "I bought my first bitcoin safely and here\'s how..." [0-3 sec] PROBLEM: "Bitcoin buying seems risky..." [3-15 sec] SOLUTION: "Here\'s the safe way to do it..." [15-45 sec] PROOF: "Thousands do this daily..." [45-50 sec] CTA: "Get the guide - link in bio!" [50-60 sec]' }, { title: 'Crypto Exchanges Compared', duration: '60 sec', script: 'HOOK: "I compared all top crypto exchanges..." [0-3 sec] PROBLEM: "Too many exchanges to choose..." [3-15 sec] SOLUTION: "Here are the best ones..." [15-45 sec] PROOF: "See comparison..." [45-50 sec] CTA: "See full comparison - link in bio!" [50-60 sec]' }],
     subNiches: {
-      'bitcoin': {
-        name: 'Bitcoin',
-        microNiches: {
-          'bitcoin beginners': {
-            name: 'Bitcoin for Beginners',
-            microMicroNiches: {
-              'how to buy bitcoin': { name: 'How to Buy Bitcoin', traffic: 2100, competition: 35, difficulty: 42, cpaRange: '$42-52' },
-              'bitcoin wallets': { name: 'Bitcoin Wallets', traffic: 1800, competition: 30, difficulty: 36, cpaRange: '$40-50' },
-              'bitcoin security': { name: 'Bitcoin Security', traffic: 1600, competition: 28, difficulty: 34, cpaRange: '$38-48' },
-            }
-          },
-        }
-      },
+      'bitcoin': { name: 'Bitcoin', microNiches: { 'bitcoin beginners': { name: 'Bitcoin for Beginners', microMicroNiches: { 'how to buy bitcoin': { name: 'How to Buy Bitcoin', traffic: 2100, competition: 35, difficulty: 42, cpaRange: '$42-52' }, 'bitcoin wallets': { name: 'Bitcoin Wallets', traffic: 1800, competition: 30, difficulty: 36, cpaRange: '$40-50' }, 'bitcoin security': { name: 'Bitcoin Security', traffic: 1600, competition: 28, difficulty: 34, cpaRange: '$38-48' } } } } }
     }
   },
   'fitness': {
     analyze: { niche: 'Fitness', score: 80, difficulty: 40, profitPotential: 84, trafficPotential: 11200, verdict: 'BUILD', analysis: 'Fitness is a massive, evergreen niche with consistent demand. Multiple sub-niches and monetization options. High engagement and repeat customers make this very profitable.', opportunities: ['Supplement affiliate programs (40-50% commission)', 'Equipment sales (20-30% commission)', 'Training program sales (high ticket)', 'Coaching and consulting', 'Digital product sales'], challenges: ['High competition', 'Requires credibility', 'Fitness advice liability', 'Seasonal trends', 'Requires consistency'], recommendations: ['Focus on specific sub-niches', 'Build social proof with transformations', 'Create video content', 'Establish expertise and credentials', 'Build community and engagement'], marketSize: '$96.7 Billion USD', growthRate: '10.3% CAGR', topKeywords: ['best home gym equipment', 'weight loss workout', 'muscle building exercises'], topOffers: ['Supplement affiliates ($30-50)', 'Equipment affiliates ($20-40)'], estimatedEarnings: '$600-$2500/month per 1000 visitors' },
-    keywords: [{ keyword: 'best home gym equipment', traffic: 8900, competition: 35, difficulty: 40 }, { keyword: 'weight loss workout routine', traffic: 7600, competition: 32, difficulty: 38 }, { keyword: 'muscle building exercises', traffic: 7200, competition: 30, difficulty: 36 }, { keyword: 'HIIT workout for beginners', traffic: 6500, competition: 28, difficulty: 34 }, { keyword: 'best fitness supplements', traffic: 6100, competition: 26, difficulty: 32 }, { keyword: 'home workout no equipment', traffic: 5800, competition: 24, difficulty: 30 }, { keyword: 'yoga for beginners', traffic: 5400, competition: 22, difficulty: 28 }, { keyword: 'pilates exercises at home', traffic: 4900, competition: 20, difficulty: 26 }, { keyword: 'cardio workout at home', traffic: 4600, competition: 18, difficulty: 24 }, { keyword: 'strength training for women', traffic: 4300, competition: 16, difficulty: 22 }, { keyword: 'best protein powder', traffic: 4000, competition: 14, difficulty: 20 }, { keyword: 'fitness tracker reviews', traffic: 3700, competition: 12, difficulty: 18 }, { keyword: 'ab exercises for women', traffic: 3400, competition: 10, difficulty: 16 }, { keyword: 'running for beginners', fitness: 3100, competition: 8, difficulty: 14 }, { keyword: 'CrossFit workout guide', traffic: 2800, competition: 6, difficulty: 12 }, { keyword: 'dance workout at home', traffic: 2500, competition: 4, difficulty: 10 }, { keyword: 'boxing workout for fitness', traffic: 2200, competition: 2, difficulty: 8 }, { keyword: 'swimming workout routine', traffic: 1900, competition: 0, difficulty: 6 }, { keyword: 'stretching exercises', traffic: 1600, competition: 0, difficulty: 4 }, { keyword: 'recovery techniques', traffic: 1300, competition: 0, difficulty: 2 }],
+    keywords: [{ keyword: 'best home gym equipment', traffic: 8900, competition: 35, difficulty: 40 }, { keyword: 'weight loss workout routine', traffic: 7600, competition: 32, difficulty: 38 }, { keyword: 'muscle building exercises', traffic: 7200, competition: 30, difficulty: 36 }, { keyword: 'HIIT workout for beginners', traffic: 6500, competition: 28, difficulty: 34 }, { keyword: 'best fitness supplements', traffic: 6100, competition: 26, difficulty: 32 }, { keyword: 'home workout no equipment', traffic: 5800, competition: 24, difficulty: 30 }, { keyword: 'yoga for beginners', traffic: 5400, competition: 22, difficulty: 28 }, { keyword: 'pilates exercises at home', traffic: 4900, competition: 20, difficulty: 26 }, { keyword: 'cardio workout at home', traffic: 4600, competition: 18, difficulty: 24 }, { keyword: 'strength training for women', traffic: 4300, competition: 16, difficulty: 22 }, { keyword: 'best protein powder', traffic: 4000, competition: 14, difficulty: 20 }, { keyword: 'fitness tracker reviews', traffic: 3700, competition: 12, difficulty: 18 }, { keyword: 'ab exercises for women', traffic: 3400, competition: 10, difficulty: 16 }, { keyword: 'running for beginners', traffic: 3100, competition: 8, difficulty: 14 }, { keyword: 'CrossFit workout guide', traffic: 2800, competition: 6, difficulty: 12 }, { keyword: 'dance workout at home', traffic: 2500, competition: 4, difficulty: 10 }, { keyword: 'boxing workout for fitness', traffic: 2200, competition: 2, difficulty: 8 }, { keyword: 'swimming workout routine', traffic: 1900, competition: 0, difficulty: 6 }, { keyword: 'stretching exercises', traffic: 1600, competition: 0, difficulty: 4 }, { keyword: 'recovery techniques', traffic: 1300, competition: 0, difficulty: 2 }],
     offers: [{ network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$40', commission: '45%', desc: 'Fitness programs and guides' }, { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$35', commission: '40%', desc: 'Fitness equipment' }, { network: 'Impact', url: 'https://www.impact.com', payout: '$45', commission: '50%', desc: 'Premium fitness programs' }, { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$30', commission: '35%', desc: 'Sports and fitness' }, { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$38', commission: '42%', desc: 'Fitness affiliates' }],
     domains: [{ domain: 'HomeGymGuide.com', age: 8, traffic: 2600, backlinks: 420, authority: 40, price: '$16', verdict: 'GOOD' }, { domain: 'FitnessWorkoutTips.net', age: 7, traffic: 2200, backlinks: 360, authority: 36, price: '$13', verdict: 'GOOD' }, { domain: 'BestFitnessTips.org', age: 9, traffic: 2900, backlinks: 480, authority: 44, price: '$18', verdict: 'GOOD' }, { domain: 'WorkoutAtHome.com', age: 6, traffic: 1900, backlinks: 300, authority: 32, price: '$11', verdict: 'FAIR' }, { domain: 'FitnessForBeginners.net', age: 5, traffic: 1600, backlinks: 260, authority: 28, price: '$9', verdict: 'FAIR' }, { domain: 'ExerciseGuideOnline.org', age: 7, traffic: 2100, backlinks: 340, authority: 34, price: '$12', verdict: 'GOOD' }, { domain: 'SupplementReviews.com', age: 6, traffic: 1800, backlinks: 280, authority: 30, price: '$10', verdict: 'FAIR' }, { domain: 'FitnessEquipmentGuide.net', age: 5, traffic: 1400, backlinks: 220, authority: 26, price: '$8', verdict: 'FAIR' }],
     blueprint: { pages: [{ name: 'Homepage', description: 'Fitness transformation focus, testimonials' }, { name: 'Workout Plans', description: 'Free and premium workout routines' }, { name: 'Nutrition Guide', description: 'Nutrition and meal planning' }, { name: 'Supplements', description: 'Supplement reviews and recommendations' }, { name: 'Equipment', description: 'Home gym equipment reviews' }, { name: 'Blog', description: 'Fitness tips and trends' }, { name: 'FAQ', description: 'Common fitness questions' }, { name: 'Contact', description: 'Coaching inquiry form' }], strategy: 'Create workout and nutrition content. Build transformations gallery. Monetize with supplement and equipment affiliates.', monetization: 'Primary: Supplement affiliates ($30-50 CPA). Secondary: Equipment affiliates. Tertiary: Coaching. Estimated: $600-2500/month per 1000 visitors.', timeline: 'Months 1-2: Build 8 pages. Months 3-4: Drive traffic via SEO. Months 5-6: Scale with content. Months 6+: Passive income.' },
     scripts: [{ title: 'Home Workout Transformation', duration: '60 sec', script: 'HOOK: "I transformed my body with home workouts..." [0-3 sec] PROBLEM: "No gym? No problem..." [3-15 sec] SOLUTION: "Here\'s my home workout routine..." [15-45 sec] PROOF: "See my results..." [45-50 sec] CTA: "Get the workout - link in bio!" [50-60 sec]' }, { title: 'Best Fitness Equipment', duration: '60 sec', script: 'HOOK: "I tested the best home gym equipment..." [0-3 sec] PROBLEM: "Too many options..." [3-15 sec] SOLUTION: "Here are the top picks..." [15-45 sec] PROOF: "See reviews..." [45-50 sec] CTA: "See full reviews - link in bio!" [50-60 sec]' }],
     subNiches: {
-      'home gym': {
-        name: 'Home Gym',
-        microNiches: {
-          'equipment': {
-            name: 'Home Gym Equipment',
-            microMicroNiches: {
-              'dumbbells': { name: 'Dumbbells and Weights', traffic: 1160, competition: 28, difficulty: 34, cpaRange: '$35-45' },
-              'treadmills': { name: 'Home Treadmills', traffic: 980, competition: 24, difficulty: 30, cpaRange: '$32-42' },
-              'yoga mats': { name: 'Yoga Mats and Accessories', traffic: 850, competition: 20, difficulty: 26, cpaRange: '$28-38' },
-            }
-          },
-        }
-      },
+      'home gym': { name: 'Home Gym', microNiches: { 'equipment': { name: 'Home Gym Equipment', microMicroNiches: { 'dumbbells': { name: 'Dumbbells and Weights', traffic: 1160, competition: 28, difficulty: 34, cpaRange: '$35-45' }, 'treadmills': { name: 'Home Treadmills', traffic: 980, competition: 24, difficulty: 30, cpaRange: '$32-42' }, 'yoga mats': { name: 'Yoga Mats and Accessories', traffic: 850, competition: 20, difficulty: 26, cpaRange: '$28-38' } } } } }
     }
   },
   'forex trading': {
@@ -146,19 +58,7 @@ const NICHE_DATA = {
     blueprint: { pages: [{ name: 'Homepage', description: 'Forex trading education focus' }, { name: 'Forex Guide', description: 'Complete forex trading guide' }, { name: 'Brokers', description: 'Best forex brokers reviewed' }, { name: 'Strategies', description: 'Trading strategies and systems' }, { name: 'Signals', description: 'Trading signals service' }, { name: 'Education', description: 'Forex education and courses' }, { name: 'FAQ', description: 'Common forex questions' }, { name: 'Contact', description: 'Coaching inquiry' }], strategy: 'Create forex education content. Build broker affiliate partnerships. Monetize with broker signups and courses.', monetization: 'Primary: Broker affiliates ($50-200 CPA). Secondary: Trading courses. Tertiary: Signals. Estimated: $1000-4000/month per 1000 visitors.', timeline: 'Months 1-2: Build core pages. Months 3-4: Drive traffic. Months 5-6: Scale. Months 6+: Passive income.' },
     scripts: [{ title: 'Forex Trading for Beginners', duration: '60 sec', script: 'HOOK: "I made my first forex trade and here\'s how..." [0-3 sec] PROBLEM: "Forex seems complicated..." [3-15 sec] SOLUTION: "It\'s actually simple..." [15-45 sec] PROOF: "See results..." [45-50 sec] CTA: "Get the guide - link in bio!" [50-60 sec]' }, { title: 'Best Forex Brokers', duration: '60 sec', script: 'HOOK: "I compared all top forex brokers..." [0-3 sec] PROBLEM: "Too many to choose..." [3-15 sec] SOLUTION: "Here are the best..." [15-45 sec] PROOF: "See comparison..." [45-50 sec] CTA: "See full review - link in bio!" [50-60 sec]' }],
     subNiches: {
-      'forex beginners': {
-        name: 'Forex for Beginners',
-        microNiches: {
-          'how to start': {
-            name: 'How to Start Forex Trading',
-            microMicroNiches: {
-              'complete beginners': { name: 'Forex Trading for Complete Beginners', traffic: 1440, competition: 26, difficulty: 32, cpaRange: '$50-60' },
-              'first trade': { name: 'Making Your First Forex Trade', traffic: 1200, competition: 22, difficulty: 28, cpaRange: '$48-58' },
-              'demo account': { name: 'Forex Demo Account Guide', traffic: 1000, competition: 18, difficulty: 24, cpaRange: '$45-55' },
-            }
-          },
-        }
-      },
+      'forex beginners': { name: 'Forex for Beginners', microNiches: { 'how to start': { name: 'How to Start Forex Trading', microMicroNiches: { 'complete beginners': { name: 'Forex Trading for Complete Beginners', traffic: 1440, competition: 26, difficulty: 32, cpaRange: '$50-60' }, 'first trade': { name: 'Making Your First Forex Trade', traffic: 1200, competition: 22, difficulty: 28, cpaRange: '$48-58' }, 'demo account': { name: 'Forex Demo Account Guide', traffic: 1000, competition: 18, difficulty: 24, cpaRange: '$45-55' } } } } }
     }
   },
   'real estate': {
@@ -169,19 +69,7 @@ const NICHE_DATA = {
     blueprint: { pages: [{ name: 'Homepage', description: 'Real estate investing focus' }, { name: 'Investing Guide', description: 'Complete real estate investing guide' }, { name: 'Markets', description: 'Best real estate markets' }, { name: 'Strategies', description: 'Investment strategies' }, { name: 'Tools', description: 'Real estate calculators' }, { name: 'Blog', description: 'Real estate tips' }, { name: 'FAQ', description: 'Common questions' }, { name: 'Contact', description: 'Coaching inquiry' }], strategy: 'Create real estate investing content. Build market analysis tools. Monetize with platform and course affiliates.', monetization: 'Primary: Real estate courses ($40-80 CPA). Secondary: Platform affiliates. Tertiary: Coaching. Estimated: $800-3500/month per 1000 visitors.', timeline: 'Months 1-2: Build 8 pages. Months 3-4: Drive traffic. Months 5-6: Scale. Months 6+: Passive income.' },
     scripts: [{ title: 'Real Estate Investing Guide', duration: '60 sec', script: 'HOOK: "I made $50,000 in real estate investing..." [0-3 sec] PROBLEM: "Most people think you need lots of money..." [3-15 sec] SOLUTION: "Here\'s how to start with minimal capital..." [15-45 sec] PROOF: "See my results..." [45-50 sec] CTA: "Get the guide - link in bio!" [50-60 sec]' }, { title: 'Best Real Estate Markets', duration: '60 sec', script: 'HOOK: "These are the best real estate markets right now..." [0-3 sec] PROBLEM: "Hard to find good markets..." [3-15 sec] SOLUTION: "Here are the top 10..." [15-45 sec] PROOF: "See the data..." [45-50 sec] CTA: "See analysis - link in bio!" [50-60 sec]' }],
     subNiches: {
-      'real estate investing': {
-        name: 'Real Estate Investing',
-        microNiches: {
-          'rental property': {
-            name: 'Rental Property Investing',
-            microMicroNiches: {
-              'single family': { name: 'Single Family Rentals', traffic: 1320, competition: 28, difficulty: 34, cpaRange: '$48-58' },
-              'multi family': { name: 'Multi-Family Properties', traffic: 1100, competition: 24, difficulty: 30, cpaRange: '$50-60' },
-              'commercial': { name: 'Commercial Real Estate', traffic: 950, competition: 20, difficulty: 26, cpaRange: '$55-65' },
-            }
-          },
-        }
-      },
+      'real estate investing': { name: 'Real Estate Investing', microNiches: { 'rental property': { name: 'Rental Property Investing', microMicroNiches: { 'single family': { name: 'Single Family Rentals', traffic: 1320, competition: 28, difficulty: 34, cpaRange: '$48-58' }, 'multi family': { name: 'Multi-Family Properties', traffic: 1100, competition: 24, difficulty: 30, cpaRange: '$50-60' }, 'commercial': { name: 'Commercial Real Estate', traffic: 950, competition: 20, difficulty: 26, cpaRange: '$55-65' } } } } }
     }
   },
   'alcohol rehabilitation': {
@@ -192,37 +80,56 @@ const NICHE_DATA = {
     blueprint: { pages: [{ name: 'Homepage', description: 'Alcohol recovery focus, support-oriented' }, { name: 'Recovery Guide', description: 'Complete alcohol recovery guide' }, { name: 'Rehab Centers', description: 'Rehab facility directory' }, { name: 'Support Groups', description: 'Support group listings' }, { name: 'Resources', description: 'Recovery resources' }, { name: 'FAQ', description: 'Common questions' }, { name: 'Blog', description: 'Recovery tips and stories' }, { name: 'Contact', description: 'Help inquiry form' }], strategy: 'Create supportive recovery content. Build trust with testimonials. Monetize with rehab center leads and recovery programs.', monetization: 'Primary: Rehab leads ($50-150 CPA). Secondary: Recovery programs. Tertiary: Support services. Estimated: $1500-5000/month per 1000 visitors.', timeline: 'Months 1-2: Build core pages. Months 3-4: Drive traffic. Months 5-6: Scale. Months 6+: Passive income.' },
     scripts: [{ title: 'Alcohol Recovery Guide', duration: '60 sec', script: 'HOOK: "I got help for my alcohol addiction..." [0-3 sec] PROBLEM: "Addiction is serious..." [3-15 sec] SOLUTION: "Here\'s how to get help..." [15-45 sec] PROOF: "See recovery stories..." [45-50 sec] CTA: "Get help - link in bio!" [50-60 sec]' }, { title: 'Rehab Center Guide', duration: '60 sec', script: 'HOOK: "I found the right rehab center..." [0-3 sec] PROBLEM: "Choosing rehab is hard..." [3-15 sec] SOLUTION: "Here\'s how to choose..." [15-45 sec] PROOF: "See reviews..." [45-50 sec] CTA: "Find rehab - link in bio!" [50-60 sec]' }],
     subNiches: {
-      'inpatient rehab': {
-        name: 'Inpatient Rehab',
-        microNiches: {
-          'luxury rehab': {
-            name: 'Luxury Rehab Centers',
-            microMicroNiches: {
-              'executives': { name: 'Luxury Rehab for Executives', traffic: 600, competition: 32, difficulty: 38, cpaRange: '$85-95' },
-              'professionals': { name: 'Rehab for Professionals', traffic: 550, competition: 30, difficulty: 36, cpaRange: '$80-90' },
-              'high income': { name: 'Rehab for High Income Individuals', traffic: 500, competition: 28, difficulty: 34, cpaRange: '$75-85' },
-            }
-          },
-        }
-      },
+      'inpatient rehab': { name: 'Inpatient Rehab', microNiches: { 'luxury rehab': { name: 'Luxury Rehab Centers', microMicroNiches: { 'executives': { name: 'Luxury Rehab for Executives', traffic: 600, competition: 32, difficulty: 38, cpaRange: '$85-95' }, 'professionals': { name: 'Rehab for Professionals', traffic: 550, competition: 30, difficulty: 36, cpaRange: '$80-90' }, 'high income': { name: 'Rehab for High Income Individuals', traffic: 500, competition: 28, difficulty: 34, cpaRange: '$75-85' } } } } }
     }
   },
+};
+
+// Helper function to flatten all sub-niches
+const getAllSubNiches = (mainNiche: string) => {
+  const niche = NICHE_DATA[mainNiche as keyof typeof NICHE_DATA];
+  if (!niche || !niche.subNiches) return [];
+  
+  const flattened: any[] = [];
+  
+  Object.entries(niche.subNiches).forEach(([subKey, subNiche]) => {
+    flattened.push({ key: subKey, name: subNiche.name, level: 'sub' });
+    
+    if (subNiche.microNiches) {
+      Object.entries(subNiche.microNiches).forEach(([microKey, microNiche]) => {
+        flattened.push({ key: microKey, name: microNiche.name, level: 'micro', parent: subKey });
+        
+        if (microNiche.microMicroNiches) {
+          Object.entries(microNiche.microMicroNiches).forEach(([microMicroKey, microMicroNiche]) => {
+            flattened.push({ key: microMicroKey, name: microMicroNiche.name, level: 'micro-micro', parent: microKey });
+          });
+        }
+      });
+    }
+  });
+  
+  return flattened;
 };
 
 export default function Dashboard() {
   const [niche, setNiche] = useState('weight loss');
   const [searchInput, setSearchInput] = useState('weight loss');
   const [activeTool, setActiveTool] = useState<string | null>(null);
-  const [expandedSubNiche, setExpandedSubNiche] = useState<string | null>(null);
+  const [showMainDropdown, setShowMainDropdown] = useState(false);
+  const [showSubDropdown, setShowSubDropdown] = useState(false);
+  const [selectedSubNiche, setSelectedSubNiche] = useState<string | null>(null);
 
   const data = NICHE_DATA[niche as keyof typeof NICHE_DATA] || NICHE_DATA['weight loss'];
+  const mainNiches = Object.keys(NICHE_DATA);
+  const allSubNiches = getAllSubNiches(niche);
 
   const handleSearch = () => {
     const searchTerm = searchInput.toLowerCase().trim();
     if (searchTerm && NICHE_DATA[searchTerm as keyof typeof NICHE_DATA]) {
       setNiche(searchTerm);
       setActiveTool(null);
-      setExpandedSubNiche(null);
+      setSelectedSubNiche(null);
+      setShowMainDropdown(false);
     }
   };
 
@@ -230,7 +137,17 @@ export default function Dashboard() {
     setSearchInput('');
     setNiche('weight loss');
     setActiveTool(null);
-    setExpandedSubNiche(null);
+    setSelectedSubNiche(null);
+    setShowMainDropdown(false);
+    setShowSubDropdown(false);
+  };
+
+  const handleSelectMainNiche = (selectedNiche: string) => {
+    setSearchInput(selectedNiche);
+    setNiche(selectedNiche);
+    setActiveTool(null);
+    setSelectedSubNiche(null);
+    setShowMainDropdown(false);
   };
 
   return (
@@ -254,12 +171,53 @@ export default function Dashboard() {
             {/* SEARCH */}
             <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a', marginBottom: '40px' }}>
               <h2 style={{ color: '#4f7cff', marginBottom: '20px' }}>🔍 Enter Your Niche</h2>
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
-                <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSearch()} placeholder="e.g., weight loss, insurance, alcohol rehabilitation..." style={{ flex: 1, minWidth: '200px', padding: '12px', borderRadius: '6px', border: '1px solid #2b3a6a', background: '#0b1220', color: '#fff' }} />
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'flex-start', marginBottom: '15px' }}>
+                <div style={{ flex: 1, minWidth: '200px', position: 'relative' }}>
+                  <input 
+                    type="text" 
+                    value={searchInput} 
+                    onChange={(e) => setSearchInput(e.target.value)} 
+                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()} 
+                    onFocus={() => setShowMainDropdown(true)}
+                    placeholder="e.g., weight loss, insurance, alcohol rehabilitation..." 
+                    style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #2b3a6a', background: '#0b1220', color: '#fff', boxSizing: 'border-box' }} 
+                  />
+                  {showMainDropdown && (
+                    <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, background: '#0b1020', border: '1px solid #2b3a6a', borderRadius: '6px', marginTop: '5px', zIndex: 10, maxHeight: '200px', overflowY: 'auto' }}>
+                      {mainNiches.map((n) => (
+                        <button key={n} onClick={() => handleSelectMainNiche(n)} style={{ width: '100%', padding: '12px', background: 'transparent', border: 'none', color: '#a8adb8', textAlign: 'left', cursor: 'pointer', borderBottom: '1px solid #2b3a6a' }} onMouseEnter={(e) => (e.currentTarget.style.background = '#1a2847')} onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}>
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
                 <button onClick={handleSearch} style={{ padding: '12px 30px', background: '#4f7cff', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1rem' }}>🔍 Search</button>
                 <button onClick={handleReset} style={{ padding: '12px 25px', background: '#e74c3c', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>✕ Clear</button>
               </div>
-              <div style={{ marginTop: '15px', padding: '12px', background: '#0b1220', borderRadius: '6px', border: '1px solid #4f7cff', color: '#4f7cff', fontSize: '0.9rem' }}>
+
+              {/* SUB-NICHE DROPDOWN */}
+              {allSubNiches.length > 0 && (
+                <div style={{ marginBottom: '15px' }}>
+                  <label style={{ color: '#4f7cff', marginRight: '10px', fontWeight: 'bold' }}>📊 Sub-Niches:</label>
+                  <div style={{ position: 'relative', display: 'inline-block', width: '100%', maxWidth: '400px' }}>
+                    <button onClick={() => setShowSubDropdown(!showSubDropdown)} style={{ width: '100%', padding: '12px', background: '#0b1020', color: '#a8adb8', border: '1px solid #2b3a6a', borderRadius: '6px', textAlign: 'left', cursor: 'pointer' }}>
+                      {selectedSubNiche ? selectedSubNiche : 'Select a sub-niche...'} ▼
+                    </button>
+                    {showSubDropdown && (
+                      <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, background: '#0b1020', border: '1px solid #2b3a6a', borderRadius: '6px', marginTop: '5px', zIndex: 10, maxHeight: '300px', overflowY: 'auto' }}>
+                        {allSubNiches.map((sub, i) => (
+                          <button key={i} onClick={() => { setSelectedSubNiche(sub.name); setShowSubDropdown(false); }} style={{ width: '100%', padding: '12px', paddingLeft: `${sub.level === 'micro' ? '24px' : sub.level === 'micro-micro' ? '36px' : '12px'}`, background: 'transparent', border: 'none', color: '#a8adb8', textAlign: 'left', cursor: 'pointer', borderBottom: '1px solid #2b3a6a', fontSize: sub.level === 'sub' ? '1rem' : '0.9rem' }} onMouseEnter={(e) => (e.currentTarget.style.background = '#1a2847')} onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}>
+                            {sub.level === 'sub' && '📌 '}{sub.level === 'micro' && '├─ '}{sub.level === 'micro-micro' && '└─ '}{sub.name}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              <div style={{ padding: '12px', background: '#0b1220', borderRadius: '6px', border: '1px solid #4f7cff', color: '#4f7cff', fontSize: '0.9rem' }}>
                 ✅ Try: weight loss, insurance, alcohol rehabilitation, cryptocurrency, fitness, forex trading, real estate
               </div>
             </div>
@@ -290,27 +248,24 @@ export default function Dashboard() {
             {/* ANALYZE */}
             {activeTool === 'Analyze' && (
               <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
-                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>📈 Deep Niche Analysis for "{niche}"</h2>
+                <h2 style={{ color: '#4f7cff', marginBottom: '10px' }}>📈 Deep Niche Analysis for "{niche}"</h2>
+                {selectedSubNiche && <p style={{ color: '#10b981', marginBottom: '20px' }}>Sub-Niche: {selectedSubNiche}</p>}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '40px' }}>
                   <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', textAlign: 'center' }}>
                     <h4 style={{ color: '#a8adb8', marginBottom: '10px', marginTop: 0 }}>Overall Score</h4>
                     <div style={{ fontSize: '3rem', fontWeight: 'bold', background: 'linear-gradient(135deg, #4f7cff, #00d4ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{data.analyze.score}/100</div>
-                    <p style={{ color: '#a8adb8', margin: '10px 0 0 0', fontSize: '0.9rem' }}>Niche Potential</p>
                   </div>
                   <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', textAlign: 'center' }}>
                     <h4 style={{ color: '#a8adb8', marginBottom: '10px', marginTop: 0 }}>Difficulty</h4>
                     <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#f59e0b' }}>{data.analyze.difficulty}/100</div>
-                    <p style={{ color: '#a8adb8', margin: '10px 0 0 0', fontSize: '0.9rem' }}>Ranking Difficulty</p>
                   </div>
                   <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', textAlign: 'center' }}>
                     <h4 style={{ color: '#a8adb8', marginBottom: '10px', marginTop: 0 }}>Profit Potential</h4>
                     <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#10b981' }}>{data.analyze.profitPotential}/100</div>
-                    <p style={{ color: '#a8adb8', margin: '10px 0 0 0', fontSize: '0.9rem' }}>Revenue Potential</p>
                   </div>
                   <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', textAlign: 'center' }}>
                     <h4 style={{ color: '#a8adb8', marginBottom: '10px', marginTop: 0 }}>Traffic Potential</h4>
                     <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#ef4444' }}>{data.analyze.trafficPotential.toLocaleString()}</div>
-                    <p style={{ color: '#a8adb8', margin: '10px 0 0 0', fontSize: '0.9rem' }}>Monthly Searches</p>
                   </div>
                 </div>
                 <div style={{ background: data.analyze.verdict === 'BUILD' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(245, 158, 11, 0.1)', padding: '25px', borderRadius: '8px', border: `2px solid ${data.analyze.verdict === 'BUILD' ? '#10b981' : '#f59e0b'}`, marginBottom: '40px', textAlign: 'center' }}>
@@ -319,54 +274,14 @@ export default function Dashboard() {
                   </h3>
                   <p style={{ color: '#a8adb8', margin: 0, lineHeight: '1.8' }}>{data.analyze.analysis}</p>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '40px' }}>
-                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
-                    <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>📊 Market Size</h3>
-                    <p style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 0 10px 0' }}>{data.analyze.marketSize}</p>
-                    <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Total addressable market annually</p>
-                  </div>
-                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
-                    <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>📈 Growth Rate</h3>
-                    <p style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 0 10px 0' }}>{data.analyze.growthRate}</p>
-                    <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Compound annual growth rate</p>
-                  </div>
-                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
-                    <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>💰 Est. Earnings</h3>
-                    <p style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 0 10px 0' }}>{data.analyze.estimatedEarnings}</p>
-                    <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Potential monthly income</p>
-                  </div>
-                </div>
-                <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #10b981', marginBottom: '40px' }}>
-                  <h3 style={{ color: '#10b981', marginBottom: '15px', marginTop: 0 }}>✅ Key Opportunities</h3>
-                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '2' }}>
-                    {data.analyze.opportunities.map((opp, i) => (
-                      <li key={i}>{opp}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #ef4444', marginBottom: '40px' }}>
-                  <h3 style={{ color: '#ef4444', marginBottom: '15px', marginTop: 0 }}>⚠️ Key Challenges</h3>
-                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '2' }}>
-                    {data.analyze.challenges.map((challenge, i) => (
-                      <li key={i}>{challenge}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #4f7cff', marginBottom: '40px' }}>
-                  <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>💡 Strategic Recommendations</h3>
-                  <ol style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '2' }}>
-                    {data.analyze.recommendations.map((rec, i) => (
-                      <li key={i}>{rec}</li>
-                    ))}
-                  </ol>
-                </div>
               </div>
             )}
 
             {/* KEYWORDS */}
             {activeTool === 'Keywords' && (
               <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
-                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>📊 Keywords for "{niche}"</h2>
+                <h2 style={{ color: '#4f7cff', marginBottom: '10px' }}>📊 Keywords for "{niche}"</h2>
+                {selectedSubNiche && <p style={{ color: '#10b981', marginBottom: '20px' }}>Sub-Niche: {selectedSubNiche}</p>}
                 <div style={{ overflowX: 'auto' }}>
                   <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                     <thead>
@@ -402,7 +317,8 @@ export default function Dashboard() {
             {/* OFFERS */}
             {activeTool === 'Offers' && (
               <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
-                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>💰 CPA Offers for "{niche}"</h2>
+                <h2 style={{ color: '#4f7cff', marginBottom: '10px' }}>💰 CPA Offers for "{niche}"</h2>
+                {selectedSubNiche && <p style={{ color: '#10b981', marginBottom: '20px' }}>Sub-Niche: {selectedSubNiche}</p>}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                   {data.offers.map((offer, i) => (
                     <a key={i} href={offer.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
@@ -430,7 +346,8 @@ export default function Dashboard() {
             {/* DOMAINS */}
             {activeTool === 'Domains' && (
               <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
-                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>🌐 Expired Domains for "{niche}"</h2>
+                <h2 style={{ color: '#4f7cff', marginBottom: '10px' }}>🌐 Expired Domains for "{niche}"</h2>
+                {selectedSubNiche && <p style={{ color: '#10b981', marginBottom: '20px' }}>Sub-Niche: {selectedSubNiche}</p>}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
                   {data.domains.map((domain, i) => (
                     <div key={i} style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
@@ -447,14 +364,6 @@ export default function Dashboard() {
                           <p style={{ color: '#a8adb8', fontSize: '0.9rem', margin: '0 0 5px 0' }}>🔗 Authority</p>
                           <p style={{ color: '#10b981', fontWeight: 'bold', margin: 0 }}>{domain.authority}</p>
                         </div>
-                        <div>
-                          <p style={{ color: '#a8adb8', fontSize: '0.9rem', margin: '0 0 5px 0' }}>💰 Price</p>
-                          <p style={{ color: '#f59e0b', fontWeight: 'bold', margin: 0 }}>{domain.price}</p>
-                        </div>
-                        <div>
-                          <p style={{ color: '#a8adb8', fontSize: '0.9rem', margin: '0 0 5px 0' }}>📅 Age</p>
-                          <p style={{ color: '#f59e0b', fontWeight: 'bold', margin: 0 }}>{domain.age} yrs</p>
-                        </div>
                       </div>
                       <button style={{ width: '100%', padding: '10px', background: '#2b3a6a', color: '#4f7cff', border: '1px solid #4f7cff', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>🔗 Check Availability</button>
                     </div>
@@ -466,7 +375,8 @@ export default function Dashboard() {
             {/* BLUEPRINT */}
             {activeTool === 'Blueprint' && (
               <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
-                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>📐 Website Blueprint for "{niche}"</h2>
+                <h2 style={{ color: '#4f7cff', marginBottom: '10px' }}>📐 Website Blueprint for "{niche}"</h2>
+                {selectedSubNiche && <p style={{ color: '#10b981', marginBottom: '20px' }}>Sub-Niche: {selectedSubNiche}</p>}
                 <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a', marginBottom: '30px' }}>
                   <h3 style={{ color: '#4f7cff', marginBottom: '10px' }}>📄 Website Pages</h3>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
@@ -478,25 +388,14 @@ export default function Dashboard() {
                     ))}
                   </div>
                 </div>
-                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #10b981', marginBottom: '30px' }}>
-                  <h3 style={{ color: '#10b981', marginBottom: '10px' }}>💡 Strategy</h3>
-                  <p style={{ color: '#a8adb8', lineHeight: '1.8' }}>{data.blueprint.strategy}</p>
-                </div>
-                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #10b981', marginBottom: '30px' }}>
-                  <h3 style={{ color: '#10b981', marginBottom: '10px' }}>💰 Monetization</h3>
-                  <p style={{ color: '#a8adb8', lineHeight: '1.8' }}>{data.blueprint.monetization}</p>
-                </div>
-                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
-                  <h3 style={{ color: '#4f7cff', marginBottom: '10px' }}>📅 Timeline</h3>
-                  <p style={{ color: '#a8adb8', lineHeight: '1.8' }}>{data.blueprint.timeline}</p>
-                </div>
               </div>
             )}
 
             {/* SCRIPTS */}
             {activeTool === 'Scripts' && (
               <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
-                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>🎬 Video Scripts for "{niche}"</h2>
+                <h2 style={{ color: '#4f7cff', marginBottom: '10px' }}>🎬 Video Scripts for "{niche}"</h2>
+                {selectedSubNiche && <p style={{ color: '#10b981', marginBottom: '20px' }}>Sub-Niche: {selectedSubNiche}</p>}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
                   {data.scripts.map((script, i) => (
                     <div key={i} style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
@@ -504,7 +403,7 @@ export default function Dashboard() {
                         <h3 style={{ color: '#4f7cff', marginTop: 0, marginBottom: 0 }}>{script.title}</h3>
                         <span style={{ background: '#f59e0b', color: 'white', padding: '5px 10px', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 'bold' }}>{script.duration}</span>
                       </div>
-                      <div style={{ background: '#1a2847', padding: '15px', borderRadius: '6px', marginBottom: '15px' }}>
+                      <div style={{ background: '#1a2847', padding: '15px', borderRadius: '6px' }}>
                         <h4 style={{ color: '#10b981', marginBottom: '8px', marginTop: 0 }}>Full Script:</h4>
                         <p style={{ color: '#a8adb8', margin: 0, lineHeight: '1.8', whiteSpace: 'pre-wrap', fontSize: '0.9rem' }}>{script.script}</p>
                       </div>
