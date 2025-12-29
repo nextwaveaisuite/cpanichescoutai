@@ -1,48 +1,18 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
 
-// Type definitions
 interface MicroMicroNiche {
   name: string;
   traffic: number;
   competition: number;
   difficulty: number;
   cpaRange: string;
-  keywords: Array<{
-    keyword: string;
-    traffic: number;
-    competition: number;
-    difficulty: number;
-  }>;
-  offers: Array<{
-    network: string;
-    url: string;
-    payout: string;
-    commission: string;
-    desc: string;
-  }>;
-  domains: Array<{
-    domain: string;
-    traffic: number;
-    authority: number;
-    price: string;
-    verdict: string;
-  }>;
-  blueprint: {
-    pages: Array<{
-      name: string;
-      description: string;
-    }>;
-    strategy: string;
-    monetization: string;
-  };
-  scripts: Array<{
-    title: string;
-    duration: string;
-    script: string;
-  }>;
+  keywords: Array<{ keyword: string; traffic: number; competition: number; difficulty: number }>;
+  offers: Array<{ network: string; url: string; payout: string; commission: string; desc: string }>;
+  domains: Array<{ domain: string; traffic: number; authority: number; price: string; verdict: string }>;
+  blueprint: { pages: Array<{ name: string; description: string }>; strategy: string; monetization: string };
+  scripts: Array<{ title: string; duration: string; script: string }>;
 }
 
 interface MicroNiche {
@@ -63,20 +33,6 @@ interface MainNiche {
   subNiches: Record<string, SubNiche>;
 }
 
-interface SearchResult {
-  level: 'main' | 'sub' | 'micro' | 'micro-micro';
-  key: string;
-  name: string;
-  marketSize?: string;
-  parent?: string;
-  traffic?: number;
-  competition?: number;
-  difficulty?: number;
-  cpaRange?: string;
-  data: MainNiche | SubNiche | MicroNiche | MicroMicroNiche;
-}
-
-// Comprehensive niche hierarchy data
 const NICHE_HIERARCHY: Record<string, MainNiche> = {
   'weight loss': {
     mainNiche: 'Weight Loss',
@@ -211,74 +167,6 @@ const NICHE_HIERARCHY: Record<string, MainNiche> = {
                     title: 'Keto & Menopause Relief',
                     duration: '60 sec',
                     script: 'HOOK: "Keto helped me manage my menopause symptoms..." [0-3 sec] PROBLEM: "Menopause brings weight gain, hot flashes, mood swings..." [3-15 sec] SOLUTION: "Keto stabilizes blood sugar and hormones, reducing menopause symptoms..." [15-45 sec] PROOF: "Women report 70% symptom improvement..." [45-50 sec] CTA: "Learn how keto helps menopause - link in bio!" [50-60 sec]'
-                  },
-                ],
-              },
-            },
-          },
-          'keto men': {
-            name: 'Keto for Men',
-            marketSize: '$380 Million',
-            microMicroNiches: {
-              'keto muscle gain': {
-                name: 'Keto for Muscle Gain',
-                traffic: 1800,
-                competition: 24,
-                difficulty: 30,
-                cpaRange: '$42-52',
-                keywords: [
-                  { keyword: 'keto for muscle building', traffic: 1800, competition: 24, difficulty: 30 },
-                  { keyword: 'keto protein for muscle', traffic: 1350, competition: 22, difficulty: 28 },
-                  { keyword: 'keto bodybuilding', traffic: 1200, competition: 20, difficulty: 26 },
-                  { keyword: 'keto muscle gain diet', traffic: 900, competition: 18, difficulty: 24 },
-                  { keyword: 'best keto for athletes', traffic: 800, competition: 16, difficulty: 22 },
-                  { keyword: 'keto strength training', traffic: 720, competition: 14, difficulty: 20 },
-                  { keyword: 'keto macros for muscle', traffic: 640, competition: 12, difficulty: 18 },
-                  { keyword: 'keto supplements muscle', traffic: 560, competition: 10, difficulty: 16 },
-                  { keyword: 'keto creatine', traffic: 480, competition: 8, difficulty: 14 },
-                  { keyword: 'keto BCAAs', traffic: 400, competition: 6, difficulty: 12 },
-                ],
-                offers: [
-                  { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$48', commission: '52%', desc: 'Keto muscle building programs' },
-                  { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$45', commission: '50%', desc: 'Protein supplements' },
-                  { network: 'Impact', url: 'https://www.impact.com', payout: '$52', commission: '58%', desc: 'Premium fitness programs' },
-                  { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$42', commission: '48%', desc: 'Muscle building supplements' },
-                  { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$50', commission: '55%', desc: 'Workout guides' },
-                ],
-                domains: [
-                  { domain: 'KetoMuscleGain.com', traffic: 1200, authority: 44, price: '$19', verdict: 'EXCELLENT' },
-                  { domain: 'KetoBodybuilding.net', traffic: 1000, authority: 40, price: '$15', verdict: 'GOOD' },
-                  { domain: 'KetoBulk.org', traffic: 900, authority: 36, price: '$13', verdict: 'GOOD' },
-                  { domain: 'KetoAthletes.com', traffic: 800, authority: 34, price: '$12', verdict: 'GOOD' },
-                  { domain: 'KetoStrength.net', traffic: 700, authority: 30, price: '$10', verdict: 'FAIR' },
-                  { domain: 'KetoProtein.org', traffic: 600, authority: 26, price: '$8', verdict: 'FAIR' },
-                  { domain: 'KetoBulking.com', traffic: 550, authority: 24, price: '$7', verdict: 'FAIR' },
-                  { domain: 'KetoMuscles.net', traffic: 480, authority: 22, price: '$6', verdict: 'FAIR' },
-                ],
-                blueprint: {
-                  pages: [
-                    { name: 'Homepage', description: 'Keto for muscle gain focus, athlete testimonials' },
-                    { name: 'Keto Muscle Guide', description: 'Complete guide to building muscle on keto' },
-                    { name: 'Workout Plans', description: 'Strength training routines for keto' },
-                    { name: 'Nutrition', description: 'Macro calculations, meal plans for muscle' },
-                    { name: 'Supplements', description: 'Recommended supplements for keto athletes' },
-                    { name: 'Case Studies', description: 'Athlete transformations' },
-                    { name: 'Community', description: 'Forum for keto athletes' },
-                    { name: 'Contact', description: 'Coaching inquiry, email signup' },
-                  ],
-                  strategy: 'Target fitness enthusiasts and athletes interested in keto for muscle gain.',
-                  monetization: 'Primary: Keto muscle programs ($42-52 CPA). Secondary: Protein supplements ($45-55). Tertiary: Coaching. Est: $1500-4000/month per 1000 visitors.',
-                },
-                scripts: [
-                  {
-                    title: 'Keto Muscle Building Transformation',
-                    duration: '60 sec',
-                    script: 'HOOK: "I built 15 pounds of muscle on keto..." [0-3 sec] PROBLEM: "People think you can\'t build muscle on keto. That\'s wrong..." [3-15 sec] SOLUTION: "With the right macros and training, keto is perfect for muscle building..." [15-45 sec] PROOF: "See my transformation and these other athletes..." [45-50 sec] CTA: "Get the keto muscle building guide - link in bio!" [50-60 sec]'
-                  },
-                  {
-                    title: 'Keto Supplements for Athletes',
-                    duration: '60 sec',
-                    script: 'HOOK: "These supplements took my keto gains to the next level..." [0-3 sec] PROBLEM: "Most supplements aren\'t keto-friendly..." [3-15 sec] SOLUTION: "These are specifically formulated for keto athletes..." [15-45 sec] PROOF: "Athletes report 35% better results..." [45-50 sec] CTA: "Shop keto athlete supplements - link in bio!" [50-60 sec]'
                   },
                 ],
               },
@@ -433,80 +321,6 @@ const NICHE_HIERARCHY: Record<string, MainNiche> = {
                     title: 'Teen Driver Insurance Discounts',
                     duration: '60 sec',
                     script: 'HOOK: "These discounts cut my teen\'s insurance in half..." [0-3 sec] PROBLEM: "Most parents don\'t know about teen driver discounts..." [3-15 sec] SOLUTION: "Here are 10 discounts you can use..." [15-45 sec] PROOF: "Average savings: $500-1000/year..." [45-50 sec] CTA: "See all discounts - link in bio!" [50-60 sec]'
-                  },
-                ],
-              },
-            },
-          },
-        },
-      },
-      'life insurance': {
-        name: 'Life Insurance',
-        marketSize: '$150 Billion',
-        microNiches: {
-          'term life': {
-            name: 'Term Life Insurance',
-            marketSize: '$45 Billion',
-            microMicroNiches: {
-              'term women': {
-                name: 'Term Life Insurance for Women',
-                traffic: 1350,
-                competition: 24,
-                difficulty: 30,
-                cpaRange: '$48-58',
-                keywords: [
-                  { keyword: 'term life insurance for women', traffic: 1350, competition: 24, difficulty: 30 },
-                  { keyword: 'best life insurance women', traffic: 1012, competition: 22, difficulty: 28 },
-                  { keyword: 'affordable term life women', traffic: 900, competition: 20, difficulty: 26 },
-                  { keyword: 'life insurance quotes women', traffic: 675, competition: 18, difficulty: 24 },
-                  { keyword: 'cheap life insurance women', traffic: 607, competition: 16, difficulty: 22 },
-                  { keyword: 'term life rates women', traffic: 540, competition: 14, difficulty: 20 },
-                  { keyword: 'life insurance for single women', traffic: 472, competition: 12, difficulty: 18 },
-                  { keyword: 'women life insurance calculator', traffic: 405, competition: 10, difficulty: 16 },
-                  { keyword: 'best term life companies women', traffic: 337, competition: 8, difficulty: 14 },
-                  { keyword: 'life insurance women 30s', traffic: 270, competition: 6, difficulty: 12 },
-                ],
-                offers: [
-                  { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$52', commission: '55%', desc: 'Life insurance leads' },
-                  { network: 'Impact', url: 'https://www.impact.com', payout: '$58', commission: '62%', desc: 'Premium insurance' },
-                  { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$48', commission: '52%', desc: 'Insurance quotes' },
-                  { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$55', commission: '58%', desc: 'Insurance affiliates' },
-                  { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$50', commission: '54%', desc: 'Insurance guides' },
-                ],
-                domains: [
-                  { domain: 'TermLifeWomen.com', traffic: 900, authority: 44, price: '$19', verdict: 'EXCELLENT' },
-                  { domain: 'LifeInsuranceWomen.net', traffic: 750, authority: 38, price: '$14', verdict: 'GOOD' },
-                  { domain: 'WomenLifeInsurance.org', traffic: 675, authority: 36, price: '$12', verdict: 'GOOD' },
-                  { domain: 'BestLifeInsuranceWomen.com', traffic: 600, authority: 32, price: '$10', verdict: 'FAIR' },
-                  { domain: 'CheapTermLife.net', traffic: 540, authority: 28, price: '$8', verdict: 'FAIR' },
-                  { domain: 'TermLifeQuotesWomen.org', traffic: 472, authority: 24, price: '$6', verdict: 'FAIR' },
-                  { domain: 'AffordableLifeInsurance.com', traffic: 405, authority: 20, price: '$5', verdict: 'FAIR' },
-                  { domain: 'WomenTermLife.net', traffic: 337, authority: 16, price: '$4', verdict: 'FAIR' },
-                ],
-                blueprint: {
-                  pages: [
-                    { name: 'Homepage', description: 'Term life for women focus' },
-                    { name: 'Term Life Guide', description: 'Complete term life guide for women' },
-                    { name: 'Quotes', description: 'Quote comparison tool' },
-                    { name: 'Calculator', description: 'Coverage calculator' },
-                    { name: 'Companies', description: 'Best insurance companies' },
-                    { name: 'FAQ', description: 'Common questions' },
-                    { name: 'Blog', description: 'Insurance tips and advice' },
-                    { name: 'Contact', description: 'Quote request' },
-                  ],
-                  strategy: 'Target women seeking affordable term life insurance.',
-                  monetization: 'Primary: Insurance leads ($48-58 CPA). Secondary: Quotes. Tertiary: Affiliate links. Est: $1500-4000/month per 1000 visitors.',
-                },
-                scripts: [
-                  {
-                    title: 'Affordable Term Life for Women',
-                    duration: '60 sec',
-                    script: 'HOOK: "I got affordable term life insurance as a woman..." [0-3 sec] PROBLEM: "Women often pay more for life insurance..." [3-15 sec] SOLUTION: "Here\'s how to get the best rates..." [15-45 sec] PROOF: "Women save an average of $200/year..." [45-50 sec] CTA: "Get free quotes - link in bio!" [50-60 sec]'
-                  },
-                  {
-                    title: 'How Much Life Insurance Do I Need',
-                    duration: '60 sec',
-                    script: 'HOOK: "I calculated exactly how much life insurance I need..." [0-3 sec] PROBLEM: "Most people don\'t know their coverage needs..." [3-15 sec] SOLUTION: "Use this simple calculator..." [15-45 sec] PROOF: "Get the right coverage for your situation..." [45-50 sec] CTA: "Use the calculator - link in bio!" [50-60 sec]'
                   },
                 ],
               },
@@ -921,10 +735,15 @@ const NICHE_HIERARCHY: Record<string, MainNiche> = {
 export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTool, setSelectedTool] = useState<string | null>(null);
-  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-  const [selectedNiche, setSelectedNiche] = useState<SearchResult | null>(null);
+  const [searchResults, setSearchResults] = useState<Array<{
+    level: string;
+    key: string;
+    name: string;
+    parent?: string;
+    data: any;
+  }>>([]);
+  const [selectedNiche, setSelectedNiche] = useState<any>(null);
 
-  // Search through all niches
   const handleSearch = (term: string) => {
     setSearchTerm(term);
     
@@ -934,58 +753,47 @@ export default function Dashboard() {
       return;
     }
 
-    const results: SearchResult[] = [];
+    const results: any[] = [];
     const lowerTerm = term.toLowerCase();
 
-    // Search through all niches
     Object.entries(NICHE_HIERARCHY).forEach(([mainKey, mainNiche]) => {
       if (mainNiche.mainNiche.toLowerCase().includes(lowerTerm)) {
         results.push({
           level: 'main',
           key: mainKey,
           name: mainNiche.mainNiche,
-          marketSize: mainNiche.marketSize,
           data: mainNiche,
         });
       }
 
-      // Search sub-niches
       Object.entries(mainNiche.subNiches || {}).forEach(([subKey, subNiche]) => {
         if (subNiche.name.toLowerCase().includes(lowerTerm)) {
           results.push({
             level: 'sub',
             key: `${mainKey}/${subKey}`,
             name: subNiche.name,
-            marketSize: subNiche.marketSize,
             parent: mainNiche.mainNiche,
             data: subNiche,
           });
         }
 
-        // Search micro-niches
         Object.entries(subNiche.microNiches || {}).forEach(([microKey, microNiche]) => {
           if (microNiche.name.toLowerCase().includes(lowerTerm)) {
             results.push({
               level: 'micro',
               key: `${mainKey}/${subKey}/${microKey}`,
               name: microNiche.name,
-              marketSize: microNiche.marketSize,
               parent: `${mainNiche.mainNiche} > ${subNiche.name}`,
               data: microNiche,
             });
           }
 
-          // Search micro-micro niches
           Object.entries(microNiche.microMicroNiches || {}).forEach(([microMicroKey, microMicroNiche]) => {
             if (microMicroNiche.name.toLowerCase().includes(lowerTerm)) {
               results.push({
                 level: 'micro-micro',
                 key: `${mainKey}/${subKey}/${microKey}/${microMicroKey}`,
                 name: microMicroNiche.name,
-                traffic: microMicroNiche.traffic,
-                competition: microMicroNiche.competition,
-                difficulty: microMicroNiche.difficulty,
-                cpaRange: microMicroNiche.cpaRange,
                 parent: `${mainNiche.mainNiche} > ${subNiche.name} > ${microNiche.name}`,
                 data: microMicroNiche,
               });
@@ -998,6 +806,7 @@ export default function Dashboard() {
     setSearchResults(results);
     if (results.length > 0) {
       setSelectedNiche(results[0]);
+      setSelectedTool(null);
     }
   };
 
@@ -1008,199 +817,19 @@ export default function Dashboard() {
     setSelectedTool(null);
   };
 
-  const renderAnalyze = () => {
-    if (!selectedNiche?.data) return null;
-    const data = selectedNiche.data as MicroMicroNiche;
-    
-    return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">📈 Deep Niche Analysis</h2>
-        
-        <div className="grid grid-cols-2 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg">
-            <p className="text-gray-600 text-sm">Monthly Traffic</p>
-            <p className="text-4xl font-bold text-blue-600">{data.traffic?.toLocaleString() || 'N/A'}</p>
-          </div>
-          <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg">
-            <p className="text-gray-600 text-sm">CPA Range</p>
-            <p className="text-4xl font-bold text-green-600">{data.cpaRange || 'N/A'}</p>
-          </div>
-          <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-lg">
-            <p className="text-gray-600 text-sm">Competition</p>
-            <p className="text-4xl font-bold text-orange-600">{data.competition || 'N/A'}/50</p>
-          </div>
-          <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-lg">
-            <p className="text-gray-600 text-sm">Difficulty</p>
-            <p className="text-4xl font-bold text-red-600">{data.difficulty || 'N/A'}/50</p>
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Niche Path</h3>
-            <p className="text-gray-600">{selectedNiche.parent || selectedNiche.name}</p>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Market Size</h3>
-            <p className="text-gray-600">{selectedNiche.marketSize}</p>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const renderKeywords = () => {
-    if (!selectedNiche?.data) return null;
-    const data = selectedNiche.data as MicroMicroNiche;
-    if (!data.keywords) return null;
-    
-    return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">📊 Keywords</h2>
-        <div className="space-y-3">
-          {data.keywords.map((kw, idx) => (
-            <div key={idx} className="border-l-4 border-blue-500 pl-4 py-2">
-              <p className="font-semibold text-gray-800">{kw.keyword}</p>
-              <div className="flex gap-6 text-sm text-gray-600 mt-1">
-                <span>📈 Traffic: {kw.traffic}</span>
-                <span>🎯 Competition: {kw.competition}</span>
-                <span>⚡ Difficulty: {kw.difficulty}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const renderOffers = () => {
-    if (!selectedNiche?.data) return null;
-    const data = selectedNiche.data as MicroMicroNiche;
-    if (!data.offers) return null;
-    
-    return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">💰 CPA Offers</h2>
-        <div className="space-y-4">
-          {data.offers.map((offer, idx) => (
-            <div key={idx} className="border border-green-200 rounded-lg p-4 bg-green-50">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-bold text-gray-800">{offer.network}</h3>
-                <span className="bg-green-600 text-white px-3 py-1 rounded text-sm font-bold">${offer.payout}</span>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">{offer.desc}</p>
-              <a href={offer.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm">
-                Visit {offer.network} →
-              </a>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const renderDomains = () => {
-    if (!selectedNiche?.data) return null;
-    const data = selectedNiche.data as MicroMicroNiche;
-    if (!data.domains) return null;
-    
-    return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">🌐 Domains</h2>
-        <div className="space-y-3">
-          {data.domains.map((domain, idx) => (
-            <div key={idx} className="border border-purple-200 rounded-lg p-4 bg-purple-50">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-bold text-gray-800">{domain.domain}</h3>
-                <span className={`px-3 py-1 rounded text-sm font-bold ${
-                  domain.verdict === 'EXCELLENT' ? 'bg-green-600 text-white' :
-                  domain.verdict === 'GOOD' ? 'bg-blue-600 text-white' :
-                  'bg-yellow-600 text-white'
-                }`}>{domain.verdict}</span>
-              </div>
-              <div className="grid grid-cols-4 gap-4 text-sm text-gray-600">
-                <span>📊 Traffic: {domain.traffic}</span>
-                <span>🔗 Authority: {domain.authority}</span>
-                <span>💰 Price: {domain.price}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const renderBlueprint = () => {
-    if (!selectedNiche?.data) return null;
-    const data = selectedNiche.data as MicroMicroNiche;
-    if (!data.blueprint) return null;
-    const bp = data.blueprint;
-    
-    return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">📐 Website Blueprint</h2>
-        
-        <div className="mb-8">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Website Pages</h3>
-          <div className="grid grid-cols-1 gap-3">
-            {bp.pages.map((page, idx) => (
-              <div key={idx} className="border-l-4 border-indigo-500 pl-4 py-2">
-                <p className="font-semibold text-gray-800">{page.name}</p>
-                <p className="text-gray-600 text-sm">{page.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-8">
-          <h3 className="text-xl font-bold text-gray-800 mb-2">Strategy</h3>
-          <p className="text-gray-600">{bp.strategy}</p>
-        </div>
-
-        <div className="mb-8">
-          <h3 className="text-xl font-bold text-gray-800 mb-2">Monetization</h3>
-          <p className="text-gray-600">{bp.monetization}</p>
-        </div>
-      </div>
-    );
-  };
-
-  const renderScripts = () => {
-    if (!selectedNiche?.data) return null;
-    const data = selectedNiche.data as MicroMicroNiche;
-    if (!data.scripts) return null;
-    
-    return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">🎬 Video Scripts</h2>
-        <div className="space-y-6">
-          {data.scripts.map((script, idx) => (
-            <div key={idx} className="border border-red-200 rounded-lg p-4 bg-red-50">
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="font-bold text-gray-800">{script.title}</h3>
-                <span className="bg-red-600 text-white px-3 py-1 rounded text-sm">{script.duration}</span>
-              </div>
-              <p className="text-gray-700 text-sm leading-relaxed">{script.script}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-white mb-2">🚀 CPA Niche Scout AI</h1>
-          <p className="text-gray-400 text-lg">Find the most profitable CPA niches with deep market analysis</p>
+          <p className="text-gray-300 text-lg">Find the most profitable CPA niches with deep market analysis</p>
         </div>
 
         {/* Search Bar */}
-        <div className="bg-white rounded-lg shadow-xl p-8 mb-12">
-          <label className="block text-gray-700 font-bold mb-3">🔍 Enter Your Niche</label>
-          <p className="text-gray-500 text-sm mb-4">Search any niche level: main, sub, micro, or micro-micro</p>
+        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg shadow-2xl p-8 mb-12">
+          <label className="block text-white font-bold mb-3 text-lg">🔍 Enter Your Niche</label>
+          <p className="text-purple-100 text-sm mb-4">Search any niche level: main, sub, micro, or micro-micro</p>
           
           <div className="flex gap-3 mb-4">
             <input
@@ -1208,29 +837,31 @@ export default function Dashboard() {
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="e.g., weight loss, keto, keto women, keto for beginners..."
-              className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-800"
+              className="flex-1 px-4 py-3 border-2 border-purple-300 rounded-lg focus:outline-none focus:border-white text-gray-800 bg-white"
             />
             <button
               onClick={handleClear}
-              className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 font-bold transition"
+              className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 font-bold transition transform hover:scale-105"
             >
               ✕ Clear
             </button>
           </div>
 
-          {/* Search Results */}
           {searchResults.length > 0 && (
             <div className="mb-4">
-              <p className="text-gray-600 font-semibold mb-3">Found {searchResults.length} results:</p>
+              <p className="text-white font-semibold mb-3">Found {searchResults.length} results:</p>
               <div className="grid grid-cols-1 gap-2 max-h-64 overflow-y-auto">
                 {searchResults.map((result, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setSelectedNiche(result)}
+                    onClick={() => {
+                      setSelectedNiche(result);
+                      setSelectedTool(null);
+                    }}
                     className={`text-left p-3 rounded-lg transition ${
                       selectedNiche?.key === result.key
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                        ? 'bg-white text-purple-900 font-semibold'
+                        : 'bg-purple-700 text-white hover:bg-purple-600'
                     }`}
                   >
                     <div className="font-semibold">{result.name}</div>
@@ -1241,8 +872,7 @@ export default function Dashboard() {
             </div>
           )}
 
-          {/* Suggestions */}
-          <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded">
+          <div className="text-sm text-purple-100 bg-purple-700 bg-opacity-50 p-3 rounded">
             ✅ Try: weight loss, keto, keto women, insurance, car insurance, bitcoin, forex, real estate, alcohol rehabilitation
           </div>
         </div>
@@ -1264,7 +894,7 @@ export default function Dashboard() {
                   onClick={() => setSelectedTool(selectedTool === tool.id ? null : tool.id)}
                   className={`p-4 rounded-lg font-bold transition transform hover:scale-105 ${
                     selectedTool === tool.id
-                      ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-lg'
+                      ? 'bg-gradient-to-br from-purple-600 to-blue-600 text-white shadow-lg'
                       : 'bg-white text-gray-800 shadow-md hover:shadow-lg'
                   }`}
                 >
@@ -1276,19 +906,146 @@ export default function Dashboard() {
 
             {/* Tool Content */}
             <div className="min-h-96">
-              {selectedTool === 'analyze' && renderAnalyze()}
-              {selectedTool === 'keywords' && renderKeywords()}
-              {selectedTool === 'offers' && renderOffers()}
-              {selectedTool === 'domains' && renderDomains()}
-              {selectedTool === 'blueprint' && renderBlueprint()}
-              {selectedTool === 'scripts' && renderScripts()}
+              {selectedTool === 'analyze' && selectedNiche.data && (
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-800">📈 Deep Niche Analysis</h2>
+                  <div className="grid grid-cols-2 gap-6 mb-8">
+                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg">
+                      <p className="text-gray-600 text-sm">Monthly Traffic</p>
+                      <p className="text-4xl font-bold text-blue-600">{selectedNiche.data.traffic?.toLocaleString() || 'N/A'}</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg">
+                      <p className="text-gray-600 text-sm">CPA Range</p>
+                      <p className="text-4xl font-bold text-green-600">{selectedNiche.data.cpaRange || 'N/A'}</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-lg">
+                      <p className="text-gray-600 text-sm">Competition</p>
+                      <p className="text-4xl font-bold text-orange-600">{selectedNiche.data.competition || 'N/A'}/50</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-lg">
+                      <p className="text-gray-600 text-sm">Difficulty</p>
+                      <p className="text-4xl font-bold text-red-600">{selectedNiche.data.difficulty || 'N/A'}/50</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">Niche Path</h3>
+                      <p className="text-gray-600">{selectedNiche.parent || selectedNiche.name}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {selectedTool === 'keywords' && selectedNiche.data?.keywords && (
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-800">📊 Keywords</h2>
+                  <div className="space-y-3">
+                    {selectedNiche.data.keywords.map((kw: any, idx: number) => (
+                      <div key={idx} className="border-l-4 border-blue-500 pl-4 py-2">
+                        <p className="font-semibold text-gray-800">{kw.keyword}</p>
+                        <div className="flex gap-6 text-sm text-gray-600 mt-1">
+                          <span>📈 Traffic: {kw.traffic}</span>
+                          <span>🎯 Competition: {kw.competition}</span>
+                          <span>⚡ Difficulty: {kw.difficulty}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selectedTool === 'offers' && selectedNiche.data?.offers && (
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-800">💰 CPA Offers</h2>
+                  <div className="space-y-4">
+                    {selectedNiche.data.offers.map((offer: any, idx: number) => (
+                      <div key={idx} className="border border-green-200 rounded-lg p-4 bg-green-50">
+                        <div className="flex justify-between items-start mb-2">
+                          <h3 className="font-bold text-gray-800">{offer.network}</h3>
+                          <span className="bg-green-600 text-white px-3 py-1 rounded text-sm font-bold">${offer.payout}</span>
+                        </div>
+                        <p className="text-gray-600 text-sm mb-2">{offer.desc}</p>
+                        <a href={offer.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm">
+                          Visit {offer.network} →
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selectedTool === 'domains' && selectedNiche.data?.domains && (
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-800">🌐 Domains</h2>
+                  <div className="space-y-3">
+                    {selectedNiche.data.domains.map((domain: any, idx: number) => (
+                      <div key={idx} className="border border-purple-200 rounded-lg p-4 bg-purple-50">
+                        <div className="flex justify-between items-start mb-2">
+                          <h3 className="font-bold text-gray-800">{domain.domain}</h3>
+                          <span className={`px-3 py-1 rounded text-sm font-bold ${
+                            domain.verdict === 'EXCELLENT' ? 'bg-green-600 text-white' :
+                            domain.verdict === 'GOOD' ? 'bg-blue-600 text-white' :
+                            'bg-yellow-600 text-white'
+                          }`}>{domain.verdict}</span>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 text-sm text-gray-600">
+                          <span>📊 Traffic: {domain.traffic}</span>
+                          <span>🔗 Authority: {domain.authority}</span>
+                          <span>💰 Price: {domain.price}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selectedTool === 'blueprint' && selectedNiche.data?.blueprint && (
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-800">📐 Website Blueprint</h2>
+                  <div className="mb-8">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">Website Pages</h3>
+                    <div className="grid grid-cols-1 gap-3">
+                      {selectedNiche.data.blueprint.pages.map((page: any, idx: number) => (
+                        <div key={idx} className="border-l-4 border-indigo-500 pl-4 py-2">
+                          <p className="font-semibold text-gray-800">{page.name}</p>
+                          <p className="text-gray-600 text-sm">{page.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mb-8">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">Strategy</h3>
+                    <p className="text-gray-600">{selectedNiche.data.blueprint.strategy}</p>
+                  </div>
+                  <div className="mb-8">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">Monetization</h3>
+                    <p className="text-gray-600">{selectedNiche.data.blueprint.monetization}</p>
+                  </div>
+                </div>
+              )}
+
+              {selectedTool === 'scripts' && selectedNiche.data?.scripts && (
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-800">🎬 Video Scripts</h2>
+                  <div className="space-y-6">
+                    {selectedNiche.data.scripts.map((script: any, idx: number) => (
+                      <div key={idx} className="border border-red-200 rounded-lg p-4 bg-red-50">
+                        <div className="flex justify-between items-start mb-3">
+                          <h3 className="font-bold text-gray-800">{script.title}</h3>
+                          <span className="bg-red-600 text-white px-3 py-1 rounded text-sm">{script.duration}</span>
+                        </div>
+                        <p className="text-gray-700 text-sm leading-relaxed">{script.script}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
 
-        {/* Footer */}
         {!selectedNiche && (
-          <div className="text-center text-gray-400 py-12">
+          <div className="text-center text-gray-300 py-12">
             <p className="text-lg">Search for a niche to get started</p>
           </div>
         )}
