@@ -1,30 +1,30 @@
-const cpaNetworks = [
-  { network: 'ClickBank', payout: 45, categories: ['weight loss', 'dating', 'education', 'health', 'business'] },
-  { network: 'CJ Affiliate', payout: 35, categories: ['insurance', 'finance', 'software', 'hosting', 'vpn'] },
-  { network: 'Impact', payout: 40, categories: ['software', 'saas', 'hosting', 'security', 'vpn'] },
-  { network: 'Rakuten', payout: 30, categories: ['shopping', 'travel', 'finance', 'insurance'] },
-  { network: 'ShareASale', payout: 38, categories: ['software', 'hosting', 'education', 'fitness'] }
-];
+export interface CPAOffer {
+  network: string;
+  name: string;
+  payout: number;
+  relevance: 'high' | 'general';
+  category: string;
+}
 
-export const match = (keyword: string) => {
-  const keywordLower = keyword.toLowerCase();
-  const matches = cpaNetworks.filter(net => 
-    net.categories.some(cat => keywordLower.includes(cat))
-  );
-  
-  if (matches.length === 0) {
-    return cpaNetworks.slice(0, 2).map(net => ({
-      network: net.network,
-      name: `${keyword} - ${net.network} Offer`,
-      payout: net.payout,
-      relevance: 'general'
-    }));
-  }
-  
-  return matches.map(net => ({
-    network: net.network,
-    name: `${keyword} - ${net.network} Offer`,
-    payout: net.payout,
-    relevance: 'high'
-  }));
+const NETWORKS = {
+  ClickBank: { payout: 45, category: 'Digital Products' },
+  'CJ Affiliate': { payout: 35, category: 'Affiliate Network' },
+  Impact: { payout: 40, category: 'Performance Marketing' },
+  Rakuten: { payout: 30, category: 'Cashback & Rewards' },
+  ShareASale: { payout: 38, category: 'Affiliate Network' },
 };
+
+const CPA_KEYWORDS = ['weight loss', 'insurance', 'loan', 'forex', 'casino', 'vpn', 'dating', 'cbd', 'crypto', 'forex'];
+
+export function match(keyword: string): CPAOffer[] {
+  const lowerKeyword = keyword.toLowerCase();
+  const isCPAKeyword = CPA_KEYWORDS.some(k => lowerKeyword.includes(k));
+
+  return Object.entries(NETWORKS).map(([network, data]) => ({
+    network,
+    name: `${keyword} - ${network} Offer`,
+    payout: data.payout,
+    relevance: isCPAKeyword ? 'high' : 'general',
+    category: data.category,
+  }));
+}
