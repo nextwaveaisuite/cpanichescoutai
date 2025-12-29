@@ -1,10 +1,85 @@
+
+DASHBOARD-FIXED-TYPESCRIPT.tsx
 'use client';
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 
+// Type definitions
+interface MicroMicroNiche {
+  name: string;
+  traffic: number;
+  competition: number;
+  difficulty: number;
+  cpaRange: string;
+  keywords: Array<{
+    keyword: string;
+    traffic: number;
+    competition: number;
+    difficulty: number;
+  }>;
+  offers: Array<{
+    network: string;
+    url: string;
+    payout: string;
+    commission: string;
+    desc: string;
+  }>;
+  domains: Array<{
+    domain: string;
+    traffic: number;
+    authority: number;
+    price: string;
+    verdict: string;
+  }>;
+  blueprint: {
+    pages: Array<{
+      name: string;
+      description: string;
+    }>;
+    strategy: string;
+    monetization: string;
+  };
+  scripts: Array<{
+    title: string;
+    duration: string;
+    script: string;
+  }>;
+}
+
+interface MicroNiche {
+  name: string;
+  marketSize: string;
+  microMicroNiches: Record<string, MicroMicroNiche>;
+}
+
+interface SubNiche {
+  name: string;
+  marketSize: string;
+  microNiches: Record<string, MicroNiche>;
+}
+
+interface MainNiche {
+  mainNiche: string;
+  marketSize: string;
+  subNiches: Record<string, SubNiche>;
+}
+
+interface SearchResult {
+  level: 'main' | 'sub' | 'micro' | 'micro-micro';
+  key: string;
+  name: string;
+  marketSize: string;
+  parent?: string;
+  traffic?: number;
+  competition?: number;
+  difficulty?: number;
+  cpaRange?: string;
+  data: MainNiche | SubNiche | MicroNiche | MicroMicroNiche;
+}
+
 // Comprehensive niche hierarchy data
-const NICHE_HIERARCHY = {
+const NICHE_HIERARCHY: Record<string, MainNiche> = {
   'weight loss': {
     mainNiche: 'Weight Loss',
     marketSize: '$78.6 Billion USD',
@@ -513,7 +588,7 @@ const NICHE_HIERARCHY = {
                   {
                     title: 'Best Bitcoin Exchanges Compared',
                     duration: '60 sec',
-                    script: 'HOOK: "I compared all the top bitcoin exchanges..." [0-3 sec] PROBLEM: "Too many exchanges to choose from..." [3-15 sec] SOLUTION: "Here are the best ones for beginners..." [15-45 sec] PROOF: "See the comparison chart..." [45-50 sec] CTA: "See the full comparison - link in bio!" [50-60 sec]'
+                    script: 'HOOK: "I compared all the top bitcoin exchanges..." [0-3 sec] PROBLEM: "Too many exchanges to choose from..." [3-15 sec] SOLUTION: "Here are the best ones for beginners..." [15-45 sec] PROOF: "See the comparison chart..." [45-50 sec] CTA: "See full comparison - link in bio!" [50-60 sec]'
                   },
                 ],
               },
@@ -847,12 +922,12 @@ const NICHE_HIERARCHY = {
 
 export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTool, setSelectedTool] = useState(null);
-  const [searchResults, setSearchResults] = useState([]);
-  const [selectedNiche, setSelectedNiche] = useState(null);
+  const [selectedTool, setSelectedTool] = useState<string | null>(null);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [selectedNiche, setSelectedNiche] = useState<SearchResult | null>(null);
 
   // Search through all niches
-  const handleSearch = (term) => {
+  const handleSearch = (term: string) => {
     setSearchTerm(term);
     
     if (!term.trim()) {
@@ -861,7 +936,7 @@ export default function Dashboard() {
       return;
     }
 
-    const results = [];
+    const results: SearchResult[] = [];
     const lowerTerm = term.toLowerCase();
 
     // Search through all niches
@@ -937,7 +1012,7 @@ export default function Dashboard() {
 
   const renderAnalyze = () => {
     if (!selectedNiche?.data) return null;
-    const data = selectedNiche.data;
+    const data = selectedNiche.data as MicroMicroNiche;
     
     return (
       <div className="bg-white rounded-lg shadow-lg p-8">
@@ -977,13 +1052,15 @@ export default function Dashboard() {
   };
 
   const renderKeywords = () => {
-    if (!selectedNiche?.data?.keywords) return null;
+    if (!selectedNiche?.data) return null;
+    const data = selectedNiche.data as MicroMicroNiche;
+    if (!data.keywords) return null;
     
     return (
       <div className="bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">📊 Keywords</h2>
         <div className="space-y-3">
-          {selectedNiche.data.keywords.map((kw, idx) => (
+          {data.keywords.map((kw, idx) => (
             <div key={idx} className="border-l-4 border-blue-500 pl-4 py-2">
               <p className="font-semibold text-gray-800">{kw.keyword}</p>
               <div className="flex gap-6 text-sm text-gray-600 mt-1">
@@ -999,13 +1076,15 @@ export default function Dashboard() {
   };
 
   const renderOffers = () => {
-    if (!selectedNiche?.data?.offers) return null;
+    if (!selectedNiche?.data) return null;
+    const data = selectedNiche.data as MicroMicroNiche;
+    if (!data.offers) return null;
     
     return (
       <div className="bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">💰 CPA Offers</h2>
         <div className="space-y-4">
-          {selectedNiche.data.offers.map((offer, idx) => (
+          {data.offers.map((offer, idx) => (
             <div key={idx} className="border border-green-200 rounded-lg p-4 bg-green-50">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="font-bold text-gray-800">{offer.network}</h3>
@@ -1023,13 +1102,15 @@ export default function Dashboard() {
   };
 
   const renderDomains = () => {
-    if (!selectedNiche?.data?.domains) return null;
+    if (!selectedNiche?.data) return null;
+    const data = selectedNiche.data as MicroMicroNiche;
+    if (!data.domains) return null;
     
     return (
       <div className="bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">🌐 Domains</h2>
         <div className="space-y-3">
-          {selectedNiche.data.domains.map((domain, idx) => (
+          {data.domains.map((domain, idx) => (
             <div key={idx} className="border border-purple-200 rounded-lg p-4 bg-purple-50">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="font-bold text-gray-800">{domain.domain}</h3>
@@ -1052,8 +1133,10 @@ export default function Dashboard() {
   };
 
   const renderBlueprint = () => {
-    if (!selectedNiche?.data?.blueprint) return null;
-    const bp = selectedNiche.data.blueprint;
+    if (!selectedNiche?.data) return null;
+    const data = selectedNiche.data as MicroMicroNiche;
+    if (!data.blueprint) return null;
+    const bp = data.blueprint;
     
     return (
       <div className="bg-white rounded-lg shadow-lg p-8">
@@ -1085,13 +1168,15 @@ export default function Dashboard() {
   };
 
   const renderScripts = () => {
-    if (!selectedNiche?.data?.scripts) return null;
+    if (!selectedNiche?.data) return null;
+    const data = selectedNiche.data as MicroMicroNiche;
+    if (!data.scripts) return null;
     
     return (
       <div className="bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">🎬 Video Scripts</h2>
         <div className="space-y-6">
-          {selectedNiche.data.scripts.map((script, idx) => (
+          {data.scripts.map((script, idx) => (
             <div key={idx} className="border border-red-200 rounded-lg p-4 bg-red-50">
               <div className="flex justify-between items-start mb-3">
                 <h3 className="font-bold text-gray-800">{script.title}</h3>
