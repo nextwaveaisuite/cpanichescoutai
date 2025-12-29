@@ -1,11 +1,11 @@
-export const calculateDifficultyScore = (keyword: string): number => {
-  const words = keyword.trim().split(/\s+/).length;
+export function calculateDifficultyScore(keyword: string): number {
+  const wordCount = keyword.split(' ').length;
   const length = keyword.length;
-  const tailBonus = words >= 3 ? -15 : 0;
-  const specificityBonus = length > 25 ? -10 : 0;
-  let difficulty = 60;
-  difficulty += tailBonus + specificityBonus;
-  return Math.max(15, Math.min(85, difficulty));
-};
 
-export const fn = (n: number) => n;
+  let score = 60;
+
+  if (wordCount >= 3) score -= 15;
+  if (length > 25) score -= 10;
+
+  return Math.min(85, Math.max(15, score));
+}
