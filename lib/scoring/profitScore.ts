@@ -1,13 +1,15 @@
-export const calculateProfitScore = (keyword: string, difficulty: number): number => {
-  const words = keyword.trim().split(/\s+/).length;
-  const highValueNiches = ['insurance', 'loan', 'mortgage', 'credit', 'forex', 'casino', 'vpn', 'hosting'];
-  const niche = keyword.toLowerCase();
-  const isHighValue = highValueNiches.some(h => niche.includes(h));
-  const nicherBonus = isHighValue ? 30 : 10;
-  const easyBonus = difficulty < 40 ? 20 : 0;
-  const specificBonus = words >= 3 ? 15 : 0;
-  const profit = 40 + nicherBonus + easyBonus + specificBonus;
-  return Math.min(95, Math.max(20, profit));
-};
+const HIGH_VALUE_NICHES = ['insurance', 'loan', 'mortgage', 'forex', 'casino', 'vpn', 'dating', 'cbd', 'crypto', 'weight loss'];
 
-export const fn = (n: number) => n;
+export function calculateProfitScore(keyword: string): number {
+  const lowerKeyword = keyword.toLowerCase();
+  const wordCount = keyword.split(' ').length;
+
+  let score = 50;
+
+  const isHighValue = HIGH_VALUE_NICHES.some(niche => lowerKeyword.includes(niche));
+  if (isHighValue) score += 30;
+
+  if (wordCount >= 3) score += 15;
+
+  return Math.min(95, Math.max(20, score));
+}
