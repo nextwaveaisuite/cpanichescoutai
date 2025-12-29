@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-// ============ KEYWORD DATA ============
 const HIGH_TRAFFIC_KEYWORDS = {
   'weight loss': [
     { keyword: 'best weight loss pills 2025', traffic: 8900, competition: 35, difficulty: 42 },
@@ -103,8 +102,7 @@ const BLUEPRINTS = {
 };
 
 const VIDEO_SCRIPTS = {
-  'weight loss': `
-WEIGHT LOSS PILLS REVIEW - 60 SECOND SCRIPT
+  'weight loss': `WEIGHT LOSS PILLS REVIEW - 60 SECOND SCRIPT
 
 [0-5s]: # "Hook:"
 "Struggling with weight loss? I tested the top 5 weight loss pills on the market. Here's what actually works..."
@@ -119,10 +117,8 @@ WEIGHT LOSS PILLS REVIEW - 60 SECOND SCRIPT
 "Click the link below to see the full comparison and get exclusive discounts. Limited time offer - save 40% today!"
 
 [55-60s]: # "Outro:"
-"Don't waste money on fake products. Get the real deal. Subscribe for more reviews."
-  `,
-  'insurance': `
-CAR INSURANCE QUOTES - 60 SECOND SCRIPT
+"Don't waste money on fake products. Get the real deal. Subscribe for more reviews."`,
+  'insurance': `CAR INSURANCE QUOTES - 60 SECOND SCRIPT
 
 [0-5s]: # "Hook:"
 "Save up to $500 on car insurance! I compared 10 insurance companies and found the cheapest rates..."
@@ -137,8 +133,7 @@ CAR INSURANCE QUOTES - 60 SECOND SCRIPT
 "Get your free quotes today using the link below. Compare rates from 10+ companies instantly. No credit card required."
 
 [55-60s]: # "Outro:"
-"Don't overpay for insurance. Get free quotes now. Subscribe for money-saving tips!"
-  `,
+"Don't overpay for insurance. Get free quotes now. Subscribe for money-saving tips!"`,
 };
 
 export default function Dashboard() {
@@ -198,10 +193,12 @@ export default function Dashboard() {
       {/* HEADER */}
       <header style={{ background: 'linear-gradient(135deg, #1a2847 0%, #2b3a6a 100%)', padding: '20px', borderBottom: '2px solid #4f7cff' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link href="/" style={{ fontSize: '1.8rem', background: 'linear-gradient(135deg, #4f7cff, #00d4ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none' }}>🚀 CPA Niche Scout AI</Link>
+          <Link href="/app" style={{ fontSize: '1.8rem', background: 'linear-gradient(135deg, #4f7cff, #00d4ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none' }}>🚀 CPA Niche Scout AI</Link>
           <nav style={{ display: 'flex', gap: '20px' }}>
-            <Link href="/" style={{ color: '#a8adb8', textDecoration: 'none' }}>Home</Link>
-            <Link href="/pricing" style={{ color: '#a8adb8', textDecoration: 'none' }}>Pricing</Link>
+            <Link href="/app" style={{ color: '#a8adb8', textDecoration: 'none' }}>Home</Link>
+            <Link href="/app/pricing" style={{ color: '#a8adb8', textDecoration: 'none' }}>Pricing</Link>
+            <Link href="/app/about" style={{ color: '#a8adb8', textDecoration: 'none' }}>About</Link>
+            <Link href="/app/contact" style={{ color: '#a8adb8', textDecoration: 'none' }}>Contact</Link>
           </nav>
         </div>
       </header>
@@ -210,7 +207,7 @@ export default function Dashboard() {
       <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '40px 20px' }}>
         {/* SEARCH BAR */}
         <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', marginBottom: '30px', border: '2px solid #2b3a6a' }}>
-          <h2 style={{ marginBottom: '20px', color: '#4f7cff' }}>Enter Your Niche</h2>
+          <h2 style={{ marginBottom: '20px', color: '#4f7cff' }}>Analyze Your Niche</h2>
           <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
             <input type="text" placeholder="e.g., weight loss, insurance, forex, vpn" value={keyword} onChange={(e) => setKeyword(e.target.value)} style={{ flex: 1, padding: '12px', borderRadius: '4px', border: '1px solid #2b3a6a', background: '#0b1220', color: '#fff', fontSize: '1rem' }} />
           </div>
@@ -223,12 +220,10 @@ export default function Dashboard() {
               { id: 'blueprint', label: '📐 Blueprint', action: getBlueprint },
               { id: 'video', label: '🎬 Video Script', action: getVideoScript },
             ].map(tool => (
-              <button key={tool.id} onClick={() => { setSelectedTool(tool.id); tool.action(); }} disabled={loading} style={{ padding: '12px', background: selectedTool === tool.id ? '#4f7cff' : '#2b3a6a', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', transition: 'all 0.3s' }}>{tool.label}</button>
+              <button key={tool.id} onClick={() => { setSelectedTool(tool.id); tool.action(); }} disabled={loading} style={{ padding: '12px', background: selectedTool === tool.id ? '#4f7cff' : '#2b3a6a', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>{tool.label}</button>
             ))}
           </div>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <button onClick={resetSearch} style={{ flex: 1, padding: '10px', background: '#ef4444', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔄 Reset Search</button>
-          </div>
+          <button onClick={resetSearch} style={{ width: '100%', padding: '10px', background: '#ef4444', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔄 Reset Search</button>
         </div>
 
         {/* RESULTS */}
@@ -236,7 +231,7 @@ export default function Dashboard() {
 
         {results && selectedTool === 'keywords' && results.keywords && (
           <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
-            <h3 style={{ color: '#4f7cff', marginBottom: '20px' }}>📊 High-Traffic Keywords for "{keyword}"</h3>
+            <h3 style={{ color: '#4f7cff', marginBottom: '20px' }}>📊 Keywords for "{keyword}"</h3>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
@@ -331,13 +326,35 @@ export default function Dashboard() {
 
       {/* FOOTER */}
       <footer style={{ background: '#1a2847', borderTop: '2px solid #2b3a6a', padding: '40px 20px', marginTop: '80px' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center', color: '#a8adb8', fontSize: '0.85rem' }}>
-          <div style={{ marginBottom: '20px', display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/privacy" style={{ color: '#a8adb8', textDecoration: 'none' }}>Privacy</Link>
-            <Link href="/terms" style={{ color: '#a8adb8', textDecoration: 'none' }}>Terms</Link>
-            <Link href="/compliance" style={{ color: '#a8adb8', textDecoration: 'none' }}>Compliance</Link>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginBottom: '40px' }}>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Software</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/app" style={{ color: '#a8adb8', textDecoration: 'none' }}>Home</Link></li>
+                <li><Link href="/app/dashboard" style={{ color: '#a8adb8', textDecoration: 'none' }}>Dashboard</Link></li>
+                <li><Link href="/app/pricing" style={{ color: '#a8adb8', textDecoration: 'none' }}>Pricing</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Company</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/app/about" style={{ color: '#a8adb8', textDecoration: 'none' }}>About</Link></li>
+                <li><Link href="/app/contact" style={{ color: '#a8adb8', textDecoration: 'none' }}>Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Legal</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/app/privacy" style={{ color: '#a8adb8', textDecoration: 'none' }}>Privacy</Link></li>
+                <li><Link href="/app/terms" style={{ color: '#a8adb8', textDecoration: 'none' }}>Terms</Link></li>
+                <li><Link href="/app/compliance" style={{ color: '#a8adb8', textDecoration: 'none' }}>Compliance</Link></li>
+              </ul>
+            </div>
           </div>
-          <p>© 2025 CPA Niche Scout AI. All rights reserved.</p>
+          <div style={{ borderTop: '1px solid #2b3a6a', paddingTop: '20px', textAlign: 'center', color: '#a8adb8', fontSize: '0.85rem' }}>
+            <p>© 2025 CPA Niche Scout AI. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
