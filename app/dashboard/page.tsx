@@ -1,5 +1,4 @@
-
-DASHBOARD-NEXT-LEVEL.tsx
+BOARD-NEXT-LEVEL.tsx
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -370,4 +369,9 @@ const NICHE_DATA = {
       { keyword: 'how to flip houses', traffic: 6500, competition: 32, difficulty: 38, intent: 'Informational', searchVolume: '6,500/month', cpc: '$2.35', monetization: 'High - Flipping courses', ranking: 'Moderate', avgPosition: '13-25', ctr: '3.4%', conversion: '2.2%', monthlyRevenue: '$1,560' },
       { keyword: 'rental property investing', traffic: 5900, competition: 30, difficulty: 36, intent: 'Informational', searchVolume: '5,900/month', cpc: '$2.05', monetization: 'High - Rental guides', ranking: 'Moderate', avgPosition: '12-24', ctr: '3.5%', conversion: '2.0%', monthlyRevenue: '$1,180' },
       { keyword: 'real estate investment trusts', traffic: 5300, competition: 28, difficulty: 34, intent: 'Informational', searchVolume: '5,300/month', cpc: '$1.85', monetization: 'Medium - REIT guides', ranking: 'Easy', avgPosition: '11-23', ctr: '3.6%', conversion: '1.8%', monthlyRevenue: '$954' },
-      { keyword: 'commercial real estate
+      { keyword: 'commercial real estate investing', traffic: 4800, competition: 26, difficulty: 32, intent: 'Commercial', searchVolume: '4,800/month', cpc: '$3.15', monetization: 'High - Commercial guides', ranking: 'Moderate', avgPosition: '10-22', ctr: '3.7%', conversion: '1.9%', monthlyRevenue: '$1,512' },
+      { keyword: 'real estate wholesaling', traffic: 4500, competition: 24, difficulty: 30, intent: 'Informational', searchVolume: '4,500/month', cpc: '$2.25', monetization: 'High - Wholesaling courses', ranking: 'Easy', avgPosition: '9-21', ctr: '3.8%', conversion: '2.1%', monthlyRevenue: '$945' },
+      { keyword: 'property management business', traffic: 4200, competition: 22, difficulty: 28, intent: 'Informational', searchVolume: '4,200/month', cpc: '$1.95', monetization: 'Medium - PM software', ranking: 'Easy', avgPosition: '8-20', ctr: '3.9%', conversion: '1.8%', monthlyRevenue: '$798' },
+      { keyword: 'real estate agent commission', traffic: 3900, competition: 20, difficulty: 26, intent: 'Informational', searchVolume: '3,900/month', cpc: '$1.75', monetization: 'Low - Educational', ranking: 'Very Easy', avgPosition: '6-18', ctr: '4.1%', conversion: '1.6%', monthlyRevenue: '$624' },
+      { keyword: 'real estate crowdfunding', traffic: 3600, competition: 18, difficulty: 24, intent: 'Commercial', searchVolume: '3,600/month', cpc: '$2.85', monetization: 'High - Crowdfunding platforms', ranking: 'Very Easy', avgPosition: '5-17', ctr: '4.2%', conversion: '2.3%', monthlyRevenue: '$828' },
+      { keyword: 'real estate investment groups', traffic: 3400, competition: 16, difficulty: 22, intent: 'Informational', searchVolume: '3,400/month', cpc: '$1.65', monetization: 'Medium - Group resources', ranking: 'Very Easy', avgPosition: '4-16', ctr: '4.3%', conversion: '1.7%', monthlyRevenue: '$476' }
