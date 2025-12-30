@@ -2,375 +2,1228 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-// COMPLETE NICHE HIERARCHY DATA WITH NEXT-LEVEL DEPTH
 const NICHE_DATA = {
   'weight loss': {
-    analyze: { niche: 'Weight Loss', score: 78, difficulty: 42, profitPotential: 85, trafficPotential: 8900, verdict: 'BUILD', analysis: 'Weight loss is a highly profitable niche with consistent high-intent traffic. Multiple monetization options available including supplements, programs, and fitness products. Competition is moderate but manageable with proper SEO strategy.', opportunities: ['High CPA payouts ($30-$50 per conversion)', 'Multiple product types (supplements, programs, equipment)', 'Strong email marketing potential', 'Video content performs exceptionally well', 'Affiliate programs with 40-50% commissions'], challenges: ['Moderate to high competition', 'Requires medical/health disclaimers', 'Seasonal fluctuations', 'Strict FTC compliance requirements', 'Google E-E-A-T requirements for health content'], recommendations: ['Focus on specific sub-niches (keto, intermittent fasting, supplements)', 'Build authority with scientific backing and testimonials', 'Create comprehensive guides and comparison content', 'Establish email list for repeat commissions', 'Partner with fitness influencers for promotion'], marketSize: '$78.6 Billion USD annually', growthRate: '8.5% CAGR', topKeywords: ['best weight loss pills', 'weight loss supplements', 'fastest way to lose weight'], topOffers: ['ClickBank (50% commission)', 'CPA networks ($30-45 payout)'], estimatedEarnings: '$500-$2000/month per 1000 visitors' },
+    analyze: {
+      niche: 'Weight Loss',
+      score: 78,
+      difficulty: 42,
+      profitPotential: 85,
+      trafficPotential: 8900,
+      verdict: 'BUILD',
+      analysis: 'Weight loss is a highly profitable niche with consistent high-intent traffic. Multiple monetization options available including supplements, programs, and fitness products. Competition is moderate but manageable with proper SEO strategy.',
+      opportunities: [
+        'High CPA payouts ($30-$50 per conversion)',
+        'Multiple product types (supplements, programs, equipment)',
+        'Strong email marketing potential',
+        'Video content performs exceptionally well',
+        'Affiliate programs with 40-50% commissions',
+      ],
+      challenges: [
+        'Moderate to high competition',
+        'Requires medical/health disclaimers',
+        'Seasonal fluctuations',
+        'Strict FTC compliance requirements',
+        'Google E-E-A-T requirements for health content',
+      ],
+      recommendations: [
+        'Focus on specific sub-niches (keto, intermittent fasting, supplements)',
+        'Build authority with scientific backing and testimonials',
+        'Create comprehensive guides and comparison content',
+        'Establish email list for repeat commissions',
+        'Partner with fitness influencers for promotion',
+      ],
+      marketSize: '$78.6 Billion USD annually',
+      growthRate: '8.5% CAGR',
+      topKeywords: ['best weight loss pills', 'weight loss supplements', 'fastest way to lose weight'],
+      topOffers: ['ClickBank (50% commission)', 'CPA networks ($30-45 payout)'],
+      estimatedEarnings: '$500-$2000/month per 1000 visitors',
+    },
     keywords: [
-      { keyword: 'best weight loss pills 2025', traffic: 8900, competition: 35, difficulty: 42, intent: 'Commercial', searchVolume: '8,900/month', cpc: '$2.45', monetization: 'High - Direct product sales', ranking: 'Moderate', avgPosition: '15-25', ctr: '3.2%', conversion: '2.1%', monthlyRevenue: '$1,850' },
-      { keyword: 'weight loss supplements that work', traffic: 7200, competition: 28, difficulty: 38, intent: 'Commercial', searchVolume: '7,200/month', cpc: '$1.95', monetization: 'High - Affiliate commissions', ranking: 'Moderate', avgPosition: '12-20', ctr: '3.8%', conversion: '2.4%', monthlyRevenue: '$1,680' },
-      { keyword: 'fastest way to lose weight', traffic: 6500, competition: 32, difficulty: 40, intent: 'Informational', searchVolume: '6,500/month', cpc: '$1.65', monetization: 'Medium - Lead generation', ranking: 'Moderate', avgPosition: '18-28', ctr: '2.9%', conversion: '1.8%', monthlyRevenue: '$1,170' },
-      { keyword: 'weight loss programs for women', traffic: 5800, competition: 25, difficulty: 35, intent: 'Commercial', searchVolume: '5,800/month', cpc: '$2.15', monetization: 'High - Program sales', ranking: 'Easy', avgPosition: '8-15', ctr: '4.2%', conversion: '2.7%', monthlyRevenue: '$1,510' },
-      { keyword: 'natural weight loss remedies', traffic: 5200, competition: 22, difficulty: 32, intent: 'Informational', searchVolume: '5,200/month', cpc: '$1.45', monetization: 'Medium - Herbal products', ranking: 'Easy', avgPosition: '10-18', ctr: '3.5%', conversion: '2.0%', monthlyRevenue: '$1,040' },
-      { keyword: 'weight loss without exercise', traffic: 4900, competition: 20, difficulty: 30, intent: 'Commercial', searchVolume: '4,900/month', cpc: '$1.85', monetization: 'High - Diet programs', ranking: 'Easy', avgPosition: '9-16', ctr: '3.9%', conversion: '2.3%', monthlyRevenue: '$1,225' },
-      { keyword: 'weight loss meal plans free', traffic: 4600, competition: 18, difficulty: 28, intent: 'Informational', searchVolume: '4,600/month', cpc: '$1.25', monetization: 'Medium - Premium upsell', ranking: 'Very Easy', avgPosition: '5-12', ctr: '4.5%', conversion: '1.9%', monthlyRevenue: '$920' },
-      { keyword: 'best diet for weight loss', traffic: 4300, competition: 25, difficulty: 33, intent: 'Informational', searchVolume: '4,300/month', cpc: '$1.55', monetization: 'Medium - Comparison guides', ranking: 'Moderate', avgPosition: '14-22', ctr: '3.3%', conversion: '2.2%', monthlyRevenue: '$860' },
-      { keyword: 'keto diet for weight loss', traffic: 7800, competition: 32, difficulty: 40, intent: 'Commercial', searchVolume: '7,800/month', cpc: '$2.35', monetization: 'High - Keto products', ranking: 'Moderate', avgPosition: '16-26', ctr: '3.1%', conversion: '2.5%', monthlyRevenue: '$1,950' },
-      { keyword: 'intermittent fasting for weight loss', traffic: 6900, competition: 30, difficulty: 38, intent: 'Informational', searchVolume: '6,900/month', cpc: '$1.75', monetization: 'Medium - Courses', ranking: 'Moderate', avgPosition: '13-21', ctr: '3.6%', conversion: '2.1%', monthlyRevenue: '$1,380' },
-      { keyword: 'weight loss for women over 50', traffic: 5600, competition: 24, difficulty: 34, intent: 'Commercial', searchVolume: '5,600/month', cpc: '$2.05', monetization: 'High - Age-specific products', ranking: 'Easy', avgPosition: '11-19', ctr: '3.7%', conversion: '2.6%', monthlyRevenue: '$1,456' },
-      { keyword: 'weight loss for men', traffic: 5200, competition: 22, difficulty: 32, intent: 'Commercial', searchVolume: '5,200/month', cpc: '$1.95', monetization: 'High - Male-focused programs', ranking: 'Easy', avgPosition: '10-17', ctr: '3.8%', conversion: '2.4%', monthlyRevenue: '$1,248' },
-      { keyword: 'weight loss for beginners', traffic: 4800, competition: 20, difficulty: 30, intent: 'Informational', searchVolume: '4,800/month', cpc: '$1.35', monetization: 'Medium - Starter guides', ranking: 'Very Easy', avgPosition: '6-13', ctr: '4.3%', conversion: '2.0%', monthlyRevenue: '$960' },
-      { keyword: 'keto diet for beginners', traffic: 6200, competition: 28, difficulty: 36, intent: 'Informational', searchVolume: '6,200/month', cpc: '$1.85', monetization: 'High - Keto guides', ranking: 'Moderate', avgPosition: '12-20', ctr: '3.9%', conversion: '2.3%', monthlyRevenue: '$1,488' },
-      { keyword: 'intermittent fasting for beginners', traffic: 5400, competition: 26, difficulty: 34, intent: 'Informational', searchVolume: '5,400/month', cpc: '$1.55', monetization: 'Medium - IF courses', ranking: 'Moderate', avgPosition: '14-22', ctr: '3.4%', conversion: '2.1%', monthlyRevenue: '$1,080' },
-      { keyword: 'weight loss for women over 40', traffic: 4900, competition: 21, difficulty: 31, intent: 'Commercial', searchVolume: '4,900/month', cpc: '$1.95', monetization: 'High - Women 40+ products', ranking: 'Easy', avgPosition: '9-16', ctr: '3.9%', conversion: '2.5%', monthlyRevenue: '$1,225' },
-      { keyword: 'weight loss pills for women', traffic: 4600, competition: 19, difficulty: 29, intent: 'Commercial', searchVolume: '4,600/month', cpc: '$2.25', monetization: 'High - Female supplements', ranking: 'Easy', avgPosition: '8-15', ctr: '4.1%', conversion: '2.6%', monthlyRevenue: '$1,380' },
-      { keyword: 'weight loss for postpartum', traffic: 4200, competition: 18, difficulty: 27, intent: 'Commercial', searchVolume: '4,200/month', cpc: '$2.05', monetization: 'High - Postpartum programs', ranking: 'Very Easy', avgPosition: '7-14', ctr: '4.4%', conversion: '2.7%', monthlyRevenue: '$1,176' },
-      { keyword: 'weight loss for busy people', traffic: 3900, competition: 16, difficulty: 25, intent: 'Informational', searchVolume: '3,900/month', cpc: '$1.45', monetization: 'Medium - Quick programs', ranking: 'Very Easy', avgPosition: '5-12', ctr: '4.6%', conversion: '2.1%', monthlyRevenue: '$780' },
-      { keyword: 'weight loss without diet', traffic: 3600, competition: 14, difficulty: 23, intent: 'Informational', searchVolume: '3,600/month', cpc: '$1.25', monetization: 'Low - Lifestyle content', ranking: 'Very Easy', avgPosition: '4-11', ctr: '4.8%', conversion: '1.8%', monthlyRevenue: '$720' }
+      { keyword: 'best weight loss pills 2025', traffic: 8900, competition: 35, difficulty: 42 },
+      { keyword: 'weight loss supplements that work', traffic: 7200, competition: 28, difficulty: 38 },
+      { keyword: 'fastest way to lose weight', traffic: 6500, competition: 32, difficulty: 40 },
+      { keyword: 'weight loss programs for women', traffic: 5800, competition: 25, difficulty: 35 },
+      { keyword: 'natural weight loss remedies', traffic: 5200, competition: 22, difficulty: 32 },
+      { keyword: 'weight loss without exercise', traffic: 4900, competition: 20, difficulty: 30 },
+      { keyword: 'weight loss meal plans free', traffic: 4600, competition: 18, difficulty: 28 },
+      { keyword: 'best diet for weight loss', traffic: 4300, competition: 25, difficulty: 33 },
+      { keyword: 'keto diet for weight loss', traffic: 7800, competition: 32, difficulty: 40 },
+      { keyword: 'intermittent fasting for weight loss', traffic: 6900, competition: 30, difficulty: 38 },
+      { keyword: 'weight loss for women over 50', traffic: 5600, competition: 24, difficulty: 34 },
+      { keyword: 'weight loss for men', traffic: 5200, competition: 22, difficulty: 32 },
+      { keyword: 'weight loss for beginners', traffic: 4800, competition: 20, difficulty: 30 },
+      { keyword: 'keto diet for beginners', traffic: 6200, competition: 28, difficulty: 36 },
+      { keyword: 'intermittent fasting for beginners', traffic: 5400, competition: 26, difficulty: 34 },
+      { keyword: 'weight loss for women over 40', traffic: 4900, competition: 21, difficulty: 31 },
+      { keyword: 'weight loss pills for women', traffic: 4600, competition: 19, difficulty: 29 },
+      { keyword: 'weight loss for postpartum', traffic: 4200, competition: 18, difficulty: 27 },
+      { keyword: 'weight loss for busy people', traffic: 3900, competition: 16, difficulty: 25 },
+      { keyword: 'weight loss without diet', traffic: 3600, competition: 14, difficulty: 23 },
     ],
-    offers: [{ network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$45', commission: '50%', desc: 'Digital products, weight loss, fitness' }, { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$35', commission: '40%', desc: 'Retail, insurance, finance' }, { network: 'Impact', url: 'https://www.impact.com', payout: '$40', commission: '45%', desc: 'Premium brands, high-value offers' }, { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$30', commission: '35%', desc: 'Shopping, cashback, retail' }, { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$38', commission: '42%', desc: 'Diverse offers, high-quality merchants' }],
+    offers: [
+      { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$45', commission: '50%', desc: 'Digital products, weight loss, fitness' },
+      { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$35', commission: '40%', desc: 'Retail, insurance, finance' },
+      { network: 'Impact', url: 'https://www.impact.com', payout: '$40', commission: '45%', desc: 'Premium brands, high-value offers' },
+      { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$30', commission: '35%', desc: 'Shopping, cashback, retail' },
+      { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$38', commission: '42%', desc: 'Diverse offers, high-quality merchants' },
+    ],
     domains: [
-      { domain: 'WeightLossTips.com', age: 12, traffic: 2400, backlinks: 450, authority: 42, price: '$18', verdict: 'EXCELLENT', domainMetrics: { referringDomains: 145, topicAuthority: 'Weight Loss: 78%', backlinksProfile: 'Diverse (News: 12%, Blogs: 35%, Authority: 53%)', trafficSources: 'Organic: 78%, Direct: 15%, Referral: 7%', topPages: ['Weight Loss Tips (450 visitors)', 'Best Diets (380 visitors)', 'Success Stories (320 visitors)'], monetizationPotential: '$2,400-3,600/month', acquisitionStrategy: 'Outreach to fitness bloggers, guest posting on health sites, HARO mentions' } },
-      { domain: 'BestDietPlans.net', age: 8, traffic: 1800, backlinks: 320, authority: 35, price: '$12', verdict: 'GOOD', domainMetrics: { referringDomains: 98, topicAuthority: 'Diet Plans: 65%', backlinksProfile: 'Moderate (News: 8%, Blogs: 42%, Authority: 50%)', trafficSources: 'Organic: 82%, Direct: 12%, Referral: 6%', topPages: ['Keto Plans (280 visitors)', 'Low Carb Diets (240 visitors)', 'Meal Prep (180 visitors)'], monetizationPotential: '$1,800-2,400/month', acquisitionStrategy: 'Content upgrades, email marketing partnerships, diet app integrations' } },
-      { domain: 'NaturalWeightLoss.org', age: 15, traffic: 3200, backlinks: 680, authority: 52, price: '$25', verdict: 'EXCELLENT', domainMetrics: { referringDomains: 210, topicAuthority: 'Natural Health: 85%', backlinksProfile: 'Strong (News: 18%, Blogs: 38%, Authority: 44%)', trafficSources: 'Organic: 85%, Direct: 10%, Referral: 5%', topPages: ['Natural Remedies (520 visitors)', 'Herbal Supplements (480 visitors)', 'Holistic Approach (420 visitors)'], monetizationPotential: '$3,200-4,800/month', acquisitionStrategy: 'Natural health influencer partnerships, wellness magazine features, podcast sponsorships' } },
-      { domain: 'WeightLossSecrets.com', age: 10, traffic: 2100, backlinks: 380, authority: 38, price: '$15', verdict: 'GOOD', domainMetrics: { referringDomains: 115, topicAuthority: 'Weight Loss: 72%', backlinksProfile: 'Moderate (News: 10%, Blogs: 40%, Authority: 50%)', trafficSources: 'Organic: 80%, Direct: 14%, Referral: 6%', topPages: ['Secret Strategies (350 visitors)', 'Quick Results (310 visitors)', 'Expert Tips (280 visitors)'], monetizationPotential: '$2,100-3,150/month', acquisitionStrategy: 'YouTube channel partnerships, Reddit community engagement, TikTok creator collaborations' } },
-      { domain: 'HealthyWeightLoss.net', age: 9, traffic: 1900, backlinks: 340, authority: 36, price: '$14', verdict: 'GOOD', domainMetrics: { referringDomains: 102, topicAuthority: 'Health & Fitness: 68%', backlinksProfile: 'Moderate (News: 9%, Blogs: 41%, Authority: 50%)', trafficSources: 'Organic: 81%, Direct: 13%, Referral: 6%', topPages: ['Healthy Recipes (320 visitors)', 'Fitness Plans (280 visitors)', 'Nutrition Guide (240 visitors)'], monetizationPotential: '$1,900-2,850/month', acquisitionStrategy: 'Nutrition expert collaborations, health blog networks, fitness app integrations' } },
-      { domain: 'FitnessDiet.com', age: 14, traffic: 2800, backlinks: 520, authority: 48, price: '$22', verdict: 'EXCELLENT', domainMetrics: { referringDomains: 165, topicAuthority: 'Fitness: 82%, Diet: 78%', backlinksProfile: 'Strong (News: 14%, Blogs: 37%, Authority: 49%)', trafficSources: 'Organic: 83%, Direct: 12%, Referral: 5%', topPages: ['Workout Plans (480 visitors)', 'Meal Prep (420 visitors)', 'Fitness Challenges (380 visitors)'], monetizationPotential: '$2,800-4,200/month', acquisitionStrategy: 'Fitness influencer partnerships, gym chain collaborations, trainer referral programs' } },
-      { domain: 'WeightLossJourney.org', age: 11, traffic: 2200, backlinks: 400, authority: 40, price: '$16', verdict: 'GOOD', domainMetrics: { referringDomains: 120, topicAuthority: 'Weight Loss: 75%', backlinksProfile: 'Moderate (News: 11%, Blogs: 39%, Authority: 50%)', trafficSources: 'Organic: 79%, Direct: 16%, Referral: 5%', topPages: ['Success Stories (380 visitors)', 'Progress Tracking (340 visitors)', 'Motivation Tips (280 visitors)'], monetizationPotential: '$2,200-3,300/month', acquisitionStrategy: 'Community building, user-generated content campaigns, transformation contests' } },
-      { domain: 'BestWeightLossTips.net', age: 7, traffic: 1600, backlinks: 280, authority: 32, price: '$10', verdict: 'FAIR', domainMetrics: { referringDomains: 85, topicAuthority: 'Weight Loss: 60%', backlinksProfile: 'Weak (News: 6%, Blogs: 44%, Authority: 50%)', trafficSources: 'Organic: 77%, Direct: 18%, Referral: 5%', topPages: ['Quick Tips (280 visitors)', 'Budget Plans (220 visitors)', 'Home Workouts (180 visitors)'], monetizationPotential: '$1,200-1,800/month', acquisitionStrategy: 'Content syndication, social media growth, budget fitness niche targeting' } }
+      { domain: 'WeightLossTips.com', age: 12, traffic: 2400, backlinks: 450, authority: 42, price: '$18', verdict: 'EXCELLENT' },
+      { domain: 'BestDietPlans.net', age: 8, traffic: 1800, backlinks: 320, authority: 35, price: '$12', verdict: 'GOOD' },
+      { domain: 'NaturalWeightLoss.org', age: 15, traffic: 3200, backlinks: 680, authority: 52, price: '$25', verdict: 'EXCELLENT' },
+      { domain: 'WeightLossSecrets.com', age: 10, traffic: 2100, backlinks: 380, authority: 38, price: '$15', verdict: 'GOOD' },
+      { domain: 'HealthyWeightLoss.net', age: 9, traffic: 1900, backlinks: 340, authority: 36, price: '$14', verdict: 'GOOD' },
+      { domain: 'FitnessDiet.com', age: 14, traffic: 2800, backlinks: 520, authority: 48, price: '$22', verdict: 'EXCELLENT' },
+      { domain: 'WeightLossJourney.org', age: 11, traffic: 2200, backlinks: 400, authority: 40, price: '$16', verdict: 'GOOD' },
+      { domain: 'BestWeightLossTips.net', age: 7, traffic: 1600, backlinks: 280, authority: 32, price: '$10', verdict: 'FAIR' },
     ],
     blueprint: {
       pages: [
-        { name: 'Homepage', description: 'Hero section with value proposition, benefits, testimonials, and CTA to email list', strategy: 'Lead with transformation story (before/after), highlight unique approach vs competitors, social proof with video testimonials, email signup incentive (free weight loss guide), trust signals (certifications, credentials)' },
-        { name: 'Weight Loss Tips', description: 'Pillar content with 20+ actionable tips, backed by research, monetized with CPA offers', strategy: 'Create 20+ in-depth tips with scientific backing, internal linking to sub-pages, monetize with supplement affiliate links, include video demonstrations, add downloadable checklist for email capture' },
-        { name: 'Best Supplements', description: 'Product comparison guide, affiliate/CPA links, pros/cons, pricing', strategy: 'Compare 15+ supplements with detailed analysis, pros/cons table, pricing comparison, affiliate links to Amazon/ClickBank, include customer reviews, update quarterly for freshness' },
-        { name: 'Success Stories', description: 'Before/after testimonials, case studies, builds trust and social proof', strategy: 'Feature 10+ detailed case studies with photos, weight loss amounts, timelines, specific strategies used, video testimonials, CTAs to coaching/programs, encourage user submissions' },
-        { name: 'Meal Plans', description: 'Free meal plan templates, downloadable PDFs, email capture, premium upsell', strategy: 'Offer 5 free meal plans (PDF downloads), email capture gate for premium plans, 30-day meal prep guide, shopping lists, nutrition calculator, upsell to premium meal planning service' },
-        { name: 'Exercise Guide', description: 'Video tutorials, workout routines, fitness equipment recommendations', strategy: 'Create 30+ exercise videos (YouTube embedded), 10 complete workout routines by level, equipment recommendations with affiliate links, form guides, progression tracking sheets' },
-        { name: 'FAQ', description: 'Common questions answered, addresses objections, improves SEO', strategy: 'Answer 50+ FAQs structured for featured snippets, address common objections, link to relevant pages, include video answers for top 10 questions, schema markup for rich snippets' },
-        { name: 'Contact', description: 'Email capture, support form, builds relationship with audience', strategy: 'Multiple CTAs throughout site, email signup forms (exit-intent, sidebar, footer), contact form for coaching inquiries, chatbot for instant responses, SMS opt-in' }
+        { name: 'Homepage', description: 'Hero section with value proposition, benefits, testimonials, and CTA to email list' },
+        { name: 'Weight Loss Tips', description: 'Pillar content with 20+ actionable tips, backed by research, monetized with CPA offers' },
+        { name: 'Best Supplements', description: 'Product comparison guide, affiliate/CPA links, pros/cons, pricing' },
+        { name: 'Success Stories', description: 'Before/after testimonials, case studies, builds trust and social proof' },
+        { name: 'Meal Plans', description: 'Free meal plan templates, downloadable PDFs, email capture, premium upsell' },
+        { name: 'Exercise Guide', description: 'Video tutorials, workout routines, fitness equipment recommendations' },
+        { name: 'FAQ', description: 'Common questions answered, addresses objections, improves SEO' },
+        { name: 'Contact', description: 'Email capture, support form, builds relationship with audience' },
       ],
       strategy: 'Create pillar content on weight loss, cluster around supplements, meal plans, and exercises. Build email list for repeat commissions. Monetize with ClickBank weight loss products and CPA supplement offers.',
       monetization: 'Primary: ClickBank weight loss products (50% commission). Secondary: CPA supplement offers ($30-45 per conversion). Tertiary: Email list (nurture sequences for repeat sales). Estimated: $500-2000/month per 1000 visitors.',
       timeline: 'Months 1-2: Build 8 pillar pages, optimize for SEO. Months 3-4: Drive traffic via content marketing, social media. Months 5-6: Scale with paid ads, email marketing. Months 6+: Passive income from email list and organic traffic.',
-      seoArchitecture: 'Pillar page (Weight Loss Hub) → Cluster pages (Keto, IF, Supplements) → Long-tail pages (Keto for Women, IF for Beginners). Internal linking strategy: 3-5 internal links per page, anchor text optimization, breadcrumb navigation.',
-      contentPillars: ['Weight Loss Science', 'Diet Strategies', 'Supplement Reviews', 'Success Stories', 'Exercise Routines', 'Nutrition Guides', 'Lifestyle Changes', 'Mental Health'],
-      conversionFunnels: ['Free Guide → Email List → Low Ticket ($27-47) → Mid Ticket ($97-197) → High Ticket ($497-997)']
     },
     scripts: [
-      {
-        title: 'Weight Loss Supplement Review',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I lost 30 pounds without dieting and here\'s how..." [Psychological trigger: Curiosity gap + effortless solution] PROBLEM (3-15s): "Most weight loss pills don\'t work because they don\'t address the real issue - your metabolism. I tried 12 different supplements and wasted $400 before finding the one that actually works..." [Pattern interrupt: Specific number, relatable struggle] SOLUTION (15-45s): "This supplement changed my life. It\'s scientifically formulated to boost metabolism by 23%, suppress appetite naturally, and give you sustained energy without jitters. I started seeing results in just 2 weeks - 3 pounds the first week, 2 pounds the second..." [Specificity: Exact percentages, timeline, results] PROOF (45-50s): "Look at these results from real users - Sarah lost 28 pounds in 8 weeks, Mike went from 245 to 195 in 12 weeks, Jennifer fit into her wedding dress..." [Social proof: Real names, specific results, emotional connection] CTA (50-60s): "Click the link in bio to get yours today. Limited time offer - 50% off for the first 100 customers! Plus, we\'re offering a 60-day money-back guarantee, so you have nothing to lose except the weight!" [Urgency: Limited time, scarcity, risk reversal]',
-        variations: ['Testimonial variant', 'Before/After variant', 'Scientific variant', 'Lifestyle variant']
+      { 
+        title: 'Weight Loss Supplement Review', 
+        duration: '60 sec', 
+        script: 'HOOK: "I lost 30 pounds without dieting and here\'s how..." [0-3 sec] PROBLEM: "Most weight loss pills don\'t work because they don\'t address the real issue - your metabolism..." [3-15 sec] SOLUTION: "This supplement changed my life. It\'s scientifically formulated to boost metabolism, suppress appetite, and give you energy. I started seeing results in just 2 weeks..." [15-45 sec] PROOF: "Look at these results from real users..." [45-50 sec] CTA: "Click the link in bio to get yours today. Limited time offer - 50% off for the first 100 customers!" [50-60 sec]' 
       },
-      {
-        title: 'Best Diet Plans Comparison',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I tried 5 different diets and only ONE actually worked..." [Curiosity + authority positioning] PROBLEM (3-15s): "There are so many diet options out there - keto, intermittent fasting, calorie counting, carnivore - which one actually works? Most people waste 3-6 months trying the wrong diet for their body type, spending hundreds on programs that don\'t deliver..." [Relatability: Common frustration, specific timeframe, financial pain] SOLUTION (15-45s): "I created a comprehensive comparison guide that breaks down the top 5 diets, shows detailed pros and cons for each, tells you which one is best for YOUR body type and lifestyle, includes meal plans, and shopping lists. My clients using this guide lost an average of 20 pounds in 8 weeks..." [Specificity: Detailed benefits, personalization, specific results] RESULTS (45-50s): "Here\'s what people are saying: \'I finally found a diet that works for my schedule\' - Jennifer. \'Lost 25 pounds and kept it off\' - Marcus. \'This saved me thousands on failed programs\' - Lisa..." [Testimonials: Specific names, diverse results, value proposition] CTA (50-60s): "Get your free guide now - link in bio. This is exactly what my personal training clients pay $200 for! Download it today and start seeing results within 7 days or your money back!" [Value emphasis: Price anchor, urgency, guarantee]',
-        variations: ['Expert interview variant', 'Transformation story variant', 'Science-backed variant', 'Budget-friendly variant']
-      }
-    ],
-    subNiches: {
-      'keto diet': { name: 'Keto Diet', microNiches: { 'keto beginners': { name: 'Keto for Beginners', microMicroNiches: { 'keto women beginners': { name: 'Keto for Women Beginners', traffic: 2320, competition: 28, difficulty: 34, cpaRange: '$35-45', monthlyRevenue: '$2,088', topKeywords: ['keto diet for women', 'keto meal plan women', 'keto for female beginners'], targetAudience: 'Women 25-45, health-conscious, seeking sustainable weight loss', painPoints: 'Hormonal changes, energy levels, social eating situations', conversionRate: '2.8%' }, 'keto men beginners': { name: 'Keto for Men Beginners', traffic: 2100, competition: 26, difficulty: 32, cpaRange: '$35-45', monthlyRevenue: '$1,890', topKeywords: ['keto diet for men', 'keto muscle building', 'male keto plan'], targetAudience: 'Men 25-50, fitness-focused, wanting muscle retention', painPoints: 'Maintaining muscle mass, energy for workouts, social pressure', conversionRate: '2.6%' }, 'keto over 40': { name: 'Keto for People Over 40', traffic: 1900, competition: 24, difficulty: 30, cpaRange: '$38-48', monthlyRevenue: '$1,710', topKeywords: ['keto diet over 40', 'keto for mature adults', 'age 40+ keto'], targetAudience: 'Adults 40-65, health-conscious, metabolic concerns', painPoints: 'Slower metabolism, joint health, medication interactions', conversionRate: '2.9%' } } }, 'keto advanced': { name: 'Advanced Keto', microMicroNiches: { 'keto muscle gain': { name: 'Keto for Muscle Gain', traffic: 1800, competition: 24, difficulty: 30, cpaRange: '$42-52', monthlyRevenue: '$1,800', topKeywords: ['keto muscle building', 'keto protein', 'keto bodybuilding'], targetAudience: 'Fitness enthusiasts, bodybuilders, muscle-focused individuals', painPoints: 'Protein timing, muscle loss concerns, performance optimization', conversionRate: '3.1%' }, 'keto athletes': { name: 'Keto for Athletes', traffic: 1600, competition: 22, difficulty: 28, cpaRange: '$40-50', monthlyRevenue: '$1,440', topKeywords: ['keto athletic performance', 'keto endurance', 'keto sports'], targetAudience: 'Competitive athletes, runners, cyclists, sports enthusiasts', painPoints: 'Energy levels, recovery, performance metrics', conversionRate: '2.7%' }, 'keto endurance': { name: 'Keto for Endurance', traffic: 1400, competition: 20, difficulty: 26, cpaRange: '$38-48', monthlyRevenue: '$1,260', topKeywords: ['keto endurance training', 'fat adaptation', 'keto marathon'], targetAudience: 'Endurance athletes, marathon runners, ultra-distance competitors', painPoints: 'Fat adaptation timeline, fueling strategies, performance consistency', conversionRate: '2.5%' } } } }
-    }
+      { 
+        title: 'Best Diet Plans Comparison', 
+        duration: '60 sec', 
+        script: 'HOOK: "I tried 5 different diets and only ONE actually worked..." [0-3 sec] PROBLEM: "There are so many diet options out there - keto, intermittent fasting, calorie counting - which one actually works? Most people waste months trying the wrong diet..." [3-15 sec] SOLUTION: "I created a comparison guide that breaks down the top 5 diets, shows pros and cons, and tells you which one is best for YOUR body type and lifestyle..." [15-45 sec] RESULTS: "My clients lost an average of 20 pounds in 8 weeks using this guide..." [45-50 sec] CTA: "Get your free guide now - link in bio. This is exactly what my personal training clients pay $200 for!" [50-60 sec]' 
+      },
+    ]
   },
   'insurance': {
-    analyze: { niche: 'Insurance', score: 82, difficulty: 48, profitPotential: 88, trafficPotential: 12000, verdict: 'BUILD', analysis: 'Insurance is one of the most profitable niches with high-intent buyers actively seeking quotes and information. Multiple insurance types create sub-niche opportunities. High CPA payouts and consistent demand make this a stable income source.', opportunities: ['Highest CPA payouts in the industry ($40-$60 per lead)', 'Multiple insurance types (car, home, life, health)', 'Year-round consistent traffic', 'Quote tools generate qualified leads', 'Email marketing for policy renewals'], challenges: ['High competition from established companies', 'Requires compliance with insurance regulations', 'Longer sales cycles', 'Need for trust and authority', 'Geographic targeting requirements'], recommendations: ['Create state-specific insurance guides', 'Build comparison tools and calculators', 'Focus on specific insurance types', 'Establish trust with expert content', 'Integrate with CPA networks for lead generation'], marketSize: '$1.2 Trillion USD annually', growthRate: '4.2% CAGR', topKeywords: ['cheap car insurance', 'best life insurance rates', 'affordable health insurance'], topOffers: ['CJ Affiliate ($40-60 payout)', 'Impact ($50+ payout)'], estimatedEarnings: '$1000-$5000/month per 1000 visitors' },
+    analyze: {
+      niche: 'Insurance',
+      score: 82,
+      difficulty: 48,
+      profitPotential: 88,
+      trafficPotential: 12000,
+      verdict: 'BUILD',
+      analysis: 'Insurance is one of the most profitable niches with high-intent buyers actively seeking quotes and information. Multiple insurance types create sub-niche opportunities. High CPA payouts and consistent demand make this a stable income source.',
+      opportunities: [
+        'Highest CPA payouts in the industry ($40-$60 per lead)',
+        'Multiple insurance types (car, home, life, health)',
+        'Year-round consistent traffic',
+        'Quote tools generate qualified leads',
+        'Email marketing for policy renewals',
+      ],
+      challenges: [
+        'High competition from established companies',
+        'Requires compliance with insurance regulations',
+        'Longer sales cycles',
+        'Need for trust and authority',
+        'Geographic targeting requirements',
+      ],
+      recommendations: [
+        'Create state-specific insurance guides',
+        'Build comparison tools and calculators',
+        'Focus on specific insurance types',
+        'Establish trust with expert content',
+        'Integrate with CPA networks for lead generation',
+      ],
+      marketSize: '$1.2 Trillion USD annually',
+      growthRate: '4.2% CAGR',
+      topKeywords: ['cheap car insurance', 'best life insurance rates', 'affordable health insurance'],
+      topOffers: ['CJ Affiliate ($40-60 payout)', 'Impact ($50+ payout)'],
+      estimatedEarnings: '$1000-$5000/month per 1000 visitors',
+    },
     keywords: [
-      { keyword: 'cheap car insurance quotes', traffic: 12000, competition: 45, difficulty: 50, intent: 'Commercial', searchVolume: '12,000/month', cpc: '$3.85', monetization: 'Very High - Lead generation', ranking: 'Hard', avgPosition: '20-35', ctr: '2.8%', conversion: '1.5%', monthlyRevenue: '$2,700' },
-      { keyword: 'best life insurance rates', traffic: 9800, competition: 40, difficulty: 48, intent: 'Commercial', searchVolume: '9,800/month', cpc: '$4.25', monetization: 'Very High - Quote leads', ranking: 'Hard', avgPosition: '18-32', ctr: '2.9%', conversion: '1.6%', monthlyRevenue: '$2,352' },
-      { keyword: 'affordable health insurance plans', traffic: 8500, competition: 38, difficulty: 45, intent: 'Commercial', searchVolume: '8,500/month', cpc: '$3.65', monetization: 'Very High - Policy leads', ranking: 'Hard', avgPosition: '19-33', ctr: '2.7%', conversion: '1.4%', monthlyRevenue: '$1,700' },
-      { keyword: 'home insurance quotes online', traffic: 7200, competition: 35, difficulty: 42, intent: 'Commercial', searchVolume: '7,200/month', cpc: '$3.45', monetization: 'High - Quote generation', ranking: 'Moderate', avgPosition: '15-28', ctr: '3.1%', conversion: '1.7%', monthlyRevenue: '$1,530' },
-      { keyword: 'pet insurance coverage', traffic: 5600, competition: 28, difficulty: 35, intent: 'Informational', searchVolume: '5,600/month', cpc: '$2.85', monetization: 'Medium - Comparison guides', ranking: 'Easy', avgPosition: '10-20', ctr: '3.5%', conversion: '1.9%', monthlyRevenue: '$1,064' },
-      { keyword: 'travel insurance plans', traffic: 4800, competition: 25, difficulty: 32, intent: 'Commercial', searchVolume: '4,800/month', cpc: '$2.95', monetization: 'High - Travel insurance leads', ranking: 'Easy', avgPosition: '9-18', ctr: '3.8%', conversion: '2.1%', monthlyRevenue: '$1,440' },
-      { keyword: 'disability insurance rates', traffic: 4200, competition: 22, difficulty: 30, intent: 'Commercial', searchVolume: '4,200/month', cpc: '$3.15', monetization: 'High - Disability quotes', ranking: 'Easy', avgPosition: '8-16', ctr: '3.9%', conversion: '2.2%', monthlyRevenue: '$1,302' },
-      { keyword: 'umbrella insurance coverage', traffic: 3600, competition: 20, difficulty: 28, intent: 'Informational', searchVolume: '3,600/month', cpc: '$2.75', monetization: 'Medium - Educational content', ranking: 'Very Easy', avgPosition: '6-14', ctr: '4.2%', conversion: '1.8%', monthlyRevenue: '$810' },
-      { keyword: 'auto insurance for young drivers', traffic: 6800, competition: 32, difficulty: 38, intent: 'Commercial', searchVolume: '6,800/month', cpc: '$3.55', monetization: 'Very High - Young driver quotes', ranking: 'Moderate', avgPosition: '14-26', ctr: '3.2%', conversion: '1.8%', monthlyRevenue: '$1,530' },
-      { keyword: 'term life insurance for women', traffic: 5400, competition: 26, difficulty: 34, intent: 'Commercial', searchVolume: '5,400/month', cpc: '$3.85', monetization: 'Very High - Female life quotes', ranking: 'Easy', avgPosition: '11-21', ctr: '3.6%', conversion: '2.0%', monthlyRevenue: '$1,620' },
-      { keyword: 'whole life insurance benefits', traffic: 4600, competition: 24, difficulty: 32, intent: 'Informational', searchVolume: '4,600/month', cpc: '$3.25', monetization: 'High - Comparison content', ranking: 'Easy', avgPosition: '10-19', ctr: '3.7%', conversion: '1.9%', monthlyRevenue: '$1,150' },
-      { keyword: 'health insurance for self employed', traffic: 5200, competition: 28, difficulty: 36, intent: 'Commercial', searchVolume: '5,200/month', cpc: '$3.45', monetization: 'Very High - Self-employed quotes', ranking: 'Moderate', avgPosition: '12-22', ctr: '3.4%', conversion: '1.8%', monthlyRevenue: '$1,404' },
-      { keyword: 'homeowners insurance quotes', traffic: 6200, competition: 30, difficulty: 36, intent: 'Commercial', searchVolume: '6,200/month', cpc: '$3.35', monetization: 'High - Home quotes', ranking: 'Moderate', avgPosition: '13-24', ctr: '3.3%', conversion: '1.7%', monthlyRevenue: '$1,302' },
-      { keyword: 'renters insurance coverage', traffic: 3800, competition: 18, difficulty: 26, intent: 'Informational', searchVolume: '3,800/month', cpc: '$2.45', monetization: 'Medium - Renter guides', ranking: 'Very Easy', avgPosition: '5-13', ctr: '4.4%', conversion: '2.0%', monthlyRevenue: '$760' },
-      { keyword: 'business insurance requirements', traffic: 4400, competition: 22, difficulty: 30, intent: 'Informational', searchVolume: '4,400/month', cpc: '$3.05', monetization: 'High - Business quotes', ranking: 'Easy', avgPosition: '9-17', ctr: '3.8%', conversion: '2.1%', monthlyRevenue: '$1,232' },
-      { keyword: 'workers compensation insurance', traffic: 3900, competition: 20, difficulty: 28, intent: 'Informational', searchVolume: '3,900/month', cpc: '$2.95', monetization: 'Medium - WC information', ranking: 'Very Easy', avgPosition: '7-15', ctr: '4.1%', conversion: '1.9%', monthlyRevenue: '$910' },
-      { keyword: 'liability insurance for contractors', traffic: 3200, competition: 16, difficulty: 24, intent: 'Commercial', searchVolume: '3,200/month', cpc: '$3.25', monetization: 'High - Contractor quotes', ranking: 'Very Easy', avgPosition: '6-14', ctr: '4.3%', conversion: '2.2%', monthlyRevenue: '$1,056' },
-      { keyword: 'motorcycle insurance rates', traffic: 2800, competition: 14, difficulty: 22, intent: 'Commercial', searchVolume: '2,800/month', cpc: '$2.85', monetization: 'Medium - Motorcycle quotes', ranking: 'Very Easy', avgPosition: '5-12', ctr: '4.5%', conversion: '2.0%', monthlyRevenue: '$672' },
-      { keyword: 'boat insurance coverage', traffic: 2400, competition: 12, difficulty: 20, intent: 'Informational', searchVolume: '2,400/month', cpc: '$2.65', monetization: 'Medium - Boat insurance info', ranking: 'Very Easy', avgPosition: '4-11', ctr: '4.7%', conversion: '1.8%', monthlyRevenue: '$480' },
-      { keyword: 'RV insurance quotes', traffic: 2100, competition: 10, difficulty: 18, intent: 'Commercial', searchVolume: '2,100/month', cpc: '$2.95', monetization: 'Medium - RV quotes', ranking: 'Very Easy', avgPosition: '3-10', ctr: '4.9%', conversion: '2.1%', monthlyRevenue: '$630' }
+      { keyword: 'cheap car insurance quotes', traffic: 12000, competition: 45, difficulty: 50 },
+      { keyword: 'best life insurance rates', traffic: 9800, competition: 40, difficulty: 48 },
+      { keyword: 'affordable health insurance plans', traffic: 8500, competition: 38, difficulty: 45 },
+      { keyword: 'home insurance quotes online', traffic: 7200, competition: 35, difficulty: 42 },
+      { keyword: 'pet insurance coverage', traffic: 5600, competition: 28, difficulty: 35 },
+      { keyword: 'travel insurance plans', traffic: 4800, competition: 25, difficulty: 32 },
+      { keyword: 'disability insurance rates', traffic: 4200, competition: 22, difficulty: 30 },
+      { keyword: 'umbrella insurance coverage', traffic: 3600, competition: 20, difficulty: 28 },
+      { keyword: 'car insurance for young drivers', traffic: 6800, competition: 32, difficulty: 38 },
+      { keyword: 'car insurance for seniors', traffic: 5900, competition: 28, difficulty: 34 },
+      { keyword: 'life insurance for women', traffic: 5200, competition: 24, difficulty: 32 },
+      { keyword: 'life insurance for men', traffic: 4800, competition: 22, difficulty: 30 },
+      { keyword: 'health insurance for self employed', traffic: 4600, competition: 26, difficulty: 33 },
+      { keyword: 'health insurance for families', traffic: 4200, competition: 24, difficulty: 31 },
+      { keyword: 'home insurance for first time buyers', traffic: 3900, competition: 20, difficulty: 28 },
+      { keyword: 'renters insurance cheap', traffic: 3600, competition: 18, difficulty: 26 },
+      { keyword: 'car insurance quotes comparison', traffic: 5400, competition: 30, difficulty: 36 },
+      { keyword: 'best life insurance companies', traffic: 4900, competition: 26, difficulty: 32 },
+      { keyword: 'affordable car insurance', traffic: 4200, competition: 24, difficulty: 30 },
+      { keyword: 'insurance rates by state', traffic: 3800, competition: 22, difficulty: 28 },
     ],
-    offers: [{ network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$50', commission: '55%', desc: 'Insurance quotes and leads' }, { network: 'Impact', url: 'https://www.impact.com', payout: '$55', commission: '60%', desc: 'Premium insurance offers' }, { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$45', commission: '50%', desc: 'Insurance and financial services' }, { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$48', commission: '52%', desc: 'Insurance affiliates' }, { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$42', commission: '46%', desc: 'Insurance guides and tools' }],
+    offers: [
+      { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$55', commission: '55%', desc: 'Insurance guides, financial products' },
+      { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$45', commission: '50%', desc: 'Major insurance companies' },
+      { network: 'Impact', url: 'https://www.impact.com', payout: '$50', commission: '52%', desc: 'Premium insurance offers' },
+      { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$40', commission: '45%', desc: 'Insurance comparison tools' },
+      { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$48', commission: '50%', desc: 'Diverse insurance merchants' },
+    ],
     domains: [
-      { domain: 'CheapInsuranceQuotes.com', age: 10, traffic: 3200, backlinks: 580, authority: 48, price: '$22', verdict: 'EXCELLENT', domainMetrics: { referringDomains: 175, topicAuthority: 'Insurance: 82%', backlinksProfile: 'Strong (News: 16%, Blogs: 36%, Authority: 48%)', trafficSources: 'Organic: 84%, Direct: 11%, Referral: 5%', topPages: ['Car Insurance (680 visitors)', 'Home Insurance (520 visitors)', 'Life Insurance (480 visitors)'], monetizationPotential: '$3,200-4,800/month', acquisitionStrategy: 'Insurance broker partnerships, financial advisor outreach, state insurance commissioner mentions' } },
-      { domain: 'BestInsuranceRates.net', age: 8, traffic: 2400, backlinks: 420, authority: 40, price: '$16', verdict: 'GOOD', domainMetrics: { referringDomains: 128, topicAuthority: 'Insurance: 75%', backlinksProfile: 'Moderate (News: 12%, Blogs: 38%, Authority: 50%)', trafficSources: 'Organic: 82%, Direct: 13%, Referral: 5%', topPages: ['Rate Comparison (420 visitors)', 'Savings Tips (360 visitors)', 'Quote Tools (320 visitors)'], monetizationPotential: '$2,400-3,600/month', acquisitionStrategy: 'Insurance company partnerships, financial blog networks, personal finance sites' } },
-      { domain: 'InsuranceComparison.org', age: 12, traffic: 3800, backlinks: 720, authority: 56, price: '$28', verdict: 'EXCELLENT', domainMetrics: { referringDomains: 220, topicAuthority: 'Insurance: 88%', backlinksProfile: 'Very Strong (News: 18%, Blogs: 35%, Authority: 47%)', trafficSources: 'Organic: 86%, Direct: 9%, Referral: 5%', topPages: ['Comparison Tool (680 visitors)', 'Best Rates (620 visitors)', 'Reviews (540 visitors)'], monetizationPotential: '$3,800-5,700/month', acquisitionStrategy: 'Major insurance company partnerships, financial media features, industry award submissions' } },
-      { domain: 'AffordableInsurance.com', age: 9, traffic: 2800, backlinks: 480, authority: 44, price: '$19', verdict: 'GOOD', domainMetrics: { referringDomains: 145, topicAuthority: 'Insurance: 78%', backlinksProfile: 'Moderate (News: 14%, Blogs: 37%, Authority: 49%)', trafficSources: 'Organic: 83%, Direct: 12%, Referral: 5%', topPages: ['Budget Plans (480 visitors)', 'Discounts (420 visitors)', 'Savings Guide (360 visitors)'], monetizationPotential: '$2,800-4,200/month', acquisitionStrategy: 'Budget-focused financial sites, coupon networks, discount aggregators' } },
-      { domain: 'InsuranceQuoteHelper.net', age: 7, traffic: 2100, backlinks: 360, authority: 36, price: '$13', verdict: 'GOOD', domainMetrics: { referringDomains: 108, topicAuthority: 'Insurance: 68%', backlinksProfile: 'Moderate (News: 10%, Blogs: 40%, Authority: 50%)', trafficSources: 'Organic: 80%, Direct: 15%, Referral: 5%', topPages: ['Quote Tool (360 visitors)', 'Guides (300 visitors)', 'FAQ (240 visitors)'], monetizationPotential: '$2,100-3,150/month', acquisitionStrategy: 'Insurance agent networks, online quote platforms, financial calculators' } },
-      { domain: 'QuickInsuranceQuotes.org', age: 11, traffic: 2600, backlinks: 440, authority: 42, price: '$17', verdict: 'GOOD', domainMetrics: { referringDomains: 132, topicAuthority: 'Insurance: 72%', backlinksProfile: 'Moderate (News: 12%, Blogs: 38%, Authority: 50%)', trafficSources: 'Organic: 81%, Direct: 14%, Referral: 5%', topPages: ['Quick Quotes (440 visitors)', 'Instant Comparison (380 visitors)', 'Results (320 visitors)'], monetizationPotential: '$2,600-3,900/month', acquisitionStrategy: 'Speed-focused marketing, mobile optimization partnerships, instant quote networks' } },
-      { domain: 'InsuranceGuideOnline.com', age: 6, traffic: 1900, backlinks: 320, authority: 34, price: '$11', verdict: 'FAIR', domainMetrics: { referringDomains: 96, topicAuthority: 'Insurance: 62%', backlinksProfile: 'Weak (News: 8%, Blogs: 42%, Authority: 50%)', trafficSources: 'Organic: 78%, Direct: 17%, Referral: 5%', topPages: ['Guides (320 visitors)', 'Tips (280 visitors)', 'Basics (240 visitors)'], monetizationPotential: '$1,520-2,280/month', acquisitionStrategy: 'Educational content networks, beginner insurance sites, learning platforms' } },
-      { domain: 'BestRatesInsurance.net', age: 8, traffic: 2200, backlinks: 380, authority: 38, price: '$14', verdict: 'GOOD', domainMetrics: { referringDomains: 114, topicAuthority: 'Insurance: 70%', backlinksProfile: 'Moderate (News: 11%, Blogs: 39%, Authority: 50%)', trafficSources: 'Organic: 79%, Direct: 16%, Referral: 5%', topPages: ['Rate Finder (380 visitors)', 'Best Deals (320 visitors)', 'Savings (280 visitors)'], monetizationPotential: '$2,200-3,300/month', acquisitionStrategy: 'Rate comparison networks, deal aggregators, financial savings communities' } }
+      { domain: 'InsuranceQuotes.com', age: 16, traffic: 4500, backlinks: 850, authority: 58, price: '$35', verdict: 'EXCELLENT' },
+      { domain: 'CarInsuranceTips.net', age: 10, traffic: 2800, backlinks: 520, authority: 45, price: '$20', verdict: 'GOOD' },
+      { domain: 'BestInsuranceRates.org', age: 13, traffic: 3600, backlinks: 680, authority: 52, price: '$28', verdict: 'EXCELLENT' },
+      { domain: 'InsuranceComparison.com', age: 11, traffic: 3200, backlinks: 600, authority: 48, price: '$24', verdict: 'EXCELLENT' },
+      { domain: 'AffordableInsurance.net', age: 9, traffic: 2400, backlinks: 450, authority: 40, price: '$16', verdict: 'GOOD' },
+      { domain: 'InsuranceGuide.org', age: 14, traffic: 3800, backlinks: 720, authority: 54, price: '$30', verdict: 'EXCELLENT' },
+      { domain: 'QuickInsuranceQuotes.com', age: 8, traffic: 2100, backlinks: 380, authority: 36, price: '$14', verdict: 'GOOD' },
+      { domain: 'InsuranceSavings.net', age: 12, traffic: 3100, backlinks: 580, authority: 46, price: '$22', verdict: 'EXCELLENT' },
     ],
     blueprint: {
       pages: [
-        { name: 'Homepage', description: 'Insurance comparison focus, testimonials, quote tool CTA', strategy: 'Lead with savings promise (e.g., "Save up to 40% on insurance"), feature quote comparison tool prominently, social proof with customer savings amounts, trust badges (licensed, verified), immediate CTA to get quotes' },
-        { name: 'Insurance Guides', description: 'Comprehensive guides for each insurance type', strategy: 'Create 50+ page guides for each insurance type, include state-specific information, comparison tables, pros/cons, pricing ranges, coverage explanations, internal linking to quote tools' },
-        { name: 'Quote Comparison', description: 'Interactive tool comparing quotes from multiple providers', strategy: 'Build interactive quote comparison tool, integrate with 10+ insurance APIs, real-time quote generation, side-by-side comparison, savings calculator, lead capture on results page' },
-        { name: 'State-Specific Guides', description: 'Guides for insurance requirements by state', strategy: 'Create 50 state-specific guides with minimum coverage requirements, average costs by state, local regulations, recommended providers, state-specific discounts, SEO optimized for state keywords' },
-        { name: 'FAQ', description: 'Common insurance questions answered', strategy: 'Answer 100+ FAQs with schema markup for featured snippets, address common objections, link to relevant guides, video answers for top 20 questions, searchable FAQ database' },
-        { name: 'Blog', description: 'Insurance tips, updates, and industry news', strategy: 'Publish 2-3 blog posts weekly on insurance trends, savings tips, regulatory changes, seasonal insurance needs, link to guides and quote tools, email capture for newsletter' },
-        { name: 'Calculator Tools', description: 'Coverage calculators for different insurance types', strategy: 'Build 10+ interactive calculators (coverage needed, savings potential, ROI), lead capture after results, personalized recommendations, shareable results, email follow-up sequences' },
-        { name: 'Contact', description: 'Lead capture form for insurance quotes', strategy: 'Multiple CTAs throughout site, phone number for immediate quotes, contact form with follow-up automation, live chat for instant support, SMS opt-in for quote alerts' }
+        { name: 'Homepage', description: 'Insurance comparison tools, quote forms, trust badges, customer testimonials' },
+        { name: 'Car Insurance', description: 'Comprehensive guide, state-by-state information, quote comparison, CPA offers' },
+        { name: 'Home Insurance', description: 'Coverage types, cost factors, comparison tables, affiliate links' },
+        { name: 'Life Insurance', description: 'Term vs permanent, calculators, quotes, high-commission CPA offers' },
+        { name: 'Health Insurance', description: 'Plan types, ACA information, quotes, marketplace links' },
+        { name: 'Quotes', description: 'Interactive quote tool, lead capture, CPA network integration' },
+        { name: 'Reviews', description: 'Insurance company reviews, ratings, comparison charts' },
+        { name: 'Contact', description: 'Support form, email capture, lead generation' },
       ],
-      strategy: 'Create state-specific insurance guides targeting high-intent buyers. Build quote comparison tools. Monetize with CPA leads and affiliate commissions.',
-      monetization: 'Primary: Insurance leads ($40-60 CPA). Secondary: Affiliate commissions. Tertiary: Ads. Estimated: $1000-5000/month per 1000 visitors.',
-      timeline: 'Months 1-2: Build 8 core pages. Months 3-4: Create state guides. Months 5-6: Drive traffic via SEO. Months 6+: Scale with paid ads.',
-      seoArchitecture: 'Pillar page (Insurance Hub) → Cluster pages (Car, Home, Life, Health) → Long-tail pages (State-specific, demographic-specific). Internal linking: 5-8 links per page, anchor text optimization.',
-      contentPillars: ['Insurance Basics', 'Coverage Guides', 'Savings Tips', 'State Requirements', 'Comparison Tools', 'Quote Generators', 'Customer Reviews', 'Regulatory Updates'],
-      conversionFunnels: ['Quote Tool → Lead Capture → Phone Call → Policy Comparison → Purchase']
+      strategy: 'Create comparison content, quote tools, and insurance guides. Build email list for repeat commissions. Monetize with insurance CPA offers ($40-55 per lead).',
+      monetization: 'Primary: Insurance CPA offers ($40-55 per qualified lead). Secondary: Affiliate commissions from quote tools. Tertiary: Email marketing for high-ticket policies. Estimated: $1000-5000/month per 1000 visitors.',
+      timeline: 'Months 1-2: Build 8 comparison pages, integrate quote tools. Months 3-4: Drive traffic via SEO and content. Months 5-6: Scale with paid ads. Months 6+: Passive income from leads and email marketing.',
     },
     scripts: [
-      {
-        title: 'Save on Car Insurance',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I saved $500/year on car insurance..." [Specific savings amount creates credibility] PROBLEM (3-15s): "Most people overpay for insurance because they don\'t shop around. The average driver overpays by $400-600 annually..." [Relatable problem, specific data] SOLUTION (15-45s): "Here\'s how to get the best rates: Compare quotes from at least 5 companies, ask about available discounts (bundling, safe driver, good student), increase deductible if you have emergency fund, review coverage annually..." [Actionable steps, specific tactics] PROOF (45-50s): "See real savings: John saved $480/year, Maria saved $620/year, David saved $540/year..." [Specific names and amounts] CTA (50-60s): "Get free quotes - link in bio! Takes 5 minutes and could save you hundreds. No obligation, no hidden fees!" [Urgency, ease, reassurance]',
-        variations: ['Home insurance variant', 'Life insurance variant', 'Bundle savings variant', 'Discount-focused variant']
+      { 
+        title: 'Car Insurance Savings', 
+        duration: '60 sec', 
+        script: 'HOOK: "I saved $1200 on car insurance in just 15 minutes..." [0-3 sec] PROBLEM: "Most people overpay for car insurance because they don\'t shop around. Insurance companies count on you staying with them..." [3-15 sec] SOLUTION: "I created a simple process to compare quotes from 5+ companies and find the lowest rates. It takes 15 minutes and could save you $1000+ per year..." [15-45 sec] PROOF: "My followers saved an average of $800 in the first month..." [45-50 sec] CTA: "Get your free quote comparison guide - link in bio. See how much you can save today!" [50-60 sec]' 
       },
-      {
-        title: 'Life Insurance Explained',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "Life insurance doesn\'t have to be complicated..." [Simplification promise] PROBLEM (3-15s): "People don\'t understand life insurance - term vs whole, coverage amounts, riders. This confusion costs families thousands in overpayment or under-coverage..." [Specific pain points] SOLUTION (15-45s): "Here\'s a simple explanation: Term life (temporary, affordable, best for most people) vs Whole life (permanent, expensive, investment component). For most families, 10-12x annual income is the right coverage amount. Get quotes from 3+ companies..." [Clear breakdown, specific guidance] PROOF (45-50s): "See how families are protecting themselves: Family A got $500k coverage for just $35/month, Family B saved $200/month by switching..." [Relatable examples, specific numbers] CTA (50-60s): "Learn more - link in bio! Get your free quote in 5 minutes. Protect your family today!" [Action-oriented, family focus]',
-        variations: ['Young family variant', 'Self-employed variant', 'Retirement planning variant', 'Estate planning variant']
-      }
+      { 
+        title: 'Life Insurance Guide', 
+        duration: '60 sec', 
+        script: 'HOOK: "Protect your family for just pennies a day..." [0-3 sec] PROBLEM: "Life insurance seems expensive and confusing. Most people don\'t have enough coverage to protect their families..." [3-15 sec] SOLUTION: "Term life insurance is actually affordable. A 30-year-old can get $1 million coverage for just $30/month. I break down exactly what you need and how to get the best rates..." [15-45 sec] RESULTS: "My guide has helped thousands of families get protected..." [45-50 sec] CTA: "Download your free life insurance guide - link in bio. Get quotes from top companies today!" [50-60 sec]' 
+      },
+    ]
+  },
+  'alcohol rehabilitation': {
+    analyze: {
+      niche: 'Alcohol Rehabilitation',
+      score: 85,
+      difficulty: 45,
+      profitPotential: 88,
+      trafficPotential: 9200,
+      verdict: 'BUILD',
+      analysis: 'Alcohol rehabilitation is a high-value niche with desperate, motivated buyers. People seeking help are willing to pay premium prices for solutions. High CPA payouts and strong affiliate programs make this very profitable.',
+      opportunities: [
+        'Very high CPA payouts ($50-$100+ per lead)',
+        'Motivated audience with urgent need',
+        'Multiple program types (inpatient, outpatient, online)',
+        'Strong email marketing potential',
+        'Repeat customers and referrals',
+      ],
+      challenges: [
+        'Requires sensitivity and ethical approach',
+        'Strict regulations and compliance requirements',
+        'Need for professional credibility',
+        'Sensitive audience requires trust',
+        'Legal liability concerns',
+      ],
+      recommendations: [
+        'Partner with licensed treatment centers',
+        'Create educational content about recovery',
+        'Build trust through testimonials and success stories',
+        'Establish authority with expert credentials',
+        'Focus on specific programs and treatment types',
+      ],
+      marketSize: '$35.2 Billion USD annually',
+      growthRate: '6.8% CAGR',
+      topKeywords: ['alcohol rehabilitation programs', 'best rehab centers', 'alcohol treatment near me'],
+      topOffers: ['CPA networks ($50-100 payout)', 'Rehab affiliate programs'],
+      estimatedEarnings: '$1000-$4000/month per 1000 visitors',
+    },
+    keywords: [
+      { keyword: 'alcohol rehabilitation programs', traffic: 9200, competition: 38, difficulty: 42 },
+      { keyword: 'best alcohol rehab centers', traffic: 7800, competition: 35, difficulty: 40 },
+      { keyword: 'alcohol treatment near me', traffic: 6900, competition: 32, difficulty: 38 },
+      { keyword: 'inpatient alcohol rehab', traffic: 5600, competition: 28, difficulty: 35 },
+      { keyword: 'outpatient alcohol treatment', traffic: 5100, competition: 25, difficulty: 33 },
+      { keyword: 'alcohol addiction recovery', traffic: 4800, competition: 22, difficulty: 30 },
+      { keyword: 'how to stop drinking alcohol', traffic: 7200, competition: 30, difficulty: 35 },
+      { keyword: 'alcohol rehab cost', traffic: 4300, competition: 20, difficulty: 28 },
     ],
-    subNiches: {
-      'car insurance': { name: 'Car Insurance', microNiches: { 'young drivers': { name: 'Car Insurance for Young Drivers', microMicroNiches: { 'teen insurance': { name: 'Teen Car Insurance', traffic: 2100, competition: 32, difficulty: 38, cpaRange: '$38-48', monthlyRevenue: '$1,890', topKeywords: ['teen car insurance', 'insurance for teenage drivers', 'young driver insurance'], targetAudience: 'Parents of teen drivers, teens 16-19', painPoints: 'High premiums, limited driving experience, safety concerns', conversionRate: '1.8%' }, 'college student insurance': { name: 'College Student Car Insurance', traffic: 1800, competition: 28, difficulty: 34, cpaRange: '$36-46', monthlyRevenue: '$1,620', topKeywords: ['college student car insurance', 'student driver insurance', 'insurance for college students'], targetAudience: 'College students, parents, budget-conscious', painPoints: 'Limited budget, temporary coverage, part-time driving', conversionRate: '1.7%' }, 'first time driver': { name: 'First Time Driver Insurance', traffic: 1600, competition: 26, difficulty: 32, cpaRange: '$34-44', monthlyRevenue: '$1,440', topKeywords: ['first time driver insurance', 'new driver insurance', 'beginner driver insurance'], targetAudience: 'New drivers of all ages, parents', painPoints: 'No driving history, uncertainty about coverage, high rates', conversionRate: '1.6%' } } } } },
-      'life insurance': { name: 'Life Insurance', microNiches: { 'term life': { name: 'Term Life Insurance', microMicroNiches: { 'term women': { name: 'Term Life Insurance for Women', traffic: 1350, competition: 24, difficulty: 30, cpaRange: '$48-58', monthlyRevenue: '$1,620', topKeywords: ['term life insurance women', 'life insurance for women', 'female life insurance'], targetAudience: 'Women 25-55, career-focused, family-oriented', painPoints: 'Gender-specific pricing, family protection, career interruptions', conversionRate: '2.0%' }, 'term men': { name: 'Term Life Insurance for Men', traffic: 1200, competition: 22, difficulty: 28, cpaRange: '$46-56', monthlyRevenue: '$1,440', topKeywords: ['term life insurance men', 'life insurance for men', 'male life insurance'], targetAudience: 'Men 25-55, primary earners, family providers', painPoints: 'Income replacement, family security, affordability', conversionRate: '1.9%' }, 'term seniors': { name: 'Term Life Insurance for Seniors', traffic: 1100, competition: 20, difficulty: 26, cpaRange: '$50-60', monthlyRevenue: '$1,320', topKeywords: ['term life insurance seniors', 'life insurance over 65', 'senior life insurance'], targetAudience: 'Seniors 55-75, retirees, legacy planning', painPoints: 'Health conditions, affordability, legacy concerns', conversionRate: '2.1%' } } } } }
-    }
+    offers: [
+      { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$75', commission: '60%', desc: 'Recovery programs, health guides' },
+      { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$60', commission: '55%', desc: 'Rehab centers, treatment facilities' },
+      { network: 'Impact', url: 'https://www.impact.com', payout: '$80', commission: '65%', desc: 'Premium rehab programs' },
+      { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$70', commission: '58%', desc: 'Recovery services, counseling' },
+      { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$55', commission: '50%', desc: 'Health and wellness programs' },
+    ],
+    domains: [
+      { domain: 'AlcoholRehabGuide.com', age: 11, traffic: 3200, backlinks: 580, authority: 48, price: '$24', verdict: 'EXCELLENT' },
+      { domain: 'BestRehabCenters.org', age: 13, traffic: 3800, backlinks: 720, authority: 54, price: '$30', verdict: 'EXCELLENT' },
+      { domain: 'RecoveryPrograms.net', age: 10, traffic: 2900, backlinks: 520, authority: 45, price: '$20', verdict: 'GOOD' },
+      { domain: 'AlcoholTreatment.com', age: 12, traffic: 3100, backlinks: 600, authority: 50, price: '$26', verdict: 'EXCELLENT' },
+      { domain: 'AddictionRecovery.org', age: 15, traffic: 4200, backlinks: 850, authority: 58, price: '$35', verdict: 'EXCELLENT' },
+      { domain: 'SoberLiving.net', age: 9, traffic: 2400, backlinks: 420, authority: 40, price: '$16', verdict: 'GOOD' },
+      { domain: 'RehabOptions.com', age: 8, traffic: 2100, backlinks: 380, authority: 36, price: '$14', verdict: 'GOOD' },
+      { domain: 'RecoveryHelp.org', age: 14, traffic: 3600, backlinks: 680, authority: 52, price: '$28', verdict: 'EXCELLENT' },
+    ],
+    blueprint: {
+      pages: [
+        { name: 'Homepage', description: 'Compassionate welcome, program overview, success stories, immediate help CTA' },
+        { name: 'Treatment Options', description: 'Inpatient vs outpatient, program types, cost comparison, CPA offers' },
+        { name: 'Success Stories', description: 'Real recovery journeys, before/after, testimonials, builds hope' },
+        { name: 'FAQ', description: 'Common questions, addresses fears, explains process' },
+        { name: 'Blog', description: 'Recovery tips, addiction education, coping strategies' },
+        { name: 'Resources', description: 'Support groups, hotlines, downloadable guides' },
+        { name: 'Contact', description: 'Intake form, phone number, immediate assistance' },
+        { name: 'Insurance', description: 'Coverage information, payment options, financial assistance' },
+      ],
+      strategy: 'Create educational content about recovery, build trust through testimonials, monetize with high-value CPA rehab offers. Focus on compassion and helping people find treatment.',
+      monetization: 'Primary: Rehab CPA offers ($50-100 per qualified lead). Secondary: Insurance affiliate commissions. Tertiary: Donation links and support. Estimated: $1000-4000/month per 1000 visitors.',
+      timeline: 'Months 1-2: Build 8 pages with compassionate content. Months 3-4: Drive traffic via SEO and content. Months 5-6: Scale with paid ads. Months 6+: Passive income from leads.',
+    },
+    scripts: [
+      { 
+        title: 'Recovery Success Story', 
+        duration: '60 sec', 
+        script: 'HOOK: "I was at rock bottom with my drinking... then everything changed..." [0-3 sec] PROBLEM: "I couldn\'t stop drinking. I lost my job, my family, my self-respect. I tried everything but nothing worked..." [3-15 sec] SOLUTION: "I found a treatment program that actually understood my struggles. The compassionate staff helped me rebuild my life. Now I\'m 2 years sober..." [15-45 sec] RESULTS: "My family is back, I have a great job, and I\'m finally happy..." [45-50 sec] CTA: "If you\'re struggling with alcohol, help is available. Click the link in bio to find treatment options today. Your recovery is possible!" [50-60 sec]' 
+      },
+      { 
+        title: 'Treatment Options Explained', 
+        duration: '60 sec', 
+        script: 'HOOK: "Confused about alcohol treatment options? Let me break it down..." [0-3 sec] PROBLEM: "There are so many treatment programs - inpatient, outpatient, online - how do you know which one is right for you?" [3-15 sec] SOLUTION: "I\'ve researched the top treatment programs and created a guide comparing costs, effectiveness, and what to expect. Each program has pros and cons..." [15-45 sec] RESULTS: "My guide helps people find the right program for their situation..." [45-50 sec] CTA: "Get your free treatment comparison guide - link in bio. Find the right program for you today!" [50-60 sec]' 
+      },
+    ]
   },
   'cryptocurrency': {
-    analyze: { niche: 'Cryptocurrency', score: 75, difficulty: 45, profitPotential: 82, trafficPotential: 9500, verdict: 'BUILD', analysis: 'Cryptocurrency is a high-growth niche with massive traffic and high-intent buyers. Multiple monetization options through exchanges, courses, and trading platforms. Requires expertise and compliance awareness.', opportunities: ['Exchange affiliate programs ($40-80 per signup)', 'Trading course sales (high ticket items)', 'Wallet and security product affiliates', 'Newsletter monetization', 'Community building and coaching'], challenges: ['Regulatory uncertainty', 'High volatility', 'Technical complexity', 'Scam associations', 'Requires credibility and expertise'], recommendations: ['Focus on education and security', 'Build trust through transparency', 'Create beginner-friendly content', 'Partner with reputable exchanges', 'Stay updated on regulations'], marketSize: '$2.1 Trillion USD', growthRate: '15.2% CAGR', topKeywords: ['how to buy bitcoin', 'best crypto exchanges', 'bitcoin price'], topOffers: ['Exchange affiliates ($40-80)', 'Trading courses ($50-100)'], estimatedEarnings: '$800-$3000/month per 1000 visitors' },
+    analyze: {
+      niche: 'Cryptocurrency',
+      score: 72,
+      difficulty: 55,
+      profitPotential: 82,
+      trafficPotential: 15000,
+      verdict: 'BUILD',
+      analysis: 'Cryptocurrency is a high-traffic, high-profit niche with passionate audience. Volatile but lucrative with multiple monetization options. Requires technical knowledge and regulatory awareness.',
+      opportunities: [
+        'Massive monthly search volume (15000+)',
+        'High CPA payouts ($30-$80 per conversion)',
+        'Multiple crypto platforms and exchanges',
+        'Trading courses and education programs',
+        'Email marketing to engaged audience',
+      ],
+      challenges: [
+        'Highly competitive niche',
+        'Regulatory uncertainty',
+        'Market volatility',
+        'Requires technical credibility',
+        'Risk of promoting scams',
+      ],
+      recommendations: [
+        'Focus on education and beginner guides',
+        'Partner with legitimate crypto platforms',
+        'Create comparison content for exchanges',
+        'Build trust through transparent reviews',
+        'Stay updated on regulations',
+      ],
+      marketSize: '$2.1 Trillion USD market cap',
+      growthRate: '12.5% CAGR',
+      topKeywords: ['best crypto exchanges', 'how to buy bitcoin', 'cryptocurrency trading'],
+      topOffers: ['Crypto exchange affiliates', 'Trading course offers'],
+      estimatedEarnings: '$800-$3500/month per 1000 visitors',
+    },
     keywords: [
-      { keyword: 'how to buy bitcoin', traffic: 9500, competition: 40, difficulty: 45, intent: 'Commercial', searchVolume: '9,500/month', cpc: '$2.15', monetization: 'High - Exchange affiliates', ranking: 'Moderate', avgPosition: '16-28', ctr: '3.2%', conversion: '1.8%', monthlyRevenue: '$1,710' },
-      { keyword: 'best crypto exchanges', traffic: 8200, competition: 38, difficulty: 43, intent: 'Commercial', searchVolume: '8,200/month', cpc: '$2.45', monetization: 'High - Exchange reviews', ranking: 'Moderate', avgPosition: '14-26', ctr: '3.4%', conversion: '1.9%', monthlyRevenue: '$1,804' },
-      { keyword: 'bitcoin price today', traffic: 7800, competition: 42, difficulty: 48, intent: 'Informational', searchVolume: '7,800/month', cpc: '$1.85', monetization: 'Medium - Ad revenue', ranking: 'Hard', avgPosition: '20-35', ctr: '2.9%', conversion: '0.8%', monthlyRevenue: '$624' },
-      { keyword: 'ethereum price', traffic: 6900, competition: 35, difficulty: 40, intent: 'Informational', searchVolume: '6,900/month', cpc: '$1.75', monetization: 'Medium - Ad revenue', ranking: 'Moderate', avgPosition: '15-27', ctr: '3.1%', conversion: '0.9%', monthlyRevenue: '$621' },
-      { keyword: 'crypto trading for beginners', traffic: 6200, competition: 32, difficulty: 38, intent: 'Informational', searchVolume: '6,200/month', cpc: '$2.25', monetization: 'High - Trading courses', ranking: 'Moderate', avgPosition: '13-24', ctr: '3.5%', conversion: '2.0%', monthlyRevenue: '$1,488' },
-      { keyword: 'best cryptocurrency to invest in', traffic: 5800, competition: 30, difficulty: 36, intent: 'Commercial', searchVolume: '5,800/month', cpc: '$2.35', monetization: 'High - Investment guides', ranking: 'Moderate', avgPosition: '12-23', ctr: '3.6%', conversion: '2.1%', monthlyRevenue: '$1,392' },
-      { keyword: 'bitcoin wallet security', traffic: 5200, competition: 28, difficulty: 34, intent: 'Informational', searchVolume: '5,200/month', cpc: '$1.95', monetization: 'Medium - Wallet affiliates', ranking: 'Easy', avgPosition: '10-20', ctr: '3.8%', conversion: '1.7%', monthlyRevenue: '$1,040' },
-      { keyword: 'crypto tax calculator', traffic: 4600, competition: 24, difficulty: 30, intent: 'Informational', searchVolume: '4,600/month', cpc: '$2.85', monetization: 'High - Tax software', ranking: 'Easy', avgPosition: '9-18', ctr: '4.0%', conversion: '2.2%', monthlyRevenue: '$1,380' },
-      { keyword: 'altcoins to watch', traffic: 4200, competition: 22, difficulty: 28, intent: 'Informational', searchVolume: '4,200/month', cpc: '$1.65', monetization: 'Medium - Newsletter', ranking: 'Easy', avgPosition: '8-16', ctr: '4.1%', conversion: '1.5%', monthlyRevenue: '$630' },
-      { keyword: 'DeFi protocols explained', traffic: 3800, competition: 20, difficulty: 26, intent: 'Informational', searchVolume: '3,800/month', cpc: '$2.05', monetization: 'Medium - Educational', ranking: 'Very Easy', avgPosition: '6-14', ctr: '4.3%', conversion: '1.6%', monthlyRevenue: '$760' },
-      { keyword: 'NFT marketplace guide', traffic: 3400, competition: 18, difficulty: 24, intent: 'Informational', searchVolume: '3,400/month', cpc: '$1.85', monetization: 'Medium - NFT guides', ranking: 'Very Easy', avgPosition: '5-13', ctr: '4.5%', conversion: '1.4%', monthlyRevenue: '$612' },
-      { keyword: 'crypto staking rewards', traffic: 3100, competition: 16, difficulty: 22, intent: 'Informational', searchVolume: '3,100/month', cpc: '$2.15', monetization: 'Medium - Staking guides', ranking: 'Very Easy', avgPosition: '4-12', ctr: '4.7%', conversion: '1.8%', monthlyRevenue: '$558' },
-      { keyword: 'blockchain technology explained', traffic: 2900, competition: 14, difficulty: 20, intent: 'Informational', searchVolume: '2,900/month', cpc: '$1.55', monetization: 'Low - Educational', ranking: 'Very Easy', avgPosition: '3-11', ctr: '4.9%', conversion: '1.2%', monthlyRevenue: '$348' },
-      { keyword: 'crypto mining guide', traffic: 2600, competition: 12, difficulty: 18, intent: 'Informational', searchVolume: '2,600/month', cpc: '$2.25', monetization: 'Medium - Mining equipment', ranking: 'Very Easy', avgPosition: '2-10', ctr: '5.1%', conversion: '1.9%', monthlyRevenue: '$494' },
-      { keyword: 'bitcoin halving explained', traffic: 2300, competition: 10, difficulty: 16, intent: 'Informational', searchVolume: '2,300/month', cpc: '$1.75', monetization: 'Low - Educational', ranking: 'Very Easy', avgPosition: '2-9', ctr: '5.2%', conversion: '1.1%', monthlyRevenue: '$253' },
-      { keyword: 'crypto portfolio tracker', traffic: 2100, competition: 8, difficulty: 14, intent: 'Informational', searchVolume: '2,100/month', cpc: '$1.95', monetization: 'Medium - Portfolio tools', ranking: 'Very Easy', avgPosition: '1-8', ctr: '5.4%', conversion: '1.6%', monthlyRevenue: '$336' },
-      { keyword: 'cold wallet vs hot wallet', traffic: 1900, competition: 6, difficulty: 12, intent: 'Informational', searchVolume: '1,900/month', cpc: '$1.85', monetization: 'Low - Wallet guides', ranking: 'Very Easy', avgPosition: '1-7', ctr: '5.6%', conversion: '1.3%', monthlyRevenue: '$247' },
-      { keyword: 'crypto scams to avoid', traffic: 1700, competition: 4, difficulty: 10, intent: 'Informational', searchVolume: '1,700/month', cpc: '$1.45', monetization: 'Low - Security guides', ranking: 'Very Easy', avgPosition: '1-6', ctr: '5.8%', conversion: '1.0%', monthlyRevenue: '$170' },
-      { keyword: 'bitcoin technical analysis', traffic: 1500, competition: 2, difficulty: 8, intent: 'Informational', searchVolume: '1,500/month', cpc: '$2.05', monetization: 'Low - Trading guides', ranking: 'Very Easy', avgPosition: '1-5', ctr: '6.0%', conversion: '1.2%', monthlyRevenue: '$180' },
-      { keyword: 'crypto regulations by country', traffic: 1300, competition: 0, difficulty: 6, intent: 'Informational', searchVolume: '1,300/month', cpc: '$1.65', monetization: 'Low - Compliance info', ranking: 'Very Easy', avgPosition: '1-4', ctr: '6.2%', conversion: '0.9%', monthlyRevenue: '$117' }
+      { keyword: 'best crypto exchanges 2025', traffic: 15000, competition: 52, difficulty: 58 },
+      { keyword: 'how to buy bitcoin', traffic: 12000, competition: 48, difficulty: 55 },
+      { keyword: 'cryptocurrency trading for beginners', traffic: 9800, competition: 42, difficulty: 50 },
+      { keyword: 'best altcoins to invest', traffic: 8500, competition: 45, difficulty: 52 },
+      { keyword: 'ethereum price prediction', traffic: 7200, competition: 40, difficulty: 48 },
+      { keyword: 'crypto wallet security', traffic: 6100, competition: 35, difficulty: 42 },
+      { keyword: 'defi yield farming', traffic: 5400, competition: 38, difficulty: 45 },
+      { keyword: 'nft marketplace guide', traffic: 4800, competition: 32, difficulty: 40 },
     ],
-    offers: [{ network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$60', commission: '65%', desc: 'Crypto courses and guides' }, { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$50', commission: '55%', desc: 'Exchange signups' }, { network: 'Impact', url: 'https://www.impact.com', payout: '$65', commission: '70%', desc: 'Premium crypto programs' }, { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$45', commission: '50%', desc: 'Crypto wallets and tools' }, { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$55', commission: '60%', desc: 'Crypto affiliates' }],
+    offers: [
+      { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$65', commission: '58%', desc: 'Crypto courses, trading guides' },
+      { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$50', commission: '48%', desc: 'Crypto exchanges, platforms' },
+      { network: 'Impact', url: 'https://www.impact.com', payout: '$70', commission: '62%', desc: 'Premium crypto offers' },
+      { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$55', commission: '52%', desc: 'Crypto services, tools' },
+      { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$45', commission: '42%', desc: 'Crypto wallets, hardware' },
+    ],
     domains: [
-      { domain: 'CryptoForBeginners.com', age: 5, traffic: 2800, backlinks: 380, authority: 38, price: '$15', verdict: 'GOOD', domainMetrics: { referringDomains: 114, topicAuthority: 'Crypto: 72%', backlinksProfile: 'Moderate (News: 10%, Blogs: 40%, Authority: 50%)', trafficSources: 'Organic: 80%, Direct: 15%, Referral: 5%', topPages: ['Bitcoin Guide (480 visitors)', 'Ethereum Guide (420 visitors)', 'Getting Started (380 visitors)'], monetizationPotential: '$2,240-3,360/month', acquisitionStrategy: 'Crypto education platforms, blockchain blogs, fintech networks' } },
-      { domain: 'BitcoinGuideOnline.net', age: 6, traffic: 2200, backlinks: 320, authority: 34, price: '$12', verdict: 'GOOD', domainMetrics: { referringDomains: 96, topicAuthority: 'Bitcoin: 68%', backlinksProfile: 'Moderate (News: 8%, Blogs: 42%, Authority: 50%)', trafficSources: 'Organic: 78%, Direct: 17%, Referral: 5%', topPages: ['Bitcoin Basics (380 visitors)', 'How to Buy (340 visitors)', 'Wallets (280 visitors)'], monetizationPotential: '$1,760-2,640/month', acquisitionStrategy: 'Bitcoin-focused communities, crypto news sites, finance blogs' } },
-      { domain: 'CryptoExchangeReview.org', age: 4, traffic: 1900, backlinks: 280, authority: 30, price: '$10', verdict: 'FAIR', domainMetrics: { referringDomains: 84, topicAuthority: 'Exchanges: 62%', backlinksProfile: 'Weak (News: 6%, Blogs: 44%, Authority: 50%)', trafficSources: 'Organic: 76%, Direct: 19%, Referral: 5%', topPages: ['Exchange Reviews (320 visitors)', 'Comparison (280 visitors)', 'Ratings (240 visitors)'], monetizationPotential: '$1,140-1,710/month', acquisitionStrategy: 'Exchange partnerships, crypto forums, trading communities' } },
-      { domain: 'BestCryptoWallet.com', age: 3, traffic: 1600, backlinks: 240, authority: 26, price: '$8', verdict: 'FAIR', domainMetrics: { referringDomains: 72, topicAuthority: 'Wallets: 58%', backlinksProfile: 'Weak (News: 4%, Blogs: 46%, Authority: 50%)', trafficSources: 'Organic: 74%, Direct: 21%, Referral: 5%', topPages: ['Wallet Reviews (280 visitors)', 'Security Tips (240 visitors)', 'Setup Guide (200 visitors)'], monetizationPotential: '$960-1,440/month', acquisitionStrategy: 'Wallet providers, security-focused sites, crypto forums' } },
-      { domain: 'CryptoTradingTips.net', age: 4, traffic: 1400, backlinks: 200, authority: 22, price: '$6', verdict: 'FAIR', domainMetrics: { referringDomains: 60, topicAuthority: 'Trading: 54%', backlinksProfile: 'Weak (News: 2%, Blogs: 48%, Authority: 50%)', trafficSources: 'Organic: 72%, Direct: 23%, Referral: 5%', topPages: ['Trading Strategies (240 visitors)', 'Technical Analysis (200 visitors)', 'Tips (160 visitors)'], monetizationPotential: '$840-1,260/month', acquisitionStrategy: 'Trading communities, crypto Discord servers, YouTube channels' } },
-      { domain: 'BlockchainExplained.org', age: 5, traffic: 1200, backlinks: 180, authority: 20, price: '$5', verdict: 'FAIR', domainMetrics: { referringDomains: 54, topicAuthority: 'Blockchain: 50%', backlinksProfile: 'Weak (News: 0%, Blogs: 50%, Authority: 50%)', trafficSources: 'Organic: 70%, Direct: 25%, Referral: 5%', topPages: ['Blockchain Basics (200 visitors)', 'How It Works (160 visitors)', 'Technology (140 visitors)'], monetizationPotential: '$720-1,080/month', acquisitionStrategy: 'Technology blogs, educational platforms, crypto communities' } },
-      { domain: 'AltcoinAnalysis.com', age: 2, traffic: 1000, backlinks: 140, authority: 18, price: '$4', verdict: 'FAIR', domainMetrics: { referringDomains: 48, topicAuthority: 'Altcoins: 46%', backlinksProfile: 'Very Weak (News: 0%, Blogs: 52%, Authority: 48%)', trafficSources: 'Organic: 68%, Direct: 27%, Referral: 5%', topPages: ['Altcoin Reviews (180 visitors)', 'Analysis (140 visitors)', 'Picks (120 visitors)'], monetizationPotential: '$600-900/month', acquisitionStrategy: 'Altcoin communities, crypto subreddits, Discord groups' } },
-      { domain: 'CryptoSecurityGuide.net', age: 3, traffic: 800, backlinks: 120, authority: 16, price: '$3', verdict: 'FAIR', domainMetrics: { referringDomains: 42, topicAuthority: 'Security: 42%', backlinksProfile: 'Very Weak (News: 0%, Blogs: 54%, Authority: 46%)', trafficSources: 'Organic: 66%, Direct: 29%, Referral: 5%', topPages: ['Security Tips (140 visitors)', 'Scam Prevention (120 visitors)', 'Best Practices (100 visitors)'], monetizationPotential: '$480-720/month', acquisitionStrategy: 'Security-focused sites, crypto forums, safety communities' } }
+      { domain: 'CryptoGuide.com', age: 9, traffic: 4200, backlinks: 720, authority: 52, price: '$28', verdict: 'EXCELLENT' },
+      { domain: 'BitcoinTrading.net', age: 11, traffic: 3800, backlinks: 680, authority: 50, price: '$26', verdict: 'EXCELLENT' },
+      { domain: 'CryptoExchanges.org', age: 10, traffic: 3500, backlinks: 620, authority: 48, price: '$24', verdict: 'EXCELLENT' },
+      { domain: 'AltcoinReviews.com', age: 8, traffic: 2900, backlinks: 520, authority: 44, price: '$20', verdict: 'GOOD' },
+      { domain: 'BlockchainNews.net', age: 12, traffic: 4100, backlinks: 750, authority: 54, price: '$30', verdict: 'EXCELLENT' },
+      { domain: 'CryptoInvesting.org', age: 7, traffic: 2400, backlinks: 420, authority: 38, price: '$14', verdict: 'GOOD' },
+      { domain: 'DeFiYield.com', age: 6, traffic: 1800, backlinks: 320, authority: 32, price: '$10', verdict: 'FAIR' },
+      { domain: 'NFTMarketplace.net', age: 5, traffic: 1600, backlinks: 280, authority: 28, price: '$8', verdict: 'FAIR' },
     ],
     blueprint: {
       pages: [
-        { name: 'Homepage', description: 'Crypto education focus, beginner-friendly', strategy: 'Lead with "Start Your Crypto Journey" messaging, feature beginner guides prominently, explain crypto benefits clearly, build trust with security emphasis, CTA to free beginner course' },
-        { name: 'Crypto Guide', description: 'Complete guide to cryptocurrency', strategy: 'Create 100+ page comprehensive guide covering history, technology, investment basics, risks, opportunities, internal linking to specific coins, affiliate links to exchanges' },
-        { name: 'Exchanges', description: 'Best crypto exchanges reviewed', strategy: 'Review 20+ exchanges with detailed comparison tables, pros/cons, fees, security features, affiliate links, user reviews, updated rankings, security certifications' },
-        { name: 'Trading', description: 'Trading strategies and tutorials', strategy: 'Create 50+ trading tutorials, strategy guides, technical analysis lessons, video demonstrations, practice trading guides, risk management education, psychology guides' },
-        { name: 'Security', description: 'Wallet security and best practices', strategy: 'Comprehensive security guides, wallet comparisons, cold storage tutorials, scam prevention, recovery procedures, security audit checklists, insurance information' },
-        { name: 'News', description: 'Crypto market news and updates', strategy: 'Daily crypto news updates, market analysis, regulatory updates, price predictions, expert interviews, community discussions, email newsletter signup' },
-        { name: 'FAQ', description: 'Common crypto questions', strategy: 'Answer 100+ FAQs with schema markup, video answers, link to guides, address common fears, explain technical concepts simply, update regularly' },
-        { name: 'Contact', description: 'Newsletter signup', strategy: 'Email capture for daily/weekly crypto updates, exclusive trading signals, market analysis, community access, affiliate offers, coaching inquiries' }
+        { name: 'Homepage', description: 'Crypto education hub, beginner guides, exchange comparisons' },
+        { name: 'Exchanges', description: 'Top exchange reviews, comparison tables, affiliate links' },
+        { name: 'Beginner Guide', description: 'How to start, wallet setup, security tips' },
+        { name: 'Trading', description: 'Trading strategies, technical analysis, risk management' },
+        { name: 'Altcoins', description: 'Altcoin reviews, investment analysis, price predictions' },
+        { name: 'News', description: 'Latest crypto news, market updates, analysis' },
+        { name: 'Tools', description: 'Calculators, portfolio trackers, price alerts' },
+        { name: 'FAQ', description: 'Common questions, security, regulations' },
       ],
-      strategy: 'Create beginner-friendly crypto content. Build trust through education. Monetize with exchange affiliates and courses.',
-      monetization: 'Primary: Exchange affiliates ($40-80 CPA). Secondary: Crypto courses. Tertiary: Ads. Estimated: $800-3000/month per 1000 visitors.',
-      timeline: 'Months 1-2: Build core pages. Months 3-4: Drive traffic via SEO. Months 5-6: Scale with content. Months 6+: Passive income.',
-      seoArchitecture: 'Pillar page (Crypto Hub) → Cluster pages (Bitcoin, Ethereum, Trading) → Long-tail pages (Beginner guides, Security). Internal linking: 5-8 links per page.',
-      contentPillars: ['Crypto Basics', 'Trading Strategies', 'Security & Wallets', 'Exchanges', 'Coins & Tokens', 'Market Analysis', 'Regulations', 'Community'],
-      conversionFunnels: ['Free Guide → Email List → Trading Course → Premium Signals → Coaching']
+      strategy: 'Create educational content, compare exchanges, build trust through transparent reviews. Monetize with exchange affiliates and trading course offers.',
+      monetization: 'Primary: Crypto exchange affiliates ($30-80 per conversion). Secondary: Trading course commissions. Tertiary: Email marketing. Estimated: $800-3500/month per 1000 visitors.',
+      timeline: 'Months 1-2: Build 8 educational pages. Months 3-4: Drive traffic via SEO. Months 5-6: Scale with paid ads. Months 6+: Passive income from affiliates.',
     },
     scripts: [
-      {
-        title: 'How to Buy Bitcoin Safely',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I bought my first bitcoin safely and here\'s how..." [Personal experience builds trust] PROBLEM (3-15s): "Bitcoin buying seems risky - scams, hacks, losing your coins. I was terrified of making a mistake and losing money..." [Relatable fear] SOLUTION (15-45s): "Here\'s the safe way: Use a reputable exchange (Coinbase, Kraken, Gemini), enable 2FA, start small, move to cold storage, never share your seed phrase. I bought $100 first, then $500, now I\'m comfortable..." [Step-by-step, risk mitigation, progression] PROOF (45-50s): "Thousands do this daily safely. See these success stories..." [Social proof] CTA (50-60s): "Get the guide - link in bio! Free checklist to buy bitcoin safely. No hidden fees, no scams!" [Reassurance, value]',
-        variations: ['Ethereum variant', 'Altcoin variant', 'Cold storage variant', 'Tax-focused variant']
+      { 
+        title: 'Crypto Exchange Comparison', 
+        duration: '60 sec', 
+        script: 'HOOK: "I compared 10 crypto exchanges so you don\'t have to..." [0-3 sec] PROBLEM: "Choosing a crypto exchange is confusing. There are so many options and they all have different fees, security, and features..." [3-15 sec] SOLUTION: "I created a detailed comparison guide that breaks down the top exchanges, shows fees, security ratings, and which is best for beginners..." [15-45 sec] RESULTS: "This guide has helped thousands of people choose the right exchange..." [45-50 sec] CTA: "Get your free exchange comparison guide - link in bio. Start trading crypto safely today!" [50-60 sec]' 
       },
-      {
-        title: 'Crypto Exchanges Compared',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I compared all top crypto exchanges..." [Authority positioning] PROBLEM (3-15s): "Too many exchanges to choose from - Coinbase, Kraken, Binance, FTX. Each has different fees, security, coins available. How do you pick?" [Overwhelm] SOLUTION (15-45s): "Here are the top 5 for beginners: Coinbase (easiest, highest fees), Kraken (good security, moderate fees), Gemini (regulated, good for US), Kraken (advanced features), Binance (most coins, complex)..." [Clear breakdown, specific guidance] PROOF (45-50s): "See detailed comparison: Fees range $5-50 per trade, security ratings 9-10/10, coins available 50-500+..." [Specific data] CTA (50-60s): "See full comparison - link in bio! Free guide comparing 10 exchanges. Find the perfect fit for you!" [Specific value, urgency]',
-        variations: ['Advanced trader variant', 'Mobile-focused variant', 'Low-fee variant', 'Security-focused variant']
-      }
-    ],
-    subNiches: {
-      'bitcoin': { name: 'Bitcoin', microNiches: { 'bitcoin beginners': { name: 'Bitcoin for Beginners', microMicroNiches: { 'how to buy bitcoin': { name: 'How to Buy Bitcoin', traffic: 2100, competition: 35, difficulty: 42, cpaRange: '$42-52', monthlyRevenue: '$1,890', topKeywords: ['how to buy bitcoin', 'buy bitcoin for beginners', 'bitcoin purchase guide'], targetAudience: 'New investors, curious individuals, first-time crypto buyers', painPoints: 'Complexity, security fears, exchange confusion', conversionRate: '2.1%' }, 'bitcoin wallets': { name: 'Bitcoin Wallets', traffic: 1800, competition: 30, difficulty: 36, cpaRange: '$40-50', monthlyRevenue: '$1,620', topKeywords: ['bitcoin wallet', 'best bitcoin wallets', 'bitcoin storage'], targetAudience: 'Bitcoin owners, security-conscious investors', painPoints: 'Security concerns, wallet types confusion, backup procedures', conversionRate: '1.9%' }, 'bitcoin security': { name: 'Bitcoin Security', traffic: 1600, competition: 28, difficulty: 34, cpaRange: '$38-48', monthlyRevenue: '$1,440', topKeywords: ['bitcoin security', 'secure bitcoin', 'bitcoin safety'], targetAudience: 'Bitcoin holders, security-focused investors', painPoints: 'Hacking fears, scam prevention, key management', conversionRate: '1.8%' } } } } }
-    }
+      { 
+        title: 'Bitcoin Investing Basics', 
+        duration: '60 sec', 
+        script: 'HOOK: "Want to invest in Bitcoin but don\'t know where to start? I\'ll show you..." [0-3 sec] PROBLEM: "Bitcoin seems complicated and risky. Most people don\'t know how to buy it safely or where to store it..." [3-15 sec] SOLUTION: "I break down Bitcoin investing into 5 simple steps. You can start with as little as $10 and learn as you go..." [15-45 sec] RESULTS: "My guide has helped beginners safely enter the crypto market..." [45-50 sec] CTA: "Get your free Bitcoin investing guide - link in bio. Start your crypto journey today!" [50-60 sec]' 
+      },
+    ]
   },
   'fitness': {
-    analyze: { niche: 'Fitness', score: 80, difficulty: 40, profitPotential: 84, trafficPotential: 11200, verdict: 'BUILD', analysis: 'Fitness is a massive, evergreen niche with consistent demand. Multiple sub-niches and monetization options. High engagement and repeat customers make this very profitable.', opportunities: ['Supplement affiliate programs (40-50% commission)', 'Equipment sales (20-30% commission)', 'Training program sales (high ticket)', 'Coaching and consulting', 'Digital product sales'], challenges: ['High competition', 'Requires credibility', 'Fitness advice liability', 'Seasonal trends', 'Requires consistency'], recommendations: ['Focus on specific sub-niches', 'Build social proof with transformations', 'Create video content', 'Establish expertise and credentials', 'Build community and engagement'], marketSize: '$96.7 Billion USD', growthRate: '10.3% CAGR', topKeywords: ['best home gym equipment', 'weight loss workout', 'muscle building exercises'], topOffers: ['Supplement affiliates ($30-50)', 'Equipment affiliates ($20-40)'], estimatedEarnings: '$600-$2500/month per 1000 visitors' },
+    analyze: {
+      niche: 'Fitness',
+      score: 76,
+      difficulty: 48,
+      profitPotential: 84,
+      trafficPotential: 11200,
+      verdict: 'BUILD',
+      analysis: 'Fitness is a massive, evergreen niche with consistent demand. Multiple sub-niches and monetization options. High engagement and repeat customers make this very profitable.',
+      opportunities: [
+        'Massive monthly search volume',
+        'Multiple product types (equipment, programs, supplements)',
+        'Strong video content potential',
+        'High email engagement',
+        'Multiple CPA networks and affiliates',
+      ],
+      challenges: [
+        'High competition',
+        'Requires credibility and expertise',
+        'Seasonal fluctuations',
+        'FTC compliance for health claims',
+        'Liability concerns',
+      ],
+      recommendations: [
+        'Focus on specific fitness niches (yoga, CrossFit, bodybuilding)',
+        'Create workout programs and guides',
+        'Build email list for repeat sales',
+        'Partner with fitness influencers',
+        'Create video content for YouTube',
+      ],
+      marketSize: '$96.7 Billion USD annually',
+      growthRate: '9.2% CAGR',
+      topKeywords: ['best workout programs', 'home gym equipment', 'fitness tips'],
+      topOffers: ['ClickBank fitness programs', 'Equipment affiliates'],
+      estimatedEarnings: '$600-$2500/month per 1000 visitors',
+    },
     keywords: [
-      { keyword: 'best home gym equipment', traffic: 8900, competition: 35, difficulty: 40, intent: 'Commercial', searchVolume: '8,900/month', cpc: '$1.85', monetization: 'High - Equipment sales', ranking: 'Moderate', avgPosition: '15-25', ctr: '3.2%', conversion: '2.1%', monthlyRevenue: '$1,870' },
-      { keyword: 'weight loss workout routine', traffic: 7600, competition: 32, difficulty: 38, intent: 'Informational', searchVolume: '7,600/month', cpc: '$1.55', monetization: 'High - Workout programs', ranking: 'Moderate', avgPosition: '13-23', ctr: '3.5%', conversion: '2.0%', monthlyRevenue: '$1,482' },
-      { keyword: 'muscle building exercises', traffic: 7200, competition: 30, difficulty: 36, intent: 'Informational', searchVolume: '7,200/month', cpc: '$1.75', monetization: 'High - Training programs', ranking: 'Moderate', avgPosition: '12-22', ctr: '3.6%', conversion: '2.2%', monthlyRevenue: '$1,584' },
-      { keyword: 'HIIT workout for beginners', traffic: 6500, competition: 28, difficulty: 34, intent: 'Informational', searchVolume: '6,500/month', cpc: '$1.45', monetization: 'Medium - HIIT programs', ranking: 'Easy', avgPosition: '10-20', ctr: '3.8%', conversion: '1.9%', monthlyRevenue: '$1,170' },
-      { keyword: 'best fitness supplements', traffic: 6100, competition: 26, difficulty: 32, intent: 'Commercial', searchVolume: '6,100/month', cpc: '$2.05', monetization: 'High - Supplement sales', ranking: 'Easy', avgPosition: '9-19', ctr: '3.9%', conversion: '2.3%', monthlyRevenue: '$1,525' },
-      { keyword: 'home workout no equipment', traffic: 5800, competition: 24, difficulty: 30, intent: 'Informational', searchVolume: '5,800/month', cpc: '$1.35', monetization: 'Medium - Bodyweight programs', ranking: 'Very Easy', avgPosition: '7-17', ctr: '4.1%', conversion: '1.8%', monthlyRevenue: '$1,044' },
-      { keyword: 'yoga for beginners', traffic: 5400, competition: 22, difficulty: 28, intent: 'Informational', searchVolume: '5,400/month', cpc: '$1.25', monetization: 'Medium - Yoga courses', ranking: 'Very Easy', avgPosition: '6-16', ctr: '4.2%', conversion: '1.7%', monthlyRevenue: '$918' },
-      { keyword: 'pilates exercises at home', traffic: 4900, competition: 20, difficulty: 26, intent: 'Informational', searchVolume: '4,900/month', cpc: '$1.15', monetization: 'Low - Pilates guides', ranking: 'Very Easy', avgPosition: '5-15', ctr: '4.3%', conversion: '1.6%', monthlyRevenue: '$784' },
-      { keyword: 'cardio workout at home', traffic: 4600, competition: 18, difficulty: 24, intent: 'Informational', searchVolume: '4,600/month', cpc: '$1.05', monetization: 'Low - Cardio guides', ranking: 'Very Easy', avgPosition: '4-14', ctr: '4.4%', conversion: '1.5%', monthlyRevenue: '$621' },
-      { keyword: 'strength training for women', traffic: 4300, competition: 16, difficulty: 22, intent: 'Informational', searchVolume: '4,300/month', cpc: '$1.45', monetization: 'Medium - Women\'s programs', ranking: 'Very Easy', avgPosition: '3-13', ctr: '4.5%', conversion: '1.8%', monthlyRevenue: '$774' },
-      { keyword: 'best protein powder', traffic: 4000, competition: 14, difficulty: 20, intent: 'Commercial', searchVolume: '4,000/month', cpc: '$2.15', monetization: 'High - Protein sales', ranking: 'Very Easy', avgPosition: '2-12', ctr: '4.6%', conversion: '2.4%', monthlyRevenue: '$1,032' },
-      { keyword: 'fitness tracker reviews', traffic: 3700, competition: 12, difficulty: 18, intent: 'Commercial', searchVolume: '3,700/month', cpc: '$1.95', monetization: 'High - Device affiliates', ranking: 'Very Easy', avgPosition: '1-11', ctr: '4.7%', conversion: '2.2%', monthlyRevenue: '$814' },
-      { keyword: 'ab exercises for women', traffic: 3400, competition: 10, difficulty: 16, intent: 'Informational', searchVolume: '3,400/month', cpc: '$1.25', monetization: 'Low - Ab guides', ranking: 'Very Easy', avgPosition: '1-10', ctr: '4.8%', conversion: '1.4%', monthlyRevenue: '$425' },
-      { keyword: 'running for beginners', traffic: 3100, competition: 8, difficulty: 14, intent: 'Informational', searchVolume: '3,100/month', cpc: '$1.15', monetization: 'Low - Running guides', ranking: 'Very Easy', avgPosition: '1-9', ctr: '4.9%', conversion: '1.3%', monthlyRevenue: '$357' },
-      { keyword: 'CrossFit workout guide', traffic: 2800, competition: 6, difficulty: 12, intent: 'Informational', searchVolume: '2,800/month', cpc: '$1.35', monetization: 'Low - CrossFit guides', ranking: 'Very Easy', avgPosition: '1-8', ctr: '5.0%', conversion: '1.5%', monthlyRevenue: '$378' },
-      { keyword: 'dance workout at home', traffic: 2500, competition: 4, difficulty: 10, intent: 'Informational', searchVolume: '2,500/month', cpc: '$1.05', monetization: 'Low - Dance guides', ranking: 'Very Easy', avgPosition: '1-7', ctr: '5.1%', conversion: '1.2%', monthlyRevenue: '$262' },
-      { keyword: 'boxing workout for fitness', traffic: 2200, competition: 2, difficulty: 8, intent: 'Informational', searchVolume: '2,200/month', cpc: '$1.25', monetization: 'Low - Boxing guides', ranking: 'Very Easy', avgPosition: '1-6', ctr: '5.2%', conversion: '1.3%', monthlyRevenue: '$286' },
-      { keyword: 'swimming workout routine', traffic: 1900, competition: 0, difficulty: 6, intent: 'Informational', searchVolume: '1,900/month', cpc: '$1.15', monetization: 'Low - Swimming guides', ranking: 'Very Easy', avgPosition: '1-5', ctr: '5.3%', conversion: '1.1%', monthlyRevenue: '$209' },
-      { keyword: 'stretching exercises', traffic: 1600, competition: 0, difficulty: 4, intent: 'Informational', searchVolume: '1,600/month', cpc: '$0.95', monetization: 'Very Low - Stretching info', ranking: 'Very Easy', avgPosition: '1-4', ctr: '5.4%', conversion: '1.0%', monthlyRevenue: '$152' },
-      { keyword: 'recovery techniques', traffic: 1300, competition: 0, difficulty: 2, intent: 'Informational', searchVolume: '1,300/month', cpc: '$1.05', monetization: 'Low - Recovery guides', ranking: 'Very Easy', avgPosition: '1-3', ctr: '5.5%', conversion: '1.2%', monthlyRevenue: '$143' }
+      { keyword: 'best home workout programs', traffic: 11200, competition: 42, difficulty: 48 },
+      { keyword: 'gym equipment for home', traffic: 9500, competition: 38, difficulty: 45 },
+      { keyword: 'weight training for beginners', traffic: 8200, competition: 35, difficulty: 42 },
+      { keyword: 'best fitness apps', traffic: 7800, competition: 32, difficulty: 40 },
+      { keyword: 'yoga for beginners', traffic: 6900, competition: 28, difficulty: 35 },
+      { keyword: 'cardio workouts at home', traffic: 6100, competition: 25, difficulty: 32 },
+      { keyword: 'muscle building diet', traffic: 5400, competition: 30, difficulty: 38 },
+      { keyword: 'personal training certification', traffic: 4600, competition: 22, difficulty: 30 },
     ],
-    offers: [{ network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$40', commission: '45%', desc: 'Fitness programs and guides' }, { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$35', commission: '40%', desc: 'Fitness equipment' }, { network: 'Impact', url: 'https://www.impact.com', payout: '$45', commission: '50%', desc: 'Premium fitness programs' }, { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$30', commission: '35%', desc: 'Sports and fitness' }, { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$38', commission: '42%', desc: 'Fitness affiliates' }],
+    offers: [
+      { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$50', commission: '52%', desc: 'Fitness programs, workout guides' },
+      { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$40', commission: '45%', desc: 'Gym equipment, apparel' },
+      { network: 'Impact', url: 'https://www.impact.com', payout: '$45', commission: '48%', desc: 'Premium fitness offers' },
+      { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$42', commission: '46%', desc: 'Fitness services, programs' },
+      { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$35', commission: '40%', desc: 'Fitness gear, supplements' },
+    ],
     domains: [
-      { domain: 'HomeGymGuide.com', age: 8, traffic: 2600, backlinks: 420, authority: 40, price: '$16', verdict: 'GOOD', domainMetrics: { referringDomains: 126, topicAuthority: 'Home Gym: 76%', backlinksProfile: 'Moderate (News: 12%, Blogs: 38%, Authority: 50%)', trafficSources: 'Organic: 81%, Direct: 14%, Referral: 5%', topPages: ['Equipment Reviews (440 visitors)', 'Setup Guide (380 visitors)', 'Workouts (340 visitors)'], monetizationPotential: '$2,080-3,120/month', acquisitionStrategy: 'Fitness equipment manufacturers, home gym communities, budget fitness sites' } },
-      { domain: 'FitnessWorkoutTips.net', age: 7, traffic: 2200, backlinks: 360, authority: 36, price: '$13', verdict: 'GOOD', domainMetrics: { referringDomains: 108, topicAuthority: 'Fitness: 70%', backlinksProfile: 'Moderate (News: 10%, Blogs: 40%, Authority: 50%)', trafficSources: 'Organic: 79%, Direct: 16%, Referral: 5%', topPages: ['Workout Plans (380 visitors)', 'Tips (320 visitors)', 'Routines (280 visitors)'], monetizationPotential: '$1,760-2,640/month', acquisitionStrategy: 'Fitness influencers, gym chains, personal trainer networks' } },
-      { domain: 'BestFitnessTips.org', age: 9, traffic: 2900, backlinks: 480, authority: 44, price: '$18', verdict: 'GOOD', domainMetrics: { referringDomains: 144, topicAuthority: 'Fitness: 80%', backlinksProfile: 'Moderate (News: 13%, Blogs: 37%, Authority: 50%)', trafficSources: 'Organic: 82%, Direct: 13%, Referral: 5%', topPages: ['Fitness Tips (520 visitors)', 'Workout Guide (460 visitors)', 'Health Tips (420 visitors)'], monetizationPotential: '$2,320-3,480/month', acquisitionStrategy: 'Health and wellness sites, fitness magazines, lifestyle blogs' } },
-      { domain: 'WorkoutAtHome.com', age: 6, traffic: 1900, backlinks: 300, authority: 32, price: '$11', verdict: 'FAIR', domainMetrics: { referringDomains: 90, topicAuthority: 'Home Workouts: 64%', backlinksProfile: 'Weak (News: 8%, Blogs: 42%, Authority: 50%)', trafficSources: 'Organic: 77%, Direct: 18%, Referral: 5%', topPages: ['Workout Plans (320 visitors)', 'No Equipment (280 visitors)', 'Quick Workouts (240 visitors)'], monetizationPotential: '$1,140-1,710/month', acquisitionStrategy: 'Home fitness communities, budget fitness sites, quarantine fitness trends' } },
-      { domain: 'FitnessForBeginners.net', age: 5, traffic: 1600, backlinks: 260, authority: 28, price: '$9', verdict: 'FAIR', domainMetrics: { referringDomains: 78, topicAuthority: 'Fitness Basics: 60%', backlinksProfile: 'Weak (News: 6%, Blogs: 44%, Authority: 50%)', trafficSources: 'Organic: 75%, Direct: 20%, Referral: 5%', topPages: ['Beginner Guide (280 visitors)', 'Getting Started (240 visitors)', 'First Steps (200 visitors)'], monetizationPotential: '$960-1,440/month', acquisitionStrategy: 'Beginner fitness communities, health blogs, New Year fitness trends' } },
-      { domain: 'ExerciseGuideOnline.org', age: 7, traffic: 2100, backlinks: 340, authority: 34, price: '$12', verdict: 'GOOD', domainMetrics: { referringDomains: 102, topicAuthority: 'Exercises: 68%', backlinksProfile: 'Moderate (News: 9%, Blogs: 41%, Authority: 50%)', trafficSources: 'Organic: 78%, Direct: 17%, Referral: 5%', topPages: ['Exercise Library (360 visitors)', 'Form Guides (300 visitors)', 'Routines (280 visitors)'], monetizationPotential: '$1,680-2,520/month', acquisitionStrategy: 'Exercise science sites, fitness education, physical therapy networks' } },
-      { domain: 'SupplementReviews.com', age: 6, traffic: 1800, backlinks: 280, authority: 30, price: '$10', verdict: 'FAIR', domainMetrics: { referringDomains: 84, topicAuthority: 'Supplements: 62%', backlinksProfile: 'Weak (News: 7%, Blogs: 43%, Authority: 50%)', trafficSources: 'Organic: 76%, Direct: 19%, Referral: 5%', topPages: ['Supplement Reviews (320 visitors)', 'Comparisons (280 visitors)', 'Ratings (240 visitors)'], monetizationPotential: '$1,080-1,620/month', acquisitionStrategy: 'Supplement manufacturers, bodybuilding communities, fitness forums' } },
-      { domain: 'FitnessEquipmentGuide.net', age: 5, traffic: 1400, backlinks: 220, authority: 26, price: '$8', verdict: 'FAIR', domainMetrics: { referringDomains: 66, topicAuthority: 'Equipment: 56%', backlinksProfile: 'Weak (News: 4%, Blogs: 46%, Authority: 50%)', trafficSources: 'Organic: 72%, Direct: 23%, Referral: 5%', topPages: ['Equipment Reviews (240 visitors)', 'Comparisons (200 visitors)', 'Buying Guide (160 visitors)'], monetizationPotential: '$840-1,260/month', acquisitionStrategy: 'Equipment retailers, fitness equipment manufacturers, review sites' } }
+      { domain: 'FitnessGuide.com', age: 12, traffic: 3600, backlinks: 680, authority: 52, price: '$28', verdict: 'EXCELLENT' },
+      { domain: 'HomeWorkouts.net', age: 10, traffic: 3100, backlinks: 580, authority: 48, price: '$24', verdict: 'EXCELLENT' },
+      { domain: 'WorkoutPrograms.org', age: 13, traffic: 3900, backlinks: 720, authority: 54, price: '$30', verdict: 'EXCELLENT' },
+      { domain: 'FitnessTips.com', age: 11, traffic: 3400, backlinks: 620, authority: 50, price: '$26', verdict: 'EXCELLENT' },
+      { domain: 'BodybuildingGuide.net', age: 9, traffic: 2800, backlinks: 520, authority: 44, price: '$20', verdict: 'GOOD' },
+      { domain: 'YogaForBeginners.org', age: 8, traffic: 2400, backlinks: 420, authority: 38, price: '$14', verdict: 'GOOD' },
+      { domain: 'GymEquipment.com', age: 7, traffic: 2100, backlinks: 380, authority: 36, price: '$12', verdict: 'GOOD' },
+      { domain: 'TrainingTips.net', age: 6, traffic: 1800, backlinks: 320, authority: 32, price: '$10', verdict: 'FAIR' },
     ],
     blueprint: {
       pages: [
-        { name: 'Homepage', description: 'Fitness transformation focus, testimonials', strategy: 'Lead with transformation stories (before/after photos), feature success statistics, testimonials from real users, workout video demos, email signup for free workout plan, trust signals (certifications, credentials)' },
-        { name: 'Workout Plans', description: 'Free and premium workout routines', strategy: 'Create 50+ workout plans (beginner to advanced), organized by goal (weight loss, muscle gain, endurance), include video demonstrations, progression tracking, PDF downloads, premium upsell' },
-        { name: 'Nutrition Guide', description: 'Nutrition and meal planning', strategy: 'Create comprehensive nutrition guides, meal plans by goal, macro calculators, grocery lists, recipes, supplement guides, nutrition science education' },
-        { name: 'Supplements', description: 'Supplement reviews and recommendations', strategy: 'Review 100+ supplements with detailed analysis, pros/cons, pricing, effectiveness ratings, affiliate links, user reviews, updated rankings, science-backed recommendations' },
-        { name: 'Equipment', description: 'Home gym equipment reviews', strategy: 'Review 50+ equipment pieces with detailed analysis, setup guides, workout tutorials, affiliate links, budget options, premium options, space-saving solutions' },
-        { name: 'Blog', description: 'Fitness tips and trends', strategy: 'Publish 3-4 blog posts weekly on fitness trends, new research, success stories, technique tips, motivation, community features, email newsletter signup' },
-        { name: 'FAQ', description: 'Common fitness questions', strategy: 'Answer 100+ FAQs with video answers, schema markup for snippets, address common myths, link to guides, update regularly based on user questions' },
-        { name: 'Contact', description: 'Coaching inquiry form', strategy: 'Coaching inquiry form, consultation booking, email list signup, community access, affiliate offers, premium program sales' }
+        { name: 'Homepage', description: 'Fitness hub, program overview, success stories, email signup' },
+        { name: 'Workout Programs', description: 'Different program types, difficulty levels, CPA offers' },
+        { name: 'Equipment Guide', description: 'Home gym setup, equipment reviews, affiliate links' },
+        { name: 'Nutrition', description: 'Meal plans, recipes, supplement recommendations' },
+        { name: 'Blog', description: 'Fitness tips, training advice, motivation' },
+        { name: 'Success Stories', description: 'Transformation stories, before/after, testimonials' },
+        { name: 'FAQ', description: 'Common questions, training tips, nutrition advice' },
+        { name: 'Contact', description: 'Email signup, coaching inquiry, support' },
       ],
-      strategy: 'Create workout and nutrition content. Build transformations gallery. Monetize with supplement and equipment affiliates.',
-      monetization: 'Primary: Supplement affiliates ($30-50 CPA). Secondary: Equipment affiliates. Tertiary: Coaching. Estimated: $600-2500/month per 1000 visitors.',
-      timeline: 'Months 1-2: Build 8 pages. Months 3-4: Drive traffic via SEO. Months 5-6: Scale with content. Months 6+: Passive income.',
-      seoArchitecture: 'Pillar page (Fitness Hub) → Cluster pages (Workouts, Nutrition, Supplements) → Long-tail pages (Specific workouts, diets). Internal linking: 5-8 links per page.',
-      contentPillars: ['Workout Programs', 'Nutrition Guides', 'Supplement Reviews', 'Equipment Reviews', 'Fitness Science', 'Success Stories', 'Motivation', 'Community'],
-      conversionFunnels: ['Free Workout → Email List → Nutrition Guide → Supplement Affiliate → Coaching']
+      strategy: 'Create workout programs, equipment guides, and nutrition content. Build email list for repeat sales. Monetize with fitness program affiliates and equipment commissions.',
+      monetization: 'Primary: Fitness program affiliates ($40-50 per conversion). Secondary: Equipment commissions. Tertiary: Email marketing. Estimated: $600-2500/month per 1000 visitors.',
+      timeline: 'Months 1-2: Build 8 pages with programs and guides. Months 3-4: Drive traffic via SEO. Months 5-6: Scale with paid ads. Months 6+: Passive income.',
     },
     scripts: [
-      {
-        title: 'Home Workout Transformation',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I transformed my body with home workouts..." [Relatability + transformation] PROBLEM (3-15s): "No gym? No problem. I thought I needed a gym membership to get fit, but I was wrong. I started working out at home with just dumbbells and a mat..." [Overcoming objection] SOLUTION (15-45s): "Here\'s my 30-day home workout routine: 20 min strength training 3x/week, 15 min cardio 3x/week, 10 min stretching daily. No equipment needed for first 2 weeks. I lost 15 pounds and gained muscle..." [Specific routine, results] PROOF (45-50s): "See my transformation: Month 1 (5 lbs lost), Month 2 (12 lbs lost, muscle gain), Month 3 (15 lbs lost, visible abs)..." [Progressive results] CTA (50-60s): "Get the workout - link in bio! Free 30-day home workout plan. No equipment needed. Start today!" [Urgency, value, ease]',
-        variations: ['Gym-free variant', 'Equipment-focused variant', 'Time-efficient variant', 'Female transformation variant']
+      { 
+        title: 'Home Workout Program', 
+        duration: '60 sec', 
+        script: 'HOOK: "Get a gym-quality workout at home with no equipment..." [0-3 sec] PROBLEM: "Gym memberships are expensive and time-consuming. Most people quit because they can\'t stay consistent..." [3-15 sec] SOLUTION: "I created a home workout program that takes 30 minutes, requires no equipment, and delivers real results. Thousands of people have transformed their bodies..." [15-45 sec] RESULTS: "My clients lost an average of 15 pounds and gained muscle in 12 weeks..." [45-50 sec] CTA: "Get your free home workout guide - link in bio. Start your transformation today!" [50-60 sec]' 
       },
-      {
-        title: 'Best Fitness Equipment',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I tested the best home gym equipment..." [Authority, thoroughness] PROBLEM (3-15s): "Too many fitness equipment options - dumbbells, kettlebells, resistance bands, treadmills. Which ones actually work? I tested 20+ pieces of equipment..." [Overwhelm] SOLUTION (15-45s): "Here are the top 5 for home gyms: Adjustable dumbbells ($200-400, versatile), Resistance bands ($20-50, portable), Pull-up bar ($30-100, effective), Yoga mat ($20-50, essential), Kettlebell ($50-150, functional)..." [Clear breakdown, pricing, benefits] PROOF (45-50s): "See results from users: 50 lbs lost with just dumbbells, 6-pack abs with resistance bands, 30 lbs muscle gain with kettlebells..." [Specific results] CTA (50-60s): "See full reviews - link in bio! Compare 20 pieces of equipment. Find your perfect setup!" [Specific value]',
-        variations: ['Budget equipment variant', 'Premium equipment variant', 'Space-saving variant', 'Beginner equipment variant']
-      }
-    ],
-    subNiches: {
-      'home gym': { name: 'Home Gym', microNiches: { 'equipment': { name: 'Home Gym Equipment', microMicroNiches: { 'dumbbells': { name: 'Dumbbells and Weights', traffic: 1160, competition: 28, difficulty: 34, cpaRange: '$35-45', monthlyRevenue: '$1,044', topKeywords: ['best dumbbells', 'adjustable dumbbells', 'dumbbell weights'], targetAudience: 'Home gym builders, strength trainers, budget-conscious', painPoints: 'Space, cost, durability, adjustability', conversionRate: '2.2%' }, 'treadmills': { name: 'Home Treadmills', traffic: 980, competition: 24, difficulty: 30, cpaRange: '$32-42', monthlyRevenue: '$882', topKeywords: ['best home treadmills', 'affordable treadmills', 'compact treadmills'], targetAudience: 'Cardio enthusiasts, home gym owners, runners', painPoints: 'Space, noise, cost, durability', conversionRate: '2.0%' }, 'yoga mats': { name: 'Yoga Mats and Accessories', traffic: 850, competition: 20, difficulty: 26, cpaRange: '$28-38', monthlyRevenue: '$765', topKeywords: ['best yoga mats', 'yoga mat reviews', 'yoga accessories'], targetAudience: 'Yoga practitioners, fitness enthusiasts, beginners', painPoints: 'Comfort, durability, eco-friendliness, price', conversionRate: '1.8%' } } } }
-    }
+      { 
+        title: 'Fitness Equipment Review', 
+        duration: '60 sec', 
+        script: 'HOOK: "I tested 20 home gym products so you don\'t waste money..." [0-3 sec] PROBLEM: "There are so many fitness products out there. Most are overpriced and don\'t deliver results..." [3-15 sec] SOLUTION: "I created an honest review guide comparing the top equipment, showing pros and cons, and telling you which ones actually work..." [15-45 sec] RESULTS: "This guide has saved people thousands in wasted purchases..." [45-50 sec] CTA: "Get your free equipment guide - link in bio. Build your perfect home gym today!" [50-60 sec]' 
+      },
+    ]
   },
   'forex trading': {
-    analyze: { niche: 'Forex Trading', score: 76, difficulty: 44, profitPotential: 86, trafficPotential: 7800, verdict: 'BUILD', analysis: 'Forex trading is a high-value niche with serious buyers. Multiple monetization through brokers, courses, and signals. Requires expertise and compliance awareness.', opportunities: ['Broker affiliate programs ($50-200 per signup)', 'Trading course sales (high ticket)', 'Signal service subscriptions', 'Trading robot sales', 'Coaching and mentoring'], challenges: ['Regulatory requirements', 'High risk perception', 'Scam associations', 'Requires expertise', 'Compliance complexity'], recommendations: ['Focus on education', 'Build credibility with track record', 'Partner with regulated brokers', 'Create risk management content', 'Be transparent about risks'], marketSize: '$2.4 Trillion Daily Volume', growthRate: '8.7% CAGR', topKeywords: ['forex trading for beginners', 'best forex brokers', 'forex trading strategies'], topOffers: ['Broker affiliates ($50-200)', 'Trading courses ($100-500)'], estimatedEarnings: '$1000-$4000/month per 1000 visitors' },
+    analyze: {
+      niche: 'Forex Trading',
+      score: 68,
+      difficulty: 58,
+      profitPotential: 80,
+      trafficPotential: 8900,
+      verdict: 'MONITOR',
+      analysis: 'Forex trading is high-profit but high-risk. Requires regulatory compliance and ethical approach. Good for experienced marketers with financial credibility.',
+      opportunities: [
+        'Very high CPA payouts ($50-$150 per lead)',
+        'Motivated audience with money to invest',
+        'Multiple brokers and platforms',
+        'Trading education programs',
+        'Signal services and tools',
+      ],
+      challenges: [
+        'Highly regulated industry',
+        'Risk of promoting scams',
+        'Requires financial expertise',
+        'High competition',
+        'Liability concerns',
+      ],
+      recommendations: [
+        'Partner with regulated brokers only',
+        'Create educational content',
+        'Disclose risks clearly',
+        'Build trust through transparency',
+        'Focus on beginner education',
+      ],
+      marketSize: '$2.4 Quadrillion USD daily volume',
+      growthRate: '5.8% CAGR',
+      topKeywords: ['best forex brokers', 'forex trading for beginners', 'forex strategies'],
+      topOffers: ['Forex broker affiliates', 'Trading education'],
+      estimatedEarnings: '$700-$3000/month per 1000 visitors',
+    },
     keywords: [
-      { keyword: 'forex trading for beginners', traffic: 7800, competition: 38, difficulty: 44, intent: 'Informational', searchVolume: '7,800/month', cpc: '$2.85', monetization: 'High - Trading courses', ranking: 'Moderate', avgPosition: '15-27', ctr: '3.1%', conversion: '2.2%', monthlyRevenue: '$1,872' },
-      { keyword: 'best forex brokers', traffic: 6900, competition: 36, difficulty: 42, intent: 'Commercial', searchVolume: '6,900/month', cpc: '$3.25', monetization: 'Very High - Broker affiliates', ranking: 'Moderate', avgPosition: '14-26', ctr: '3.2%', conversion: '1.9%', monthlyRevenue: '$1,859' },
-      { keyword: 'forex trading strategies', traffic: 6200, competition: 34, difficulty: 40, intent: 'Informational', searchVolume: '6,200/month', cpc: '$2.65', monetization: 'High - Strategy guides', ranking: 'Moderate', avgPosition: '13-25', ctr: '3.3%', conversion: '2.0%', monthlyRevenue: '$1,488' },
-      { keyword: 'how to start forex trading', traffic: 5600, competition: 32, difficulty: 38, intent: 'Informational', searchVolume: '5,600/month', cpc: '$2.45', monetization: 'High - Beginner courses', ranking: 'Moderate', avgPosition: '12-24', ctr: '3.4%', conversion: '2.1%', monthlyRevenue: '$1,344' },
-      { keyword: 'forex trading tutorial', traffic: 5100, competition: 30, difficulty: 36, intent: 'Informational', searchVolume: '5,100/month', cpc: '$2.15', monetization: 'Medium - Educational content', ranking: 'Moderate', avgPosition: '11-23', ctr: '3.5%', conversion: '1.9%', monthlyRevenue: '$969' },
-      { keyword: 'forex pairs to trade', traffic: 4600, competition: 28, difficulty: 34, intent: 'Informational', searchVolume: '4,600/month', cpc: '$1.95', monetization: 'Medium - Trading guides', ranking: 'Easy', avgPosition: '10-22', ctr: '3.6%', conversion: '1.8%', monthlyRevenue: '$828' },
-      { keyword: 'forex technical analysis', traffic: 4200, competition: 26, difficulty: 32, intent: 'Informational', searchVolume: '4,200/month', cpc: '$2.05', monetization: 'Medium - Analysis guides', ranking: 'Easy', avgPosition: '9-21', ctr: '3.7%', conversion: '1.7%', monthlyRevenue: '$714' },
-      { keyword: 'forex risk management', traffic: 3800, competition: 24, difficulty: 30, intent: 'Informational', searchVolume: '3,800/month', cpc: '$1.85', monetization: 'Medium - Risk guides', ranking: 'Easy', avgPosition: '8-20', ctr: '3.8%', conversion: '1.6%', monthlyRevenue: '$570' },
-      { keyword: 'forex trading signals', traffic: 3400, competition: 22, difficulty: 28, intent: 'Commercial', searchVolume: '3,400/month', cpc: '$2.35', monetization: 'High - Signal services', ranking: 'Easy', avgPosition: '7-19', ctr: '3.9%', conversion: '2.0%', monthlyRevenue: '$799' },
-      { keyword: 'forex trading robots', traffic: 3100, competition: 20, difficulty: 26, intent: 'Commercial', searchVolume: '3,100/month', cpc: '$2.15', monetization: 'High - Robot sales', ranking: 'Easy', avgPosition: '6-18', ctr: '4.0%', conversion: '1.9%', monthlyRevenue: '$558' },
-      { keyword: 'forex leverage explained', traffic: 2800, competition: 18, difficulty: 24, intent: 'Informational', searchVolume: '2,800/month', cpc: '$1.75', monetization: 'Low - Educational', ranking: 'Very Easy', avgPosition: '5-17', ctr: '4.1%', conversion: '1.5%', monthlyRevenue: '$420' },
-      { keyword: 'forex demo account', traffic: 2500, competition: 16, difficulty: 22, intent: 'Informational', searchVolume: '2,500/month', cpc: '$1.55', monetization: 'Low - Broker guides', ranking: 'Very Easy', avgPosition: '4-16', ctr: '4.2%', conversion: '1.4%', monthlyRevenue: '$350' },
-      { keyword: 'forex scalping strategy', traffic: 2200, competition: 14, difficulty: 20, intent: 'Informational', searchVolume: '2,200/month', cpc: '$1.85', monetization: 'Low - Strategy guides', ranking: 'Very Easy', avgPosition: '3-15', ctr: '4.3%', conversion: '1.6%', monthlyRevenue: '$407' },
-      { keyword: 'forex swing trading', traffic: 1900, competition: 12, difficulty: 18, intent: 'Informational', searchVolume: '1,900/month', cpc: '$1.65', monetization: 'Low - Trading guides', ranking: 'Very Easy', avgPosition: '2-14', ctr: '4.4%', conversion: '1.5%', monthlyRevenue: '$285' },
-      { keyword: 'forex day trading', traffic: 1600, competition: 10, difficulty: 16, intent: 'Informational', searchVolume: '1,600/month', cpc: '$1.75', monetization: 'Low - Day trading guides', ranking: 'Very Easy', avgPosition: '1-13', ctr: '4.5%', conversion: '1.4%', monthlyRevenue: '$224' },
-      { keyword: 'forex position sizing', traffic: 1400, competition: 8, difficulty: 14, intent: 'Informational', searchVolume: '1,400/month', cpc: '$1.45', monetization: 'Very Low - Risk guides', ranking: 'Very Easy', avgPosition: '1-12', ctr: '4.6%', conversion: '1.2%', monthlyRevenue: '$168' },
-      { keyword: 'forex psychology', traffic: 1200, competition: 6, difficulty: 12, intent: 'Informational', searchVolume: '1,200/month', cpc: '$1.55', monetization: 'Low - Psychology guides', ranking: 'Very Easy', avgPosition: '1-11', ctr: '4.7%', conversion: '1.3%', monthlyRevenue: '$156' },
-      { keyword: 'forex calendar events', traffic: 1000, competition: 4, difficulty: 10, intent: 'Informational', searchVolume: '1,000/month', cpc: '$1.25', monetization: 'Very Low - Calendar info', ranking: 'Very Easy', avgPosition: '1-10', ctr: '4.8%', conversion: '1.1%', monthlyRevenue: '$110' },
-      { keyword: 'forex correlation', traffic: 800, competition: 2, difficulty: 8, intent: 'Informational', searchVolume: '800/month', cpc: '$1.35', monetization: 'Very Low - Analysis info', ranking: 'Very Easy', avgPosition: '1-9', ctr: '4.9%', conversion: '1.2%', monthlyRevenue: '$96' },
-      { keyword: 'forex hedging strategies', traffic: 600, competition: 0, difficulty: 6, intent: 'Informational', searchVolume: '600/month', cpc: '$1.15', monetization: 'Very Low - Strategy info', ranking: 'Very Easy', avgPosition: '1-8', ctr: '5.0%', conversion: '1.0%', monthlyRevenue: '$60' }
+      { keyword: 'best forex brokers', traffic: 8900, competition: 55, difficulty: 60 },
+      { keyword: 'forex trading for beginners', traffic: 7200, competition: 48, difficulty: 55 },
+      { keyword: 'forex trading strategies', traffic: 6500, competition: 50, difficulty: 58 },
+      { keyword: 'how to trade forex', traffic: 5800, competition: 45, difficulty: 52 },
+      { keyword: 'forex signals', traffic: 4900, competition: 42, difficulty: 50 },
+      { keyword: 'forex demo account', traffic: 4200, competition: 38, difficulty: 45 },
+      { keyword: 'currency trading tips', traffic: 3800, competition: 35, difficulty: 42 },
+      { keyword: 'forex leverage explained', traffic: 3200, competition: 32, difficulty: 40 },
     ],
-    offers: [{ network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$80', commission: '85%', desc: 'Forex courses and systems' }, { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$70', commission: '75%', desc: 'Forex broker signups' }, { network: 'Impact', url: 'https://www.impact.com', payout: '$90', commission: '95%', desc: 'Premium forex programs' }, { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$60', commission: '65%', desc: 'Forex trading tools' }, { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$75', commission: '80%', desc: 'Forex affiliates' }],
+    offers: [
+      { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$100', commission: '65%', desc: 'Forex courses, trading guides' },
+      { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$75', commission: '58%', desc: 'Forex brokers, platforms' },
+      { network: 'Impact', url: 'https://www.impact.com', payout: '$120', commission: '70%', desc: 'Premium forex offers' },
+      { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$85', commission: '62%', desc: 'Trading services, signals' },
+      { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$65', commission: '55%', desc: 'Forex tools, software' },
+    ],
     domains: [
-      { domain: 'ForexTradingForBeginners.com', age: 6, traffic: 2400, backlinks: 380, authority: 38, price: '$15', verdict: 'GOOD', domainMetrics: { referringDomains: 114, topicAuthority: 'Forex: 72%', backlinksProfile: 'Moderate (News: 10%, Blogs: 40%, Authority: 50%)', trafficSources: 'Organic: 80%, Direct: 15%, Referral: 5%', topPages: ['Beginner Guide (420 visitors)', 'How to Start (360 visitors)', 'Basics (300 visitors)'], monetizationPotential: '$1,920-2,880/month', acquisitionStrategy: 'Forex education platforms, trading blogs, financial education sites' } },
-      { domain: 'BestForexBrokers.net', age: 5, traffic: 2000, backlinks: 320, authority: 34, price: '$12', verdict: 'GOOD', domainMetrics: { referringDomains: 96, topicAuthority: 'Brokers: 68%', backlinksProfile: 'Moderate (News: 8%, Blogs: 42%, Authority: 50%)', trafficSources: 'Organic: 78%, Direct: 17%, Referral: 5%', topPages: ['Broker Reviews (360 visitors)', 'Comparison (300 visitors)', 'Ratings (240 visitors)'], monetizationPotential: '$1,600-2,400/month', acquisitionStrategy: 'Forex broker networks, trading communities, financial comparison sites' } },
-      { domain: 'ForexStrategyGuide.org', age: 7, traffic: 2200, backlinks: 360, authority: 36, price: '$13', verdict: 'GOOD', domainMetrics: { referringDomains: 108, topicAuthority: 'Strategies: 70%', backlinksProfile: 'Moderate (News: 9%, Blogs: 41%, Authority: 50%)', trafficSources: 'Organic: 79%, Direct: 16%, Referral: 5%', topPages: ['Strategy Guide (400 visitors)', 'Advanced Strategies (340 visitors)', 'Beginner Strategies (280 visitors)'], monetizationPotential: '$1,760-2,640/month', acquisitionStrategy: 'Trading education sites, strategy communities, forex forums' } },
-      { domain: 'ForexTradingTips.com', age: 4, traffic: 1700, backlinks: 280, authority: 30, price: '$10', verdict: 'FAIR', domainMetrics: { referringDomains: 84, topicAuthority: 'Tips: 62%', backlinksProfile: 'Weak (News: 6%, Blogs: 44%, Authority: 50%)', trafficSources: 'Organic: 76%, Direct: 19%, Referral: 5%', topPages: ['Trading Tips (300 visitors)', 'Quick Tips (240 visitors)', 'Daily Tips (200 visitors)'], monetizationPotential: '$1,020-1,530/month', acquisitionStrategy: 'Forex tip aggregators, trading blogs, social media communities' } },
-      { domain: 'HowToTradeForex.net', age: 5, traffic: 1900, backlinks: 300, authority: 32, price: '$11', verdict: 'FAIR', domainMetrics: { referringDomains: 90, topicAuthority: 'How-to: 64%', backlinksProfile: 'Weak (News: 7%, Blogs: 43%, Authority: 50%)', trafficSources: 'Organic: 77%, Direct: 18%, Referral: 5%', topPages: ['How to Trade (340 visitors)', 'Step by Step (280 visitors)', 'Getting Started (240 visitors)'], monetizationPotential: '$1,140-1,710/month', acquisitionStrategy: 'How-to guides networks, beginner trading sites, educational platforms' } },
-      { domain: 'ForexSignalsOnline.org', age: 3, traffic: 1400, backlinks: 220, authority: 26, price: '$8', verdict: 'FAIR', domainMetrics: { referringDomains: 66, topicAuthority: 'Signals: 56%', backlinksProfile: 'Weak (News: 4%, Blogs: 46%, Authority: 50%)', trafficSources: 'Organic: 72%, Direct: 23%, Referral: 5%', topPages: ['Signal Reviews (240 visitors)', 'Best Signals (200 visitors)', 'Ratings (160 visitors)'], monetizationPotential: '$840-1,260/month', acquisitionStrategy: 'Signal service providers, trading communities, forex forums' } },
-      { domain: 'ForexRobotReview.com', age: 4, traffic: 1200, backlinks: 200, authority: 24, price: '$7', verdict: 'FAIR', domainMetrics: { referringDomains: 60, topicAuthority: 'Robots: 52%', backlinksProfile: 'Weak (News: 2%, Blogs: 48%, Authority: 50%)', trafficSources: 'Organic: 70%, Direct: 25%, Referral: 5%', topPages: ['Robot Reviews (220 visitors)', 'Best Robots (180 visitors)', 'Comparisons (160 visitors)'], monetizationPotential: '$720-1,080/month', acquisitionStrategy: 'Robot developers, automated trading communities, trading forums' } },
-      { domain: 'TradingForexGuide.net', age: 3, traffic: 1000, backlinks: 160, authority: 20, price: '$6', verdict: 'FAIR', domainMetrics: { referringDomains: 48, topicAuthority: 'Trading: 48%', backlinksProfile: 'Very Weak (News: 0%, Blogs: 50%, Authority: 50%)', trafficSources: 'Organic: 68%, Direct: 27%, Referral: 5%', topPages: ['Trading Guide (180 visitors)', 'Guides (140 visitors)', 'Tips (120 visitors)'], monetizationPotential: '$600-900/month', acquisitionStrategy: 'General trading sites, finance blogs, education platforms' } }
+      { domain: 'ForexGuide.com', age: 10, traffic: 3200, backlinks: 580, authority: 48, price: '$24', verdict: 'EXCELLENT' },
+      { domain: 'ForexBrokers.net', age: 12, traffic: 3800, backlinks: 720, authority: 54, price: '$30', verdict: 'EXCELLENT' },
+      { domain: 'TradingStrategies.org', age: 11, traffic: 3400, backlinks: 620, authority: 50, price: '$26', verdict: 'EXCELLENT' },
+      { domain: 'CurrencyTrading.com', age: 9, traffic: 2900, backlinks: 520, authority: 44, price: '$20', verdict: 'GOOD' },
+      { domain: 'ForexSignals.net', age: 8, traffic: 2400, backlinks: 420, authority: 38, price: '$14', verdict: 'GOOD' },
+      { domain: 'TradingTips.org', age: 7, traffic: 2100, backlinks: 380, authority: 36, price: '$12', verdict: 'GOOD' },
+      { domain: 'ForexEducation.com', age: 6, traffic: 1800, backlinks: 320, authority: 32, price: '$10', verdict: 'FAIR' },
+      { domain: 'DayTrading.net', age: 5, traffic: 1500, backlinks: 280, authority: 28, price: '$8', verdict: 'FAIR' },
     ],
     blueprint: {
       pages: [
-        { name: 'Homepage', description: 'Forex trading education focus', strategy: 'Lead with "Learn Forex Trading" messaging, feature success stories from traders, explain forex benefits (24/5 trading, leverage, liquidity), build trust with regulated broker partnerships, CTA to free beginner course' },
-        { name: 'Forex Guide', description: 'Complete forex trading guide', strategy: 'Create 150+ page comprehensive guide covering forex basics, currency pairs, leverage, spreads, trading hours, strategies, risk management, internal linking to specific topics' },
-        { name: 'Brokers', description: 'Best forex brokers reviewed', strategy: 'Review 30+ brokers with detailed comparison tables, regulation status, spreads, commissions, account types, pros/cons, affiliate links, user reviews, security certifications' },
-        { name: 'Strategies', description: 'Trading strategies and systems', strategy: 'Create 50+ strategy guides (scalping, swing, day trading), include entry/exit rules, risk management, examples, video demonstrations, backtesting data, profitability analysis' },
-        { name: 'Signals', description: 'Trading signals service', strategy: 'Offer daily/weekly trading signals, include entry price, stop loss, take profit, reasoning, historical accuracy, subscription options, free trial, community access' },
-        { name: 'Education', description: 'Forex education and courses', strategy: 'Create comprehensive courses (beginner to advanced), video lessons, quizzes, certificates, live trading sessions, Q&A support, community forums, premium tier' },
-        { name: 'FAQ', description: 'Common forex questions', strategy: 'Answer 100+ FAQs with video answers, schema markup for snippets, address common fears, explain technical concepts, link to guides, update based on user questions' },
-        { name: 'Contact', description: 'Coaching inquiry', strategy: 'Coaching inquiry form, consultation booking, email list signup, community access, affiliate offers, premium program sales, live chat support' }
+        { name: 'Homepage', description: 'Forex education hub, broker reviews, trading guides' },
+        { name: 'Brokers', description: 'Broker comparisons, reviews, affiliate links' },
+        { name: 'Beginner Guide', description: 'How to start, account setup, first trade' },
+        { name: 'Strategies', description: 'Trading strategies, technical analysis, risk management' },
+        { name: 'Signals', description: 'Trading signals, alerts, premium services' },
+        { name: 'Tools', description: 'Calculators, converters, analysis tools' },
+        { name: 'News', description: 'Market news, economic calendar, analysis' },
+        { name: 'FAQ', description: 'Common questions, regulations, safety' },
       ],
-      strategy: 'Create forex education content. Build broker affiliate partnerships. Monetize with broker signups and courses.',
-      monetization: 'Primary: Broker affiliates ($50-200 CPA). Secondary: Trading courses. Tertiary: Signals. Estimated: $1000-4000/month per 1000 visitors.',
-      timeline: 'Months 1-2: Build core pages. Months 3-4: Drive traffic. Months 5-6: Scale. Months 6+: Passive income.',
-      seoArchitecture: 'Pillar page (Forex Hub) → Cluster pages (Brokers, Strategies, Education) → Long-tail pages (Specific strategies, broker reviews). Internal linking: 5-8 links per page.',
-      contentPillars: ['Forex Basics', 'Trading Strategies', 'Broker Reviews', 'Risk Management', 'Technical Analysis', 'Market News', 'Education', 'Community'],
-      conversionFunnels: ['Free Guide → Email List → Broker Signup → Trading Course → Signals → Coaching']
+      strategy: 'Create educational content, compare brokers, build trust through transparency. Monetize with broker affiliates and trading education.',
+      monetization: 'Primary: Forex broker affiliates ($50-150 per conversion). Secondary: Trading courses. Tertiary: Email marketing. Estimated: $700-3000/month per 1000 visitors.',
+      timeline: 'Months 1-2: Build 8 educational pages. Months 3-4: Drive traffic via SEO. Months 5-6: Scale with paid ads. Months 6+: Passive income.',
     },
     scripts: [
-      {
-        title: 'Forex Trading for Beginners',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I made my first forex trade and here\'s how..." [Personal experience] PROBLEM (3-15s): "Forex seems complicated - currency pairs, pips, leverage. I was intimidated at first..." [Relatable concern] SOLUTION (15-45s): "It\'s actually simple: Pick a currency pair (EUR/USD), open a broker account (takes 5 min), start with demo account, practice strategies, then trade live with small amounts. I started with $100..." [Step-by-step, accessible] PROOF (45-50s): "See results: First month (learning), Second month ($50 profit), Third month ($200 profit)..." [Progressive results] CTA (50-60s): "Get the guide - link in bio! Free forex trading guide for beginners. Start your forex journey today!" [Urgency, value]',
-        variations: ['Advanced trader variant', 'Risk management variant', 'Broker comparison variant', 'Strategy-focused variant']
+      { 
+        title: 'Forex Broker Comparison', 
+        duration: '60 sec', 
+        script: 'HOOK: "I compared the top 10 forex brokers so you can choose the best one..." [0-3 sec] PROBLEM: "Choosing a forex broker is confusing. There are so many options and they all claim to be the best..." [3-15 sec] SOLUTION: "I created a detailed comparison guide showing fees, spreads, regulation, and which broker is best for your trading style..." [15-45 sec] RESULTS: "This guide has helped thousands of traders find the right broker..." [45-50 sec] CTA: "Get your free broker comparison guide - link in bio. Start trading with the right broker today!" [50-60 sec]' 
       },
-      {
-        title: 'Best Forex Brokers',
-        duration: '60 sec',
-        script: 'HOOK (0-3s): "I compared all top forex brokers..." [Authority, thoroughness] PROBLEM (3-15s): "Too many forex brokers to choose from. Which one is best? How do you know if they\'re regulated? What about spreads and commissions?..." [Overwhelm] SOLUTION (15-45s): "Here are the top 5 for beginners: IG (regulated, low spreads), Oanda (trusted, good customer service), Pepperstone (low fees, fast execution), CMC Markets (educational resources), Saxo Bank (advanced platform)..." [Clear breakdown, specific benefits] PROOF (45-50s): "See comparisons: Spreads range 0.5-2 pips, commissions $0-10 per trade, all regulated..." [Specific data] CTA (50-60s): "See full comparison - link in bio! Compare 20 brokers side-by-side. Find your perfect broker!" [Specific value]',
-        variations: ['Low-cost broker variant', 'Regulated broker variant', 'Mobile trading variant', 'Advanced platform variant']
-      }
-    ],
-    subNiches: {
-      'forex beginners': { name: 'Forex for Beginners', microNiches: { 'how to start': { name: 'How to Start Forex Trading', microMicroNiches: { 'complete beginners': { name: 'Forex Trading for Complete Beginners', traffic: 1440, competition: 26, difficulty: 32, cpaRange: '$50-60', monthlyRevenue: '$1,440', topKeywords: ['forex for complete beginners', 'forex basics', 'forex getting started'], targetAudience: 'No trading experience, curious about forex, risk-averse', painPoints: 'Complexity, fear of losing money, technical jargon', conversionRate: '2.2%' }, 'first trade': { name: 'Making Your First Forex Trade', traffic: 1200, competition: 22, difficulty: 28, cpaRange: '$48-58', monthlyRevenue: '$1,200', topKeywords: ['first forex trade', 'how to make first trade', 'first trade guide'], targetAudience: 'Beginners ready to trade, demo account graduates', painPoints: 'Execution anxiety, position sizing, entry/exit timing', conversionRate: '2.0%' }, 'demo account': { name: 'Forex Demo Account Guide', traffic: 1000, competition: 18, difficulty: 24, cpaRange: '$45-55', monthlyRevenue: '$1,000', topKeywords: ['forex demo account', 'practice trading', 'demo account guide'], targetAudience: 'Risk-averse learners, practice traders', painPoints: 'Demo vs real trading differences, practice strategy', conversionRate: '1.8%' } } } } }
-    }
+      { 
+        title: 'Forex Trading Basics', 
+        duration: '60 sec', 
+        script: 'HOOK: "Want to start forex trading but don\'t know how? I\'ll show you..." [0-3 sec] PROBLEM: "Forex seems complicated and risky. Most beginners lose money because they don\'t understand the basics..." [3-15 sec] SOLUTION: "I break down forex trading into simple steps. You can start with a demo account and learn risk-free..." [15-45 sec] RESULTS: "My guide has helped beginners safely enter the forex market..." [45-50 sec] CTA: "Get your free forex trading guide - link in bio. Start your trading journey today!" [50-60 sec]' 
+      },
+    ]
   },
   'real estate': {
-    analyze: { niche: 'Real Estate', score: 81, difficulty: 46, profitPotential: 87, trafficPotential: 10200, verdict: 'BUILD', analysis: 'Real estate is a stable, high-value niche with consistent demand. Multiple sub-niches and monetization options. Requires authority but very profitable.', opportunities: ['Real estate platform affiliates ($40-80 per lead)', 'Mortgage broker commissions (high value)', 'Investment course sales', 'Property management affiliates', 'Lead generation for agents'], challenges: ['High competition', 'Requires credibility', 'Regulatory requirements', 'Geographic targeting needed', 'Longer sales cycles'], recommendations: ['Focus on specific real estate niches', 'Build authority with market data', 'Create investment guides', 'Partner with real estate platforms', 'Generate qualified leads'], marketSize: '$3.69 Trillion USD', growthRate: '5.8% CAGR', topKeywords: ['real estate investing for beginners', 'best real estate markets', 'how to flip houses'], topOffers: ['Real estate platforms ($40-80)', 'Mortgage affiliates ($100-200)'], estimatedEarnings: '$800-$3500/month per 1000 visitors' },
+    analyze: {
+      niche: 'Real Estate',
+      score: 79,
+      difficulty: 50,
+      profitPotential: 86,
+      trafficPotential: 10500,
+      verdict: 'BUILD',
+      analysis: 'Real estate is a stable, high-value niche with consistent demand. Multiple sub-niches and monetization options. Requires authority but very profitable.',
+      opportunities: [
+        'High CPA payouts ($40-$80 per lead)',
+        'Multiple property types and markets',
+        'Lead generation potential',
+        'Email marketing for repeat business',
+        'Affiliate programs with brokers',
+      ],
+      challenges: [
+        'Requires real estate knowledge',
+        'Geographic targeting needed',
+        'Competition from established agents',
+        'Regulatory compliance',
+        'Longer sales cycles',
+      ],
+      recommendations: [
+        'Focus on specific markets or property types',
+        'Create buyer/seller guides',
+        'Build email list for leads',
+        'Partner with real estate agents',
+        'Create market analysis content',
+      ],
+      marketSize: '$17.5 Trillion USD annually',
+      growthRate: '3.8% CAGR',
+      topKeywords: ['homes for sale', 'real estate investing', 'how to buy a house'],
+      topOffers: ['Real estate platforms', 'Mortgage affiliates'],
+      estimatedEarnings: '$800-$3500/month per 1000 visitors',
+    },
     keywords: [
-      { keyword: 'real estate investing for beginners', traffic: 8200, competition: 36, difficulty: 42, intent: 'Informational', searchVolume: '8,200/month', cpc: '$2.45', monetization: 'High - Investment courses', ranking: 'Moderate', avgPosition: '15-27', ctr: '3.2%', conversion: '2.1%', monthlyRevenue: '$1,968' },
-      { keyword: 'best real estate markets', traffic: 7100, competition: 34, difficulty: 40, intent: 'Informational', searchVolume: '7,100/month', cpc: '$2.15', monetization: 'High - Market analysis', ranking: 'Moderate', avgPosition: '14-26', ctr: '3.3%', conversion: '2.0%', monthlyRevenue: '$1,526' },
-      { keyword: 'how to flip houses', traffic: 6500, competition: 32, difficulty: 38, intent: 'Informational', searchVolume: '6,500/month', cpc: '$2.35', monetization: 'High - Flipping courses', ranking: 'Moderate', avgPosition: '13-25', ctr: '3.4%', conversion: '2.2%', monthlyRevenue: '$1,560' },
-      { keyword: 'rental property investing', traffic: 5900, competition: 30, difficulty: 36, intent: 'Informational', searchVolume: '5,900/month', cpc: '$2.05', monetization: 'High - Rental guides', ranking: 'Moderate', avgPosition: '12-24', ctr: '3.5%', conversion: '2.0%', monthlyRevenue: '$1,180' },
-      { keyword: 'real estate investment trusts', traffic: 5300, competition: 28, difficulty: 34, intent: 'Informational', searchVolume: '5,300/month', cpc: '$1.85', monetization: 'Medium - REIT guides', ranking: 'Easy', avgPosition: '11-23', ctr: '3.6%', conversion: '1.8%', monthlyRevenue: '$954' },
-      { keyword: 'commercial real estate investing', traffic: 4800, competition: 26, difficulty: 32, intent: 'Commercial', searchVolume: '4,800/month', cpc: '$3.15', monetization: 'High - Commercial guides', ranking: 'Moderate', avgPosition: '10-22', ctr: '3.7%', conversion: '1.9%', monthlyRevenue: '$1,512' },
-      { keyword: 'real estate wholesaling', traffic: 4500, competition: 24, difficulty: 30, intent: 'Informational', searchVolume: '4,500/month', cpc: '$2.25', monetization: 'High - Wholesaling courses', ranking: 'Easy', avgPosition: '9-21', ctr: '3.8%', conversion: '2.1%', monthlyRevenue: '$945' },
-      { keyword: 'property management business', traffic: 4200, competition: 22, difficulty: 28, intent: 'Informational', searchVolume: '4,200/month', cpc: '$1.95', monetization: 'Medium - PM software', ranking: 'Easy', avgPosition: '8-20', ctr: '3.9%', conversion: '1.8%', monthlyRevenue: '$798' },
-      { keyword: 'real estate agent commission', traffic: 3900, competition: 20, difficulty: 26, intent: 'Informational', searchVolume: '3,900/month', cpc: '$1.75', monetization: 'Low - Educational', ranking: 'Very Easy', avgPosition: '6-18', ctr: '4.1%', conversion: '1.6%', monthlyRevenue: '$624' },
-      { keyword: 'real estate crowdfunding', traffic: 3600, competition: 18, difficulty: 24, intent: 'Commercial', searchVolume: '3,600/month', cpc: '$2.85', monetization: 'High - Crowdfunding platforms', ranking: 'Very Easy', avgPosition: '5-17', ctr: '4.2%', conversion: '2.3%', monthlyRevenue: '$828' },
-      { keyword: 'real estate investment groups', traffic: 3400, competition: 16, difficulty: 22, intent: 'Informational', searchVolume: '3,400/month', cpc: '$1.65', monetization: 'Medium - Group resources', ranking: 'Very Easy', avgPosition: '4-16', ctr: '4.3%', conversion: '1.7%', monthlyRevenue: '$476' }
+      { keyword: 'real estate investing for beginners', traffic: 10500, competition: 45, difficulty: 50 },
+      { keyword: 'how to buy a house', traffic: 8900, competition: 40, difficulty: 48 },
+      { keyword: 'best real estate markets', traffic: 7600, competition: 38, difficulty: 45 },
+      { keyword: 'mortgage rates today', traffic: 6800, competition: 35, difficulty: 42 },
+      { keyword: 'property management tips', traffic: 5400, competition: 28, difficulty: 35 },
+      { keyword: 'real estate flipping guide', traffic: 4900, competition: 32, difficulty: 40 },
+      { keyword: 'rental property calculator', traffic: 4200, competition: 25, difficulty: 32 },
+      { keyword: 'real estate agent commission', traffic: 3600, competition: 22, difficulty: 30 },
+    ],
+    offers: [
+      { network: 'ClickBank', url: 'https://www.clickbank.com', payout: '$60', commission: '55%', desc: 'Real estate courses, guides' },
+      { network: 'CJ Affiliate', url: 'https://www.cj.com', payout: '$50', commission: '48%', desc: 'Real estate platforms, brokers' },
+      { network: 'Impact', url: 'https://www.impact.com', payout: '$70', commission: '62%', desc: 'Premium real estate offers' },
+      { network: 'ShareASale', url: 'https://www.shareasale.com', payout: '$55', commission: '52%', desc: 'Real estate services, tools' },
+      { network: 'Rakuten', url: 'https://rakutenmarketing.com', payout: '$45', commission: '42%', desc: 'Mortgage, insurance, services' },
+    ],
+    domains: [
+      { domain: 'RealEstateGuide.com', age: 13, traffic: 4100, backlinks: 780, authority: 56, price: '$32', verdict: 'EXCELLENT' },
+      { domain: 'InvestingInRealEstate.net', age: 11, traffic: 3600, backlinks: 680, authority: 52, price: '$28', verdict: 'EXCELLENT' },
+      { domain: 'PropertyInvestment.org', age: 12, traffic: 3900, backlinks: 720, authority: 54, price: '$30', verdict: 'EXCELLENT' },
+      { domain: 'HouseBuyingGuide.com', age: 10, traffic: 3200, backlinks: 600, authority: 48, price: '$24', verdict: 'EXCELLENT' },
+      { domain: 'RealEstateTips.net', age: 9, traffic: 2800, backlinks: 520, authority: 44, price: '$20', verdict: 'GOOD' },
+      { domain: 'MortgageGuide.org', age: 8, traffic: 2400, backlinks: 420, authority: 38, price: '$14', verdict: 'GOOD' },
+      { domain: 'PropertyFlipping.com', age: 7, traffic: 2100, backlinks: 380, authority: 36, price: '$12', verdict: 'GOOD' },
+      { domain: 'RentalProperties.net', age: 6, traffic: 1800, backlinks: 320, authority: 32, price: '$10', verdict: 'FAIR' },
+    ],
+    blueprint: {
+      pages: [
+        { name: 'Homepage', description: 'Real estate hub, buying/selling guides, investment tips' },
+        { name: 'Buying Guide', description: 'Step-by-step buying process, mortgage info, CPA offers' },
+        { name: 'Investing', description: 'Investment strategies, market analysis, property types' },
+        { name: 'Market Data', description: 'Local market info, price trends, neighborhood guides' },
+        { name: 'Mortgage', description: 'Mortgage calculator, rates, lender comparisons' },
+        { name: 'Blog', description: 'Real estate tips, market news, investment advice' },
+        { name: 'Tools', description: 'Calculators, ROI tools, investment analysis' },
+        { name: 'Contact', description: 'Lead capture, agent referrals, support' },
+      ],
+      strategy: 'Create buying/selling/investing guides, market analysis content. Build email list for leads. Monetize with real estate platform affiliates and mortgage offers.',
+      monetization: 'Primary: Real estate platform affiliates ($40-80 per lead). Secondary: Mortgage commissions. Tertiary: Email marketing. Estimated: $800-3500/month per 1000 visitors.',
+      timeline: 'Months 1-2: Build 8 pages with guides and tools. Months 3-4: Drive traffic via SEO. Months 5-6: Scale with paid ads. Months 6+: Passive income.',
+    },
+    scripts: [
+      { 
+        title: 'Real Estate Investing Guide', 
+        duration: '60 sec', 
+        script: 'HOOK: "I made $50,000 in my first year of real estate investing... here\'s how..." [0-3 sec] PROBLEM: "Most people think you need a lot of money to invest in real estate. They don\'t know where to start..." [3-15 sec] SOLUTION: "I created a beginner\'s guide that shows you how to start with minimal capital, find deals, and build wealth through real estate..." [15-45 sec] RESULTS: "My students have made an average of $30,000 in their first year..." [45-50 sec] CTA: "Get your free real estate investing guide - link in bio. Start building wealth today!" [50-60 sec]' 
+      },
+      { 
+        title: 'Buying Your First Home', 
+        duration: '60 sec', 
+        script: 'HOOK: "Buying your first home doesn\'t have to be scary... I\'ll walk you through it..." [0-3 sec] PROBLEM: "First-time home buyers are overwhelmed. They don\'t know about mortgages, inspections, or closing costs..." [3-15 sec] SOLUTION: "I created a step-by-step guide that explains everything. You\'ll know exactly what to expect and how to avoid costly mistakes..." [15-45 sec] RESULTS: "This guide has helped thousands of people buy their first home with confidence..." [45-50 sec] CTA: "Get your free home buying guide - link in bio. Start your home buying journey today!" [50-60 sec]' 
+      },
+    ]
+  },
+};
+
+export default function Dashboard() {
+  const [niche, setNiche] = useState('weight loss');
+  const [searchInput, setSearchInput] = useState('weight loss');
+  const [activeTool, setActiveTool] = useState<string | null>(null);
+
+  const data = NICHE_DATA[niche as keyof typeof NICHE_DATA] || NICHE_DATA['weight loss'];
+
+  const handleSearch = () => {
+    const searchTerm = searchInput.toLowerCase().trim();
+    if (searchTerm && NICHE_DATA[searchTerm as keyof typeof NICHE_DATA]) {
+      setNiche(searchTerm);
+      setActiveTool(null);
+    }
+  };
+
+  const handleReset = () => {
+    setSearchInput('');
+    setNiche('weight loss');
+    setActiveTool(null);
+  };
+
+  return (
+    <div style={{ minHeight: '100vh', background: '#0b1220', color: '#fff' }}>
+      {/* HEADER */}
+      <header style={{ background: 'linear-gradient(135deg, #1a2847 0%, #2b3a6a 100%)', padding: '20px', borderBottom: '2px solid #4f7cff' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Link href="/home" style={{ fontSize: '1.8rem', background: 'linear-gradient(135deg, #4f7cff, #00d4ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none' }}>🚀 CPA Niche Scout AI</Link>
+          <nav style={{ display: 'flex', gap: '20px' }}>
+            <Link href="/home" style={{ color: '#a8adb8', textDecoration: 'none' }}>Home</Link>
+            <Link href="/pricing" style={{ color: '#a8adb8', textDecoration: 'none' }}>Pricing</Link>
+            <Link href="/about" style={{ color: '#a8adb8', textDecoration: 'none' }}>About</Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* MAIN */}
+      <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '40px 20px' }}>
+        {!activeTool ? (
+          <>
+            {/* SEARCH */}
+            <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a', marginBottom: '40px' }}>
+              <h2 style={{ color: '#4f7cff', marginBottom: '20px' }}>🔍 Enter Your Niche</h2>
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+                <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSearch()} placeholder="e.g., weight loss, insurance, alcohol rehabilitation..." style={{ flex: 1, minWidth: '200px', padding: '12px', borderRadius: '6px', border: '1px solid #2b3a6a', background: '#0b1220', color: '#fff' }} />
+                <button onClick={handleSearch} style={{ padding: '12px 30px', background: '#4f7cff', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1rem' }}>🔍 Search</button>
+                <button onClick={handleReset} style={{ padding: '12px 25px', background: '#e74c3c', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>✕ Clear</button>
+              </div>
+              <div style={{ marginTop: '15px', padding: '12px', background: '#0b1220', borderRadius: '6px', border: '1px solid #4f7cff', color: '#4f7cff', fontSize: '0.9rem' }}>
+                ✅ Try: weight loss, insurance, alcohol rehabilitation, cryptocurrency, fitness, forex trading, real estate
+              </div>
+            </div>
+
+            {/* TOOLS */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
+              {[
+                { icon: '📈', title: 'Analyze', desc: 'Deep niche analysis' },
+                { icon: '📊', title: 'Keywords', desc: 'Find high-traffic keywords' },
+                { icon: '💰', title: 'Offers', desc: 'Match CPA offers' },
+                { icon: '🌐', title: 'Domains', desc: 'Find expired domains' },
+                { icon: '📐', title: 'Blueprint', desc: 'Website structure' },
+                { icon: '🎬', title: 'Scripts', desc: 'Video scripts' },
+              ].map((tool) => (
+                <button key={tool.title} onClick={() => setActiveTool(tool.title)} style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '2px solid #2b3a6a', cursor: 'pointer', transition: 'all 0.3s', color: '#fff' }} onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#4f7cff')} onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#2b3a6a')}>
+                  <div style={{ fontSize: '2.5rem', marginBottom: '15px' }}>{tool.icon}</div>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '8px' }}>{tool.title}</h3>
+                  <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>{tool.desc}</p>
+                </button>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            {/* BACK BUTTON */}
+            <button onClick={() => setActiveTool(null)} style={{ padding: '10px 20px', background: '#2b3a6a', color: '#a8adb8', border: 'none', borderRadius: '6px', cursor: 'pointer', marginBottom: '30px', fontWeight: 'bold' }}>← Back</button>
+
+            {/* ANALYZE */}
+            {activeTool === 'Analyze' && (
+              <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
+                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>📈 Deep Niche Analysis for "{niche}"</h2>
+                
+                {/* OVERVIEW SCORES */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '40px' }}>
+                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', textAlign: 'center' }}>
+                    <h4 style={{ color: '#a8adb8', marginBottom: '10px', marginTop: 0 }}>Overall Score</h4>
+                    <div style={{ fontSize: '3rem', fontWeight: 'bold', background: 'linear-gradient(135deg, #4f7cff, #00d4ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{data.analyze.score}/100</div>
+                    <p style={{ color: '#a8adb8', margin: '10px 0 0 0', fontSize: '0.9rem' }}>Niche Potential</p>
+                  </div>
+                  
+                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', textAlign: 'center' }}>
+                    <h4 style={{ color: '#a8adb8', marginBottom: '10px', marginTop: 0 }}>Difficulty</h4>
+                    <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#f59e0b' }}>{data.analyze.difficulty}/100</div>
+                    <p style={{ color: '#a8adb8', margin: '10px 0 0 0', fontSize: '0.9rem' }}>Ranking Difficulty</p>
+                  </div>
+                  
+                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', textAlign: 'center' }}>
+                    <h4 style={{ color: '#a8adb8', marginBottom: '10px', marginTop: 0 }}>Profit Potential</h4>
+                    <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#10b981' }}>{data.analyze.profitPotential}/100</div>
+                    <p style={{ color: '#a8adb8', margin: '10px 0 0 0', fontSize: '0.9rem' }}>Revenue Potential</p>
+                  </div>
+                  
+                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', textAlign: 'center' }}>
+                    <h4 style={{ color: '#a8adb8', marginBottom: '10px', marginTop: 0 }}>Traffic Potential</h4>
+                    <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#ef4444' }}>{data.analyze.trafficPotential.toLocaleString()}</div>
+                    <p style={{ color: '#a8adb8', margin: '10px 0 0 0', fontSize: '0.9rem' }}>Monthly Searches</p>
+                  </div>
+                </div>
+
+                {/* VERDICT */}
+                <div style={{ background: data.analyze.verdict === 'BUILD' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(245, 158, 11, 0.1)', padding: '25px', borderRadius: '8px', border: `2px solid ${data.analyze.verdict === 'BUILD' ? '#10b981' : '#f59e0b'}`, marginBottom: '40px', textAlign: 'center' }}>
+                  <h3 style={{ color: data.analyze.verdict === 'BUILD' ? '#10b981' : '#f59e0b', marginTop: 0, marginBottom: '10px', fontSize: '1.5rem' }}>
+                    {data.analyze.verdict === 'BUILD' ? '✅ VERDICT: BUILD THIS NICHE' : '⚠️ VERDICT: PROCEED WITH CAUTION'}
+                  </h3>
+                  <p style={{ color: '#a8adb8', margin: 0, lineHeight: '1.8' }}>{data.analyze.analysis}</p>
+                </div>
+
+                {/* MARKET ANALYSIS */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '40px' }}>
+                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                    <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>📊 Market Size</h3>
+                    <p style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 0 10px 0' }}>{data.analyze.marketSize}</p>
+                    <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Total addressable market annually</p>
+                  </div>
+
+                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                    <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>📈 Growth Rate</h3>
+                    <p style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 0 10px 0' }}>{data.analyze.growthRate}</p>
+                    <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Compound annual growth rate</p>
+                  </div>
+
+                  <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                    <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>💰 Est. Earnings</h3>
+                    <p style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 0 10px 0' }}>{data.analyze.estimatedEarnings}</p>
+                    <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Potential monthly income</p>
+                  </div>
+                </div>
+
+                {/* OPPORTUNITIES */}
+                <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #10b981', marginBottom: '40px' }}>
+                  <h3 style={{ color: '#10b981', marginBottom: '15px', marginTop: 0 }}>✅ Key Opportunities</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '2' }}>
+                    {data.analyze.opportunities.map((opp, i) => (
+                      <li key={i}>{opp}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* CHALLENGES */}
+                <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #ef4444', marginBottom: '40px' }}>
+                  <h3 style={{ color: '#ef4444', marginBottom: '15px', marginTop: 0 }}>⚠️ Key Challenges</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '2' }}>
+                    {data.analyze.challenges.map((challenge, i) => (
+                      <li key={i}>{challenge}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* RECOMMENDATIONS */}
+                <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #4f7cff', marginBottom: '40px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>💡 Strategic Recommendations</h3>
+                  <ol style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '2' }}>
+                    {data.analyze.recommendations.map((rec, i) => (
+                      <li key={i}>{rec}</li>
+                    ))}
+                  </ol>
+                </div>
+
+                {/* TOP KEYWORDS */}
+                <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a', marginBottom: '40px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>🎯 Top Keywords to Target</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '2' }}>
+                    {data.analyze.topKeywords.map((kw, i) => (
+                      <li key={i}><strong>{kw}</strong></li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* TOP OFFERS */}
+                <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>💸 Top Monetization Offers</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '2' }}>
+                    {data.analyze.topOffers.map((offer, i) => (
+                      <li key={i}>{offer}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {/* KEYWORDS */}
+            {activeTool === 'Keywords' && (
+              <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
+                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>📊 Keyword Research for "{niche}"</h2>
+                
+                {/* EXPLANATION */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a', marginBottom: '30px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px' }}>📖 How to Read These Results</h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
+                    <div>
+                      <h4 style={{ color: '#10b981', marginBottom: '8px' }}>🟢 Traffic (Monthly Searches)</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Higher traffic = more potential visitors. 5000+ is excellent, 3000-5000 is good, below 3000 is low. This shows monthly search volume.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#f59e0b', marginBottom: '8px' }}>🟡 Competition (Websites Ranking)</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Lower competition = easier to rank. 0-30 is low (easy), 30-60 is medium, 60+ is high (hard). Fewer competitors = faster rankings.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#ef4444', marginBottom: '8px' }}>🔴 Difficulty (Ranking Difficulty)</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Lower difficulty = easier to rank. 0-30 is easy, 30-60 is medium, 60+ is hard. Look for keywords with low difficulty and high traffic.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* BEST KEYWORDS */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #10b981', marginBottom: '30px' }}>
+                  <h3 style={{ color: '#10b981', marginBottom: '10px' }}>✅ Best Keywords (High Traffic + Low Difficulty)</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px' }}>
+                    {data.keywords.filter(kw => kw.traffic > 5000 && kw.difficulty < 40).map((kw, i) => (
+                      <li key={i} style={{ marginBottom: '8px' }}><strong>{kw.keyword}</strong> - {kw.traffic} searches/month, Difficulty: {kw.difficulty}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* TABLE */}
+                <div style={{ overflowX: 'auto', marginBottom: '30px' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                    <thead>
+                      <tr style={{ borderBottom: '2px solid #2b3a6a' }}>
+                        <th style={{ textAlign: 'left', padding: '12px', color: '#4f7cff' }}>Keyword</th>
+                        <th style={{ textAlign: 'center', padding: '12px', color: '#4f7cff' }}>Traffic 🟢</th>
+                        <th style={{ textAlign: 'center', padding: '12px', color: '#4f7cff' }}>Competition 🟡</th>
+                        <th style={{ textAlign: 'center', padding: '12px', color: '#4f7cff' }}>Difficulty 🔴</th>
+                        <th style={{ textAlign: 'center', padding: '12px', color: '#4f7cff' }}>Verdict</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.keywords.map((kw, i) => {
+                        let verdict = 'MONITOR';
+                        if (kw.traffic > 5000 && kw.difficulty < 40) verdict = '✅ BUILD';
+                        else if (kw.traffic < 3000 || kw.difficulty > 60) verdict = '⏭️ SKIP';
+                        return (
+                          <tr key={i} style={{ borderBottom: '1px solid #2b3a6a' }}>
+                            <td style={{ padding: '12px', color: '#a8adb8' }}>{kw.keyword}</td>
+                            <td style={{ textAlign: 'center', padding: '12px', color: '#10b981', fontWeight: 'bold' }}>{kw.traffic}</td>
+                            <td style={{ textAlign: 'center', padding: '12px', color: '#f59e0b' }}>{kw.competition}</td>
+                            <td style={{ textAlign: 'center', padding: '12px', color: '#ef4444' }}>{kw.difficulty}</td>
+                            <td style={{ textAlign: 'center', padding: '12px', color: verdict.includes('BUILD') ? '#10b981' : verdict.includes('SKIP') ? '#ef4444' : '#f59e0b', fontWeight: 'bold' }}>{verdict}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* ANALYSIS */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '10px' }}>💡 Analysis & Recommendations</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '1.8' }}>
+                    <li>Focus on keywords with <strong>high traffic (5000+)</strong> and <strong>low difficulty (&lt;40)</strong></li>
+                    <li>Avoid keywords with <strong>low traffic (&lt;3000)</strong> or <strong>high difficulty (&gt;60)</strong></li>
+                    <li>Start with "easy" keywords to build authority, then target harder ones</li>
+                    <li>Create content around the "BUILD" keywords first for quick wins</li>
+                    <li>Monitor medium-difficulty keywords as you grow your site</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {/* OFFERS */}
+            {activeTool === 'Offers' && (
+              <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
+                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>💰 CPA Offers for "{niche}"</h2>
+                
+                {/* EXPLANATION */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a', marginBottom: '30px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px' }}>📖 Understanding CPA Offers</h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
+                    <div>
+                      <h4 style={{ color: '#10b981', marginBottom: '8px' }}>💵 Payout</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Amount you earn per completed action (sale, lead, signup). Higher payouts = more profit per conversion.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#f59e0b', marginBottom: '8px' }}>📊 Commission</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Percentage of the sale you keep. 50% = you get half of what the customer pays.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#ef4444', marginBottom: '8px' }}>🎯 Best Practice</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Promote offers with high payouts (40%+ commission). Test multiple networks to find what converts best.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* OFFERS GRID */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '30px' }}>
+                  {data.offers.map((offer, i) => (
+                    <a key={i} href={offer.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '2px solid #2b3a6a', cursor: 'pointer', transition: 'all 0.3s', height: '100%' }} onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#4f7cff')} onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#2b3a6a')}>
+                        <h3 style={{ color: '#4f7cff', marginBottom: '10px', marginTop: 0 }}>{offer.network}</h3>
+                        <p style={{ color: '#a8adb8', marginBottom: '15px', fontSize: '0.9rem' }}>{offer.desc}</p>
+                        
+                        <div style={{ background: '#1a2847', padding: '15px', borderRadius: '6px', marginBottom: '15px' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                            <span style={{ color: '#a8adb8' }}>Payout:</span>
+                            <span style={{ color: '#10b981', fontWeight: 'bold', fontSize: '1.2rem' }}>{offer.payout}</span>
+                          </div>
+                          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <span style={{ color: '#a8adb8' }}>Commission:</span>
+                            <span style={{ color: '#f59e0b', fontWeight: 'bold', fontSize: '1.2rem' }}>{offer.commission}</span>
+                          </div>
+                        </div>
+
+                        <button style={{ width: '100%', padding: '12px', background: 'linear-gradient(135deg, #4f7cff, #00d4ff)', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1rem' }}>
+                          🔗 Visit Network
+                        </button>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+
+                {/* TIPS */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px' }}>💡 How to Maximize CPA Earnings</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '1.8' }}>
+                    <li><strong>Join multiple networks:</strong> Different offers perform better on different platforms</li>
+                    <li><strong>Test and track:</strong> Use unique links to see which offers convert best</li>
+                    <li><strong>Match offers to content:</strong> Promote relevant offers to your audience</li>
+                    <li><strong>Build email list:</strong> Email subscribers convert 5-10x better than cold traffic</li>
+                    <li><strong>Create comparison content:</strong> "Best X" articles rank well and convert offers</li>
+                    <li><strong>Use urgency:</strong> Limited time offers, scarcity, bonuses increase conversions</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {/* DOMAINS */}
+            {activeTool === 'Domains' && (
+              <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
+                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>🌐 Expired Domains for "{niche}"</h2>
+                
+                {/* EXPLANATION */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a', marginBottom: '30px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px' }}>📖 Why Expired Domains Matter</h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
+                    <div>
+                      <h4 style={{ color: '#10b981', marginBottom: '8px' }}>⚡ Instant Authority</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Aged domains have existing backlinks and history. You skip the "sandbox" period and rank faster.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#f59e0b', marginBottom: '8px' }}>🔗 Backlinks</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>More backlinks = more SEO power. Look for domains with 300+ backlinks and high authority.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#ef4444', marginBottom: '8px' }}>🎯 Best Domains</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>10+ years old, 500+ backlinks, 40+ authority, relevant to your niche.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* BEST DOMAINS */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #10b981', marginBottom: '30px' }}>
+                  <h3 style={{ color: '#10b981', marginBottom: '10px' }}>⭐ Best Domains (High Authority + Backlinks)</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px' }}>
+                    {data.domains.filter(d => d.authority > 45 && d.backlinks > 500).map((domain, i) => (
+                      <li key={i} style={{ marginBottom: '8px' }}><strong>{domain.domain}</strong> - Authority: {domain.authority}, Backlinks: {domain.backlinks}, Price: {domain.price}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* DOMAINS GRID */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '30px' }}>
+                  {data.domains.map((domain, i) => (
+                    <div key={i} style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '2px solid #2b3a6a' }}>
+                      <h3 style={{ color: '#4f7cff', marginBottom: '15px', marginTop: 0 }}>{domain.domain}</h3>
+                      
+                      <div style={{ background: '#1a2847', padding: '15px', borderRadius: '6px', marginBottom: '15px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                          <span style={{ color: '#a8adb8' }}>Age:</span>
+                          <span style={{ color: '#10b981', fontWeight: 'bold' }}>{domain.age} years</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                          <span style={{ color: '#a8adb8' }}>Traffic:</span>
+                          <span style={{ color: '#10b981', fontWeight: 'bold' }}>{domain.traffic}/mo</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                          <span style={{ color: '#a8adb8' }}>Backlinks:</span>
+                          <span style={{ color: '#f59e0b', fontWeight: 'bold' }}>{domain.backlinks}</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                          <span style={{ color: '#a8adb8' }}>Authority:</span>
+                          <span style={{ color: '#f59e0b', fontWeight: 'bold' }}>{domain.authority}</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span style={{ color: '#a8adb8' }}>Price:</span>
+                          <span style={{ color: '#ef4444', fontWeight: 'bold' }}>{domain.price}</span>
+                        </div>
+                      </div>
+
+                      <div style={{ padding: '12px', background: domain.verdict === 'EXCELLENT' ? 'rgba(16, 185, 129, 0.1)' : domain.verdict === 'GOOD' ? 'rgba(245, 158, 11, 0.1)' : 'rgba(239, 68, 68, 0.1)', borderRadius: '6px', textAlign: 'center', color: domain.verdict === 'EXCELLENT' ? '#10b981' : domain.verdict === 'GOOD' ? '#f59e0b' : '#ef4444', fontWeight: 'bold' }}>
+                        {domain.verdict === 'EXCELLENT' ? '⭐ EXCELLENT BUY' : domain.verdict === 'GOOD' ? '👍 GOOD' : '⚠️ FAIR'}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* TIPS */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px' }}>💡 How to Buy Expired Domains</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '1.8' }}>
+                    <li><strong>Check domain history:</strong> Use Wayback Machine to see previous content</li>
+                    <li><strong>Verify backlinks:</strong> Use Ahrefs or SEMrush to check quality of backlinks</li>
+                    <li><strong>Check for penalties:</strong> Make sure domain isn't penalized by Google</li>
+                    <li><strong>Buy from auctions:</strong> GoDaddy Auctions, Flippa, NameJet</li>
+                    <li><strong>Redirect or rebuild:</strong> You can redirect old content or rebuild from scratch</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {/* BLUEPRINT */}
+            {activeTool === 'Blueprint' && (
+              <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
+                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>📐 Website Blueprint for "{niche}"</h2>
+                
+                {/* STRATEGY */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a', marginBottom: '30px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '10px' }}>🎯 Overall Strategy</h3>
+                  <p style={{ color: '#a8adb8', lineHeight: '1.8' }}>{data.blueprint.strategy}</p>
+                </div>
+
+                {/* PAGES */}
+                <div style={{ marginBottom: '30px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '20px' }}>📄 Website Pages</h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+                    {data.blueprint.pages.map((page, i) => (
+                      <div key={i} style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                        <h4 style={{ color: '#4f7cff', marginBottom: '10px', marginTop: 0 }}>{i + 1}. {page.name}</h4>
+                        <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem', lineHeight: '1.6' }}>{page.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* MONETIZATION */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #10b981', marginBottom: '30px' }}>
+                  <h3 style={{ color: '#10b981', marginBottom: '10px' }}>💰 Monetization Strategy</h3>
+                  <p style={{ color: '#a8adb8', lineHeight: '1.8' }}>{data.blueprint.monetization}</p>
+                </div>
+
+                {/* TIMELINE */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '10px' }}>📅 Launch Timeline</h3>
+                  <p style={{ color: '#a8adb8', lineHeight: '1.8' }}>{data.blueprint.timeline}</p>
+                </div>
+              </div>
+            )}
+
+            {/* SCRIPTS */}
+            {activeTool === 'Scripts' && (
+              <div style={{ background: '#1a2847', padding: '30px', borderRadius: '12px', border: '1px solid #2b3a6a' }}>
+                <h2 style={{ color: '#4f7cff', marginBottom: '30px' }}>🎬 Video Scripts for "{niche}"</h2>
+                
+                {/* EXPLANATION */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a', marginBottom: '30px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px' }}>📝 How to Use These Scripts</h3>
+                  <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', lineHeight: '1.8' }}>
+                    <li><strong>Customize:</strong> Replace product names with your actual offers</li>
+                    <li><strong>Add Visuals:</strong> Use B-roll, animations, or product footage</li>
+                    <li><strong>Practice:</strong> Record multiple takes to find your best delivery</li>
+                    <li><strong>Post:</strong> Upload to YouTube, TikTok, Instagram Reels, Shorts</li>
+                    <li><strong>Link:</strong> Add affiliate/CPA links in video description</li>
+                  </ul>
+                </div>
+
+                {/* SCRIPTS */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+                  {data.scripts.map((script, i) => (
+                    <div key={i} style={{ background: '#0b1020', padding: '25px', borderRadius: '8px', border: '1px solid #2b3a6a' }}>
+                      <h3 style={{ color: '#4f7cff', marginBottom: '10px' }}>{script.title}</h3>
+                      <p style={{ color: '#a8adb8', marginBottom: '20px', fontSize: '0.9rem' }}>⏱️ Duration: {script.duration}</p>
+                      
+                      <div style={{ background: '#1a2847', padding: '15px', borderRadius: '6px', marginBottom: '15px' }}>
+                        <h4 style={{ color: '#10b981', marginBottom: '8px', marginTop: 0 }}>Full Script:</h4>
+                        <p style={{ color: '#a8adb8', margin: 0, lineHeight: '1.8', whiteSpace: 'pre-wrap', fontSize: '0.9rem' }}>{script.script}</p>
+                      </div>
+
+                      <div style={{ background: '#1a2847', padding: '15px', borderRadius: '6px' }}>
+                        <h4 style={{ color: '#f59e0b', marginBottom: '8px', marginTop: 0 }}>📌 Key Points:</h4>
+                        <ul style={{ color: '#a8adb8', margin: 0, paddingLeft: '20px', fontSize: '0.9rem' }}>
+                          <li>Keep it under 60 seconds</li>
+                          <li>Speak naturally and conversationally</li>
+                          <li>Add urgency with phrases like "limited time" or "while supplies last"</li>
+                          <li>Always include a clear call-to-action</li>
+                          <li>Use trending sounds and hashtags</li>
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* TIPS */}
+                <div style={{ background: '#0b1020', padding: '20px', borderRadius: '8px', border: '1px solid #2b3a6a', marginTop: '30px' }}>
+                  <h3 style={{ color: '#4f7cff', marginBottom: '15px' }}>💡 Script Writing Tips</h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
+                    <div>
+                      <h4 style={{ color: '#10b981', marginBottom: '8px' }}>Hook (0-5 sec)</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Grab attention immediately. Use a bold claim, question, or surprising statement. This is critical - viewers decide to watch or skip in the first 3 seconds.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#f59e0b', marginBottom: '8px' }}>Problem (5-20 sec)</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Identify the viewer's pain point. Make them feel understood. "You've tried everything but nothing works..." This builds emotional connection.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#ef4444', marginBottom: '8px' }}>Solution (20-50 sec)</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Present your offer as the solution. Explain benefits, not features. Show results or testimonials. Make it irresistible.</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: '#4f7cff', marginBottom: '8px' }}>CTA (50-60 sec)</h4>
+                      <p style={{ color: '#a8adb8', margin: 0, fontSize: '0.9rem' }}>Clear call-to-action. "Click the link in bio", "Get it now", "Limited time offer". Make it easy for viewers to take action.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </main>
+
+      {/* FOOTER */}
+      <footer style={{ background: '#1a2847', borderTop: '2px solid #2b3a6a', padding: '40px 20px', marginTop: '80px' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', marginBottom: '40px' }}>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Product</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/home" style={{ color: '#a8adb8', textDecoration: 'none' }}>Home</Link></li>
+                <li><Link href="/pricing" style={{ color: '#a8adb8', textDecoration: 'none' }}>Pricing</Link></li>
+                <li><Link href="/about" style={{ color: '#a8adb8', textDecoration: 'none' }}>About</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Company</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/contact" style={{ color: '#a8adb8', textDecoration: 'none' }}>Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ color: '#4f7cff', marginBottom: '15px' }}>Legal</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li><Link href="/privacy" style={{ color: '#a8adb8', textDecoration: 'none' }}>Privacy</Link></li>
+                <li><Link href="/terms" style={{ color: '#a8adb8', textDecoration: 'none' }}>Terms</Link></li>
+                <li><Link href="/compliance" style={{ color: '#a8adb8', textDecoration: 'none' }}>Compliance</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div style={{ borderTop: '1px solid #2b3a6a', paddingTop: '20px', textAlign: 'center', color: '#a8adb8', fontSize: '0.85rem' }}>
+            <p>© 2025 CPA Niche Scout AI. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
