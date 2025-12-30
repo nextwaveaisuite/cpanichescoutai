@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { NICHE_DATA } from './niche-data';
+import { NICHE_DATA } from '@/lib/niche-data';
 
 export default function Dashboard() {
   const [searchInput, setSearchInput] = useState('');
